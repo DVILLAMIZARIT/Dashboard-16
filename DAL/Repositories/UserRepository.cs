@@ -5,7 +5,7 @@ using Infra.Model;
 
 namespace DAL.Repositories
 {
-    public class UserRepository : Repository<User>, IUserRepository
+    public class UserRepository : Repository<UserProfile>, IUserRepository
     {
         public UserRepository()
             : base()
@@ -16,7 +16,7 @@ namespace DAL.Repositories
         {
         }
 
-        public User GetByUserName(String userName)
+        public UserProfile GetByUserName(String userName)
         {
             return this.All().FirstOrDefault(x => x.UserName == userName);
         }

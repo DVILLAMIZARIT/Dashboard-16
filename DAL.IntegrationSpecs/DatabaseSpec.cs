@@ -7,14 +7,14 @@ namespace DAL.IntegrationSpecs
 {
     public abstract class DatabaseSpec
     {
-        protected static DataContextFactory<DataContext> contextFactory;
+        protected static DataContextFactory contextFactory;
         protected static UnitOfWork<DataContext> unitOfWork;
         private static DbTransaction transaction;
 
         Establish context = () =>
         {
-            contextFactory = new DataContextFactory<DataContext>("test");
-            var context = contextFactory.GetContext();
+            contextFactory = new DataContextFactory("test");
+            var context = contextFactory.Create();
             unitOfWork = new UnitOfWork<DataContext>(context);
 
             IObjectContextAdapter adapter = context;

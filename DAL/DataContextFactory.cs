@@ -1,33 +1,21 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
-using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Reflection;
+using DAL.Interfaces;
 
 namespace DAL
 {
-    public class DataContextFactory<TContext> : IDisposable
-        where TContext : DataContext
+    public class DataContextFactory : IDataContextFactory
     {
-        #region Static members
-        
-        private static readonly Type complexType = typeof(ComplexTypeConfiguration<>);
-
-        private static readonly Type entityType = typeof(EntityTypeConfiguration<>);
-
-        private static readonly ConcurrentDictionary<String, IDictionary<MethodInfo, Object>> mappingConfigurations = new ConcurrentDictionary<String, IDictionary<MethodInfo, Object>>();
-
-        #endregion
-
-        private TContext context;
+        private DataContext context;
 
         private readonly String nameOrConnectionString;
 
         #region Ctor
-        
+
+        public DataContextFactory()
+            : this("DataContext")
+        {
+        }
         public DataContextFactory(String nameOrConnectionString)
         {
             Contract.Requires<ArgumentException>(!String.IsNullOrEmpty(nameOrConnectionString));
@@ -37,100 +25,15 @@ namespace DAL
 
         #endregion
 
-        private static IDictionary<MethodInfo, Object> BuildConfigurations()
+        protected virtual DataContext CreateContext()
         {
-            var addMethods = typeof(ConfigurationRegistrar).GetMethods()
-                .Where(m => m.Name.Equals("Add"))
-                .ToList();
-
-            var entityTypeMethod = addMethods.First(m =>
-                m.GetParameters()
-                 .First()
-                 .ParameterType
-                 .GetGenericTypeDefinition()
-                 .IsAssignableFrom(entityType));
-
-            var complexTypeMethod = addMethods.First(m =>
-                m.GetParameters().First()
-                 .ParameterType
-                 .GetGenericTypeDefinition()
-                 .IsAssignableFrom(complexType));
-
-            var configurations = new Dictionary<MethodInfo, object>();
-
-            var types = typeof(DataContextFactory<>).Assembly
-                .GetExportedTypes()
-                .Where(IsMappingType)
-                .ToList();
-
-            foreach (var type in types)
-            {
-                MethodInfo typedMethod;
-                Type modelType;
-
-                if (IsMatching(type, out modelType, t => entityType.IsAssignableFrom(t)))
-                {
-                    typedMethod = entityTypeMethod.MakeGenericMethod(modelType);
-                }
-                else if (IsMatching(type, out modelType, t => complexType.IsAssignableFrom(t)))
-                {
-                    typedMethod = complexTypeMethod.MakeGenericMethod(modelType);
-                }
-                else
-                {
-                    continue;
-                }
-
-                configurations.Add(typedMethod, Activator.CreateInstance(type));
-            }
-
-            return configurations;
+            return new DataContext(this.nameOrConnectionString);
         }
 
-        private TContext CreateContext()
-        {
-            var configurations = mappingConfigurations.GetOrAdd(this.nameOrConnectionString, key => BuildConfigurations());
-            var localContext = (TContext)Activator.CreateInstance(typeof(TContext), new Object[] { this.nameOrConnectionString, configurations });
-            return localContext;
-        }
-
-        public virtual TContext GetContext()
+        public virtual DataContext Create()
         {
             return context ?? (context = this.CreateContext());
         }
-
-        #region Static Helpers
-
-        private static Boolean IsMappingType(Type matchingType)
-        {
-            if (!matchingType.IsClass || matchingType.IsAbstract)
-            {
-                return false;
-            }
-            Type temp;
-            return IsMatching(matchingType, out temp, t => entityType.IsAssignableFrom(t) || complexType.IsAssignableFrom(t));
-        }
-
-        private static Boolean IsMatching(Type matchingType, out Type modelType, Predicate<Type> matcher)
-        {
-            modelType = null;
-            while (matchingType != null)
-            {
-                if (matchingType.IsGenericType)
-                {
-                    var definitionType = matchingType.GetGenericTypeDefinition();
-                    if (matcher(definitionType))
-                    {
-                        modelType = matchingType.GetGenericArguments().First();
-                        return true;
-                    }
-                }
-                matchingType = matchingType.BaseType;
-            }
-            return false;
-        }
-
-        #endregion
 
         #region IDisposable
 

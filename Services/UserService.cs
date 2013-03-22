@@ -13,7 +13,7 @@ namespace Services
             this.userRepository = userRepository;
         }
 
-        public Infra.Model.User GetByUserName(String userName)
+        public Infra.Model.UserProfile GetByUserName(String userName)
         {
             return this.userRepository.GetByUserName(userName);
         }

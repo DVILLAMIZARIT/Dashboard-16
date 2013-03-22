@@ -17,7 +17,7 @@ namespace DAL.Repositories
         #region Ctor
 
         public Repository()
-            : this(new DataContext())
+            : this(new DataContextFactory().Create())
         {
         }
         public Repository(DataContext context)
@@ -54,8 +54,6 @@ namespace DAL.Repositories
 
         public virtual T One(Int32 id)
         {
-            Contract.Requires<ArgumentOutOfRangeException>(id > 0);
-
             return this.CreateSet().Find(id);
         }
 
@@ -68,8 +66,6 @@ namespace DAL.Repositories
 
         public virtual void Remove(T entity)
         {
-            Contract.Requires<ArgumentNullException>(entity != null);
-
             entity = this.GetOrAttach(entity);
 
             var attachedEntity = this.GetOrAttach(entity);
@@ -86,8 +82,6 @@ namespace DAL.Repositories
 
         public virtual T Save(T entity)
         {
-            Contract.Requires<ArgumentNullException>(entity != null);
-
             if (entity.Id == default(Int32))
             {
                 entity = this.CreateSet().Add(entity);

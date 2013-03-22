@@ -2,7 +2,7 @@
 
 namespace Infra.Model
 {
-    public class User : DeletableEntity
+    public class UserProfile : DeletableEntity
     {
         public String DisplayName { get; set; }
 

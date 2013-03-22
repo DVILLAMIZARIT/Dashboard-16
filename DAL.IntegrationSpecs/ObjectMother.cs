@@ -13,23 +13,23 @@ namespace DAL.IntegrationSpecs
 
         private static readonly IGenerationSession session = CreateSession();
 
-        public static User User()
+        public static UserProfile User()
         {
-            return session.Single<User>().Get();
+            return session.Single<UserProfile>().Get();
         }
 
-        public static IEnumerable<User> Users(Int32 count = DefaultCount)
+        public static IEnumerable<UserProfile> Users(Int32 count = DefaultCount)
         {
-            return session.List<User>(count).Get();
+            return session.List<UserProfile>(count).Get();
         }
 
         private static IGenerationSession CreateSession()
         {
             return AutoPocoContainer.Configure(config =>
             {
-                config.AddFromAssemblyContainingType<User>();
+                config.AddFromAssemblyContainingType<UserProfile>();
 
-                config.Include<User>()
+                config.Include<UserProfile>()
                     .Setup(u => u.UserName).Use<RandomStringSource>(4, 50)
                     .Setup(u => u.EmailAddress).Use<EmailAddressSource>()
                     .Setup(u => u.DisplayName).Use<FirstNameSource>();

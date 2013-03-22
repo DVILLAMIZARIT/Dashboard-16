@@ -24,7 +24,7 @@ namespace DAL
             }
             else
             {
-                Database.SetInitializer<TContext>(new NullDatabaseInitializer<TContext>());
+                Database.SetInitializer<TContext>(null);//new NullDatabaseInitializer<TContext>());
             }
         }
     }

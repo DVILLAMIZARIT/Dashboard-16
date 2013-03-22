@@ -1,10 +1,11 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using Infra.Model;
 
 namespace DAL.Interfaces
 {
-    public interface IDataContext
+    public interface IDataContext : IDisposable
     {
-        DbSet<User> Users { get; set; }
+        DbSet<UserProfile> UserProfiles { get; set; }
     }
 }

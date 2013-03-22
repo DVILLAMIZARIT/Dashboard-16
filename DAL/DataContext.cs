@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration;
 using System.Diagnostics.Contracts;
-using System.Reflection;
+using System.Linq;
+using Core.Extensions;
 using DAL.Interfaces;
 using Infra.Model;
 
@@ -10,36 +11,47 @@ namespace DAL
 {
     public class DataContext : DbContext, IDataContext
     {
-        private readonly IDictionary<MethodInfo, Object> configurations;
-
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
 
         #region Ctor
         
         public DataContext()
-            : base("name=DataContext")
+            : base("DefaultConnection")
         {
         }
-        public DataContext(String nameOrConnectionString, IDictionary<MethodInfo, Object> configurations)
+        public DataContext(String nameOrConnectionString)
             : base(nameOrConnectionString)
         {
-            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(nameOrConnectionString));
-            Contract.Requires<ArgumentNullException>(configurations != null);
-
-            this.configurations = configurations;
         }
+        //public DataContext(String nameOrConnectionString, IDictionary<MethodInfo, Object> configurations)
+        //    : base(nameOrConnectionString)
+        //{
+        //    Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(nameOrConnectionString));
+        //    Contract.Requires<ArgumentNullException>(configurations != null);
+
+        //    this.configurations = configurations;
+        //}
 
         #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Contract.Requires<ArgumentNullException>(modelBuilder != null);
+            Contract.Assume(modelBuilder != null);
 
-            foreach (var config in configurations)
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.GetName().Name != "EntityFramework");
+            foreach (var assembly in assemblies)
             {
-                config.Key.Invoke(modelBuilder.Configurations, new[] { config.Value });
+                var configTypes = assembly.GetTypes()
+                    .Where(t => t.BaseType != null && !t.IsAbstract && t.IsDerivedFromOpenGenericType(typeof(EntityTypeConfiguration<>)));
+                foreach (var type in configTypes)
+                {
+                    // I use internal classes for configuration, so the second parameter of CreateInstance should be
+                    // passed `true` to allow it to be instantiated.
+                    dynamic configuration = Activator.CreateInstance(type, true /* !type.GetConstructors().Any(c => c.IsPublic) */);
+                    modelBuilder.Configurations.Add(configuration);
+                }
             }
-
+            
             base.OnModelCreating(modelBuilder);
         }
 

@@ -2,11 +2,11 @@
 
 namespace DAL.Configurations
 {
-    internal class UserConfiguration : DeletableEntityConfiguration<User>
+    internal class UserProfileConfiguration : DeletableEntityConfiguration<UserProfile>
     {
-        internal UserConfiguration()
+        internal UserProfileConfiguration()
         {
-            this.ToTable("Users");
+            this.ToTable("UserProfiles");
 
             this.Property(x => x.UserName).HasMaxLength(50).IsRequired();
             this.Property(x => x.EmailAddress).HasMaxLength(255).IsRequired();

@@ -5,6 +5,6 @@ namespace Infra.Interfaces.Services
 {
     public interface IUserService
     {
-        User GetByUserName(String userName);
+        UserProfile GetByUserName(String userName);
     }
 }

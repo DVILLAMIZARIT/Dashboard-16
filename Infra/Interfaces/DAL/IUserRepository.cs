@@ -3,8 +3,8 @@ using Infra.Model;
 
 namespace Infra.Interfaces.DAL
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IUserRepository : IRepository<UserProfile>
     {
-        User GetByUserName(String userName);
+        UserProfile GetByUserName(String userName);
     }
 }

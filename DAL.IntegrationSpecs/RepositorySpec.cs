@@ -5,15 +5,15 @@ using Machine.Specifications;
 
 namespace DAL.IntegrationSpecs
 {
-    [Subject(typeof(Repository<User>))]
+    [Subject(typeof(Repository<UserProfile>))]
     public class when_saving_new_user : DatabaseSpec
     {
-        private static Repository<User> repository;
-        private static User user;
+        private static Repository<UserProfile> repository;
+        private static UserProfile user;
 
         Establish context = () =>
         {
-            repository = new Repository<User>(contextFactory.GetContext());
+            repository = new Repository<UserProfile>(contextFactory.Create());
         };
 
         Because of = () =>
