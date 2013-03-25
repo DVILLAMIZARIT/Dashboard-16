@@ -1,6 +1,7 @@
 ﻿using System;
 using Infra.Interfaces.DAL;
 using Infra.Interfaces.Services;
+using Infra.Model;
 
 namespace Services
 {
@@ -13,7 +14,7 @@ namespace Services
             this.userRepository = userRepository;
         }
 
-        public Infra.Model.UserProfile GetByUserName(String userName)
+        public UserProfile GetByUserName(String userName)
         {
             return this.userRepository.GetByUserName(userName);
         }
