@@ -10,7 +10,7 @@ namespace WebUI.Controllers
         // GET: /Default/
         public ActionResult Index()
         {
-            return Content("Home");
+            return View();
         }
     }
 }

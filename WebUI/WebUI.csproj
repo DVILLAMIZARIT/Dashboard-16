@@ -105,6 +105,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.2.2.13055\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
     </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.2.2.13055\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.2.2.13055\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
@@ -230,6 +234,64 @@
     <Content Include="App_Data\Dashboard_log.ldf">
       <DependentUpon>Dashboard.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\favicon.ico" />
+    <Content Include="Content\font-awesome\css\font-awesome-ie7.min.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\docs\assets\css\font-awesome-ie7.min.css" />
+    <Content Include="Content\font-awesome\docs\assets\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\docs\assets\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\docs\assets\css\prettify.css" />
+    <Content Include="Content\font-awesome\docs\assets\css\site.css" />
+    <Content Include="Content\font-awesome\docs\assets\ico\favicon.ico" />
+    <Content Include="Content\font-awesome\docs\assets\img\contribution-sample.png" />
+    <Content Include="Content\font-awesome\docs\assets\img\fort_awesome.jpg" />
+    <Content Include="Content\font-awesome\docs\assets\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\font-awesome\docs\assets\img\glyphicons-halflings.png" />
+    <Content Include="Content\font-awesome\docs\assets\js\backbone.min.js" />
+    <Content Include="Content\font-awesome\docs\assets\js\bootstrap-222.min.js" />
+    <Content Include="Content\font-awesome\docs\assets\js\index\index.js" />
+    <Content Include="Content\font-awesome\docs\assets\js\jquery-1.7.1.min.js" />
+    <Content Include="Content\font-awesome\docs\assets\js\prettify.min.js" />
+    <Content Include="Content\font-awesome\docs\assets\js\underscore.min.js" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\tests\buttons.html" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\tests\css-tests.css" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\tests\css-tests.html" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\tests\forms-responsive.html" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\tests\forms.html" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\tests\navbar-fixed-top.html" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\tests\navbar-static-top.html" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\tests\navbar.html" />
+    <Content Include="Content\font-awesome\docs\design.html" />
+    <Content Include="Content\font-awesome\docs\index.html" />
+    <Content Include="Content\font-awesome\docs\test.html" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\img\logo-big.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\menu-toggler.png" />
+    <Content Include="Content\img\overlay-icon.png" />
+    <Content Include="Content\img\search-icon-blue.png" />
+    <Content Include="Content\img\search-icon-brown.png" />
+    <Content Include="Content\img\search-icon-purple.png" />
+    <Content Include="Content\img\search-icon-red.png" />
+    <Content Include="Content\img\search-icon-white.png" />
+    <Content Include="Content\img\search-icon.png" />
+    <Content Include="Content\img\select-caret.png" />
+    <Content Include="Content\img\sidebar-menu-arrow-green.png" />
+    <Content Include="Content\img\sidebar-menu-arrow.png" />
+    <Content Include="Content\img\sidebar-toggler-blue.jpg" />
+    <Content Include="Content\img\sidebar-toggler-brown.jpg" />
+    <Content Include="Content\img\sidebar-toggler-light.jpg" />
+    <Content Include="Content\img\sidebar-toggler-purple.jpg" />
+    <Content Include="Content\img\sidebar-toggler.jpg" />
+    <Content Include="Content\img\sidebar-toggler.png" />
+    <Content Include="Content\img\syncfusion-icons-white.png" />
+    <Content Include="Content\img\syncfusion-icons.png" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -292,9 +354,92 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\metro\metro.css" />
+    <Content Include="Content\metro\style.css" />
+    <Content Include="Content\metro\style_blue.css" />
+    <Content Include="Content\metro\style_brown.css" />
+    <Content Include="Content\metro\style_default.css" />
+    <Content Include="Content\metro\style_light.css" />
+    <Content Include="Content\metro\style_purple.css" />
+    <Content Include="Content\metro\style_responsive.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\breakpoints\breakpoints.min.js" />
+    <Content Include="Scripts\breakpoints\README.md" />
+    <Content Include="Content\font-awesome\README.md" />
+    <Content Include="Content\font-awesome\docs\assets\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\docs\assets\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\docs\assets\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\docs\assets\font\FontAwesome.otf" />
+    <Content Include="Content\font-awesome\docs\assets\font\museo_slab_300-webfont.eot" />
+    <Content Include="Content\font-awesome\docs\assets\font\museo_slab_300-webfont.ttf" />
+    <Content Include="Content\font-awesome\docs\assets\font\museo_slab_500-webfont.eot" />
+    <Content Include="Content\font-awesome\docs\assets\font\museo_slab_500-webfont.ttf" />
+    <Content Include="Content\font-awesome\docs\assets\font\proximanova-sbold-webfont.eot" />
+    <Content Include="Content\font-awesome\docs\assets\font\proximanova-sbold-webfont.ttf" />
+    <Content Include="Content\font-awesome\docs\assets\font\proximanova-webfont.eot" />
+    <Content Include="Content\font-awesome\docs\assets\font\proximanova-webfont.ttf" />
+    <Content Include="Content\font-awesome\docs\assets\img\icon-flag.pdf" />
+    <Content Include="Content\font-awesome\docs\assets\less\font-awesome-ie7.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\font-awesome.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\font-site.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\mixins.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\site.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\accordion.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\alerts.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\bootstrap.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\breadcrumbs.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\button-groups.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\buttons.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\carousel.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\close.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\code.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\component-animations.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\dropdowns.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\forms.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\grid.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\hero-unit.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\labels-badges.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\layouts.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\media.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\mixins.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\modals.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\navbar.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\navs.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\pager.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\pagination.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\popovers.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\progress-bars.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\reset.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\responsive-1200px-min.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\responsive-767px-max.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\responsive-768px-979px.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\responsive-navbar.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\responsive-utilities.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\responsive.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\scaffolding.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\sprites.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\tables.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\thumbnails.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\tooltip.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\type.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\utilities.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\variables.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\twbs-222\wells.less" />
+    <Content Include="Content\font-awesome\docs\assets\less\variables.less" />
+    <Content Include="Content\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\font\FontAwesome.otf" />
+    <Content Include="Content\font-awesome\less\font-awesome-ie7.less" />
+    <Content Include="Content\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\font-awesome\sass\font-awesome.sass" />
+    <Content Include="Content\font-awesome\sass\font-awesome.scss" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\breakpoints\breakpoints.js" />
+    <Content Include="Scripts\breakpoints\example.html" />
+    <Content Include="Scripts\ltie9\excanvas.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -310,6 +455,7 @@
     <Content Include="Scripts\knockout-2.2.1.debug.js" />
     <Content Include="Scripts\knockout-2.2.1.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ltie9\respond.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -324,6 +470,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Shared\_Dashboard.cshtml" />
+    <Content Include="Views\Shared\_Authentication.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

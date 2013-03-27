@@ -1,0 +1,108 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BodyCssClass = "fixed-top";
+}
+@section Styles
+{
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/themes/metro/metro.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap-responsive.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/metro/style.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/metro/style_responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/metro/style_default.css")" rel="stylesheet" id="theme_stylesheet" />
+    <link href="@Url.Content("~/Content/favicon.ico")" rel="icon" />
+}
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="@Url.Content("~/Scripts/ltie9/excanvas.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ltie9/respond.js")" type="text/javascript"></script>
+    <![endif]-->
+    <script src="@Url.Content("~/Scripts/breakpoints/breakpoints.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.10.2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")" type="text/javascript"></script>
+}
+<!-- HEADER -->
+<div class="header navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a href="#" class="brand">
+                <img alt="logo" src="@Url.Content("~/Content/img/logo.png")" />
+            </a>
+            <!-- ul.nav.pull-right -->
+        </div>
+    </div>
+</div>
+<!-- /HEADER -->
+    
+<!-- CONTENT -->
+<div class="page-container row-fluid">
+    <!-- LEFT MENU -->
+    <div class="page-sidebar nav-collapse collapse">
+        <ul>
+            <li>
+                <div class="sidebar-toggler hidden-phone"></div>
+            </li>
+            <li>
+                <form class="sidebar-search">
+                    <div class="input-box">
+                        <a href="javascript:;" class="remove"></a>
+                        <input type="text" placeholder="Search..." />
+                        <input type="button" class="submit" value=" " />
+                    </div>
+                </form>
+            </li>
+            <li class="start active">
+                <a href="#">
+                    <i class="icon-home"></i>
+                    <span class="title">Dashboard</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- /LEFT MENU -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+        <div class="container-fluid">
+            <!-- PAGE TITLE -->
+            <div class="row-fluid">
+                <div class="span12">
+                    <h3 class="page-title">
+                        @ViewBag.Title
+                        @if (!String.IsNullOrEmpty((String)ViewBag.SubTitle))
+                        { 
+                            <small>@ViewBag.SubTitle</small>
+                        }
+                    </h3>
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home"></i>
+                            <a href="#">Home</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /PAGE TITLE -->
+            @RenderBody()
+        </div>
+    </div>
+    <!-- /PAGE CONTENT -->
+</div>
+<!-- /CONTENT -->
+
+<!-- FOOTER -->
+<div class="footer">
+    @DateTime.Now.Year &copy; Metronic. Admin Dashboard Template. by keenthemes
+    <div class="span pull-right">
+        <span class="go-top"><i class="icon-angle-up"></i></span>
+    </div>
+</div>
+<!-- /FOOTER -->
