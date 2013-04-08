@@ -28,10 +28,21 @@
 <div class="header navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">
-            <a href="#" class="brand">
+            <!-- LOGO -->
+            <a href="@Url.RouteUrl("Default")" class="brand">
                 <img alt="logo" src="@Url.Content("~/Content/img/logo.png")" />
             </a>
-            <!-- ul.nav.pull-right -->
+            <!-- /LOGO -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                <img src="@Url.Content("~/Content/img/menu-toggler.png")" alt="" />
+            </a>          
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- TOP NAV MENU -->
+            <ul class="nav pull-right">
+                @{ Html.RenderAction("UserDropdown", "Dashboard", new { area = "" }); }
+            </ul>
+            <!-- /TOP NAV MENU -->
         </div>
     </div>
 </div>

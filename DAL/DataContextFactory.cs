@@ -13,7 +13,7 @@ namespace DAL
         #region Ctor
 
         public DataContextFactory()
-            : this("DataContext")
+            : this("name=DataContext")
         {
         }
         public DataContextFactory(String nameOrConnectionString)
@@ -50,9 +50,9 @@ namespace DAL
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(Boolean isDisposing)
+        protected virtual void Dispose(Boolean disposing)
         {
-            if (isDisposing && !this.disposed)
+            if (disposing && !this.disposed)
             {
                 if (this.context != null)
                 {

@@ -57,7 +57,7 @@ namespace WebUI
             {
                 routeData.Values.Add("action", "Index");
             }
-            routeData.Values.Add("error", exception);
+            routeData.Values.Add("exception", exception);
 
             Server.ClearError();
 

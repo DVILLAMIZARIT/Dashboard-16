@@ -5,11 +5,11 @@ using Infra.Model;
 
 namespace Services
 {
-    public class UserService : IUserService
+    public class UserProfileService : IUserProfileService
     {
-        private IUserRepository userRepository;
+        private IUserProfileRepository userRepository;
 
-        public UserService(IUserRepository userRepository)
+        public UserProfileService(IUserProfileRepository userRepository)
         {
             this.userRepository = userRepository;
         }

@@ -16,21 +16,15 @@ namespace DAL
         #region Ctor
         
         public DataContext()
-            : base("DefaultConnection")
+            : base("name=DataContext")
         {
         }
         public DataContext(String nameOrConnectionString)
             : base(nameOrConnectionString)
         {
+            this.Configuration.AutoDetectChangesEnabled = false;
+            this.Configuration.LazyLoadingEnabled = false;
         }
-        //public DataContext(String nameOrConnectionString, IDictionary<MethodInfo, Object> configurations)
-        //    : base(nameOrConnectionString)
-        //{
-        //    Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(nameOrConnectionString));
-        //    Contract.Requires<ArgumentNullException>(configurations != null);
-
-        //    this.configurations = configurations;
-        //}
 
         #endregion
 
@@ -59,11 +53,6 @@ namespace DAL
             where T : class
         {
             return this.Set<T>();
-        }
-
-        public static void Initialize()
-        {
-            Database.SetInitializer<DataContext>(new MigrateDatabaseToLatestVersion<DataContext, DAL.Migrations.Configuration>());
         }
 
         public virtual void MarkAsModified<T>(T entity)

@@ -13,7 +13,7 @@ namespace DAL.IntegrationSpecs
 
         Establish context = () =>
         {
-            repository = new Repository<UserProfile>(contextFactory.Create());
+            repository = new Repository<UserProfile>(contextFactory);
         };
 
         Because of = () =>

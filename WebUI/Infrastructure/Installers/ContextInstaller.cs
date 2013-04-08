@@ -8,7 +8,9 @@ namespace WebUI.Infrastructure.Installers
     {
         public void Install(Castle.Windsor.IWindsorContainer container, Castle.MicroKernel.SubSystems.Configuration.IConfigurationStore store)
         {
-            container.Register(Component.For<IDataContextFactory>().Instance(new DataContextFactory("DefaultConnection")));
+            container.Register(
+                Component.For<IDataContextFactory>().Instance(new DataContextFactory("name=DefaultConnection")).LifestylePerWebRequest()
+            );
         }
     }
 }

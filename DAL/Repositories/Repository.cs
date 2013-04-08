@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Linq.Expressions;
+using DAL.Interfaces;
 using Infra.Interfaces;
 using Infra.Model;
 
@@ -16,16 +17,18 @@ namespace DAL.Repositories
 
         #region Ctor
 
-        public Repository()
-            : this(new DataContextFactory().Create())
+        public Repository(IDataContextFactory contextFactory)
         {
-        }
-        public Repository(DataContext context)
-        {
-            Contract.Requires<ArgumentNullException>(context != null);
+            Contract.Requires<ArgumentNullException>(contextFactory != null);
 
-            this.Context = context;
+            this.Context = contextFactory.Create();
         }
+        //public Repository(DataContext context)
+        //{
+        //    Contract.Requires<ArgumentNullException>(context != null);
+
+        //    this.Context = context;
+        //}
 
         #endregion
 

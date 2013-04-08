@@ -75,10 +75,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\DAL\IUserRepository.cs" />
+    <Compile Include="Interfaces\DAL\IUserProfileRepository.cs" />
     <Compile Include="Interfaces\IDeletableRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Interfaces\Services\IUserService.cs" />
+    <Compile Include="Interfaces\Services\IUserProfileService.cs" />
     <Compile Include="Model\DeletableEntity.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\IDeletableEntity.cs" />

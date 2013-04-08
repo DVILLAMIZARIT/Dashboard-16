@@ -1,9 +1,9 @@
 ﻿using System;
 using Infra.Model;
 
-namespace Infra.Interfaces.Services
+namespace Infra.Interfaces.DAL
 {
-    public interface IUserService
+    public interface IUserProfileRepository : IRepository<UserProfile>
     {
         UserProfile GetByUserName(String userName);
     }

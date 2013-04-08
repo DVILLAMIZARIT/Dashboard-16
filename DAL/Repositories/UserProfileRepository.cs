@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Linq;
+using DAL.Interfaces;
 using Infra.Interfaces.DAL;
 using Infra.Model;
 
 namespace DAL.Repositories
 {
-    public class UserRepository : Repository<UserProfile>, IUserRepository
+    public class UserProfileRepository : Repository<UserProfile>, IUserProfileRepository
     {
-        public UserRepository()
-            : base()
-        {
-        }
-        public UserRepository(DataContext context)
-            : base(context)
+        public UserProfileRepository(IDataContextFactory contextFactory)
+            : base(contextFactory)
         {
         }
 

@@ -12,7 +12,7 @@ namespace DAL
     public class UnitOfWork<TContext> : IUnitOfWork<TContext>
         where TContext : DbContext
     {
-        public DbContext Context { get; private set; }
+        public TContext Context { get; private set; }
 
         public Int32 PendingChanges
         {
@@ -28,7 +28,7 @@ namespace DAL
             }
         }
 
-        public UnitOfWork(DbContext context)
+        public UnitOfWork(TContext context)
         {
             Contract.Requires<ArgumentNullException>(context != null);
 
@@ -39,5 +39,34 @@ namespace DAL
         {
             this.Context.SaveChanges();
         }
+
+        #region IDisposable
+
+        ~UnitOfWork()
+        {
+            this.Dispose(false);
+            GC.SuppressFinalize(this);
+        }
+
+        private Boolean disposed;
+
+        public void Dispose()
+        {
+            this.Dispose(true);
+        }
+
+        private void Dispose(Boolean disposing)
+        {
+            if (disposing && !this.disposed)
+            {
+                if (this.Context != null)
+                {
+                    this.Context.Dispose();
+                }
+                this.disposed = true;
+            }
+        }
+
+        #endregion
     }
 }

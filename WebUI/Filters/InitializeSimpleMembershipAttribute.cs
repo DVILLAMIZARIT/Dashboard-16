@@ -4,6 +4,7 @@ using System.Data.EntityClient;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Core;
 using DAL;
 using DAL.Interfaces;
@@ -34,9 +35,12 @@ namespace WebUI.Filters
                 {
                     String connectionString = String.Empty;
                     String providerName = String.Empty;
+                    String Administrator = "Administrator";
 
-                    using (var context = IoC.Resolve<IDataContextFactory>().Create())
-                    {
+                    //using (var context = IoC.Resolve<IDataContextFactory>().Create())
+                    //{
+                    var context = IoC.Resolve<IDataContextFactory>().Create();
+
                         IObjectContextAdapter contextAdapter = context as IObjectContextAdapter;
                         if (contextAdapter != null)
                         {
@@ -50,6 +54,7 @@ namespace WebUI.Filters
                                 providerName = entityConnBuilder.Provider;
                             }
 
+                            #region dead
                             //Type userTableType = typeof(UserProfile);
                             //String userTableName = String.Empty;
                             //String userIdColumn = String.Empty;
@@ -78,8 +83,9 @@ namespace WebUI.Filters
                             //{
                             //    throw new ApplicationException("Unable to retrieve userTable details for WebSecurity.");
                             //}
+                            #endregion
                         }
-                    }
+                    //}
 
                     // make things easy and share the connection instead of duplicating efforts by specifying it
                     // here and in the WebUI.Infrastructure.Installers.ContextInstaller
@@ -95,6 +101,26 @@ namespace WebUI.Filters
                         userNameColumn: "UserName",
                         autoCreateTables: true
                     );
+
+                    // Add default roles
+                    if (!Roles.RoleExists(Administrator))
+                    {
+                        Roles.CreateRole(Administrator);
+                    }
+
+                    // Add a default admin account
+                    if (!WebSecurity.UserExists(Administrator))
+                    {
+                        WebSecurity.CreateUserAndAccount(Administrator, "changeme", new
+                        {
+                            DisplayName = Administrator,
+                            EmailAddress = Administrator + "@contoso.com",
+                            IsDeleted = false
+                        }, false);
+                        Roles.AddUserToRole(Administrator, Administrator);
+
+                        WebSecurity.Login(Administrator, "changeme", true);
+                    }
                 }
                 catch (Exception ex)
                 {
