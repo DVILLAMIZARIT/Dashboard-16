@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebUI.Models.Dashboard
+namespace WebUI.Models.UI
 {
     public class UserDropdown
     {

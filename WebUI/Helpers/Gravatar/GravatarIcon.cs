@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace WebUI.HtmlHelpers.Gravatar
+namespace WebUI.Helpers.Gravatar
 { // original from https://raw.github.com/AndrewFreemantle/Gravatar-HtmlHelper/master/GravatarHtmlHelper.cs but modified heavily
     public enum GravatarDefaultImage
     {
@@ -188,13 +188,5 @@ namespace WebUI.HtmlHelpers.Gravatar
         }
 
         #endregion
-    }
-
-    public static class GravatarExtension
-    {
-        public static GravatarIcon Gravatar(this HtmlHelper htmlHelper, String emailAddress, Int32 imageSize = 80)
-        {
-            return new GravatarIcon(emailAddress, imageSize).UseSSL(htmlHelper.ViewContext.HttpContext.Request.IsSecureConnection);
-        }
     }
 }

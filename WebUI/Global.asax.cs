@@ -55,7 +55,7 @@ namespace WebUI
             }
             else
             {
-                routeData.Values.Add("action", "Index");
+                routeData.Values.Add("action", "General");
             }
             routeData.Values.Add("exception", exception);
 

@@ -1,8 +1,8 @@
-﻿@using WebUI.HtmlHelpers.Gravatar
-@model WebUI.Models.Dashboard.UserDropdown
+﻿@using WebUI.Helpers.Gravatar
+@model WebUI.Models.UI.UserDropdown
 <li class="dropdown user">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        @Html.Gravatar(Model.EmailAddress, 29).DefaultImage(GravatarDefaultImage.GeneratedPattern).HtmlAttributes(new { alt = Model.EmailAddress })
+        @Html.Gravatar(Model.EmailAddress, 29).DefaultImage(GravatarDefaultImage.GeneratedPattern).HtmlAttributes(new { alt = "To change visit gravatar.com" })
         <span class="username">@Model.Name</span>
         <i class="icon-angle-down"></i>
     </a>

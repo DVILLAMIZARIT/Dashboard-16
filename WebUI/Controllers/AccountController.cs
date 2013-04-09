@@ -4,10 +4,10 @@ using AttributeRouting.Web.Mvc;
 
 namespace WebUI.Controllers
 {
-    [RoutePrefix("Home")]
-    public class DefaultController : Controller
+    [RoutePrefix("Account")]
+    public class AccountController : Controller
     {
-        [Route("", ActionPrecedence = 1, RouteName = "Default", IsAbsoluteUrl = true)]
+        [GET("", RouteName = "Account")]
         public ActionResult Index()
         {
             return View();

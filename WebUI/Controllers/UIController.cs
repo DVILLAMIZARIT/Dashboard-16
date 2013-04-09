@@ -1,19 +1,23 @@
 ﻿using System.Web.Mvc;
+using AttributeRouting;
+using AttributeRouting.Web.Mvc;
 using Infra.Interfaces.Services;
-using WebUI.Models.Dashboard;
+using WebUI.Models.UI;
 
 namespace WebUI.Controllers
 {
     [ChildActionOnly]
-    public class DashboardController : Controller
+    [RoutePrefix("UI")]
+    public class UIController : Controller
     {
         private readonly IUserProfileService userProfiles;
 
-        public DashboardController(IUserProfileService userProfiles)
+        public UIController(IUserProfileService userProfiles)
         {
             this.userProfiles = userProfiles;
         }
 
+        [Route("UserDropdown")]
         public PartialViewResult UserDropdown()
         {
             UserDropdown model = new UserDropdown
