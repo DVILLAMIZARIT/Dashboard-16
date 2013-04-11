@@ -129,6 +129,9 @@
     <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="MvcSiteMapProvider">
+      <HintPath>..\packages\MvcSiteMapProvider.3.3.4.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -235,6 +238,7 @@
     <Compile Include="Controllers\UIController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Filters\AjaxOnlyAttribute.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -242,11 +246,14 @@
     <Compile Include="Helpers\ChildActionExtensions.cs" />
     <Compile Include="Helpers\Gravatar\GravatarExtensions.cs" />
     <Compile Include="Helpers\Gravatar\GravatarIcon.cs" />
+    <Compile Include="Helpers\BundleExtensions.cs" />
     <Compile Include="Infrastructure\BootstrapContainer.cs" />
     <Compile Include="Infrastructure\Installers\ContextInstaller.cs" />
     <Compile Include="Infrastructure\Installers\ControllersInstaller.cs" />
     <Compile Include="Infrastructure\Installers\ServicesInstaller.cs" />
     <Compile Include="Infrastructure\IoCControllerFactory.cs" />
+    <Compile Include="Models\Account\Login.cs" />
+    <Compile Include="Models\Account\Register.cs" />
     <Compile Include="Models\UI\UserDropdown.cs" />
     <Compile Include="Models\Error\ErrorDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -457,11 +464,16 @@
     <Content Include="Content\font-awesome\less\font-awesome.less" />
     <Content Include="Content\font-awesome\sass\font-awesome.sass" />
     <Content Include="Content\font-awesome\sass\font-awesome.scss" />
+    <Content Include="Mvc.sitemap" />
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\breakpoints\breakpoints.js" />
     <Content Include="Scripts\breakpoints\example.html" />
+    <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\ltie9\excanvas.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -479,6 +491,15 @@
     <Content Include="Scripts\knockout-2.2.1.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ltie9\respond.js" />
+    <Content Include="Scripts\placeholder\jquery.placeholder.js" />
+    <Content Include="Scripts\placeholder\jquery.placeholder.min.js" />
+    <Content Include="Scripts\uniform\css\uniform.default.css" />
+    <Content Include="Scripts\uniform\images\bg-input-focus.png" />
+    <Content Include="Scripts\uniform\images\bg-input.png" />
+    <Content Include="Scripts\uniform\images\sprite.png" />
+    <Content Include="Scripts\uniform\images\sprite_original.png" />
+    <Content Include="Scripts\uniform\jquery.uniform.js" />
+    <Content Include="Scripts\uniform\jquery.uniform.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -498,6 +519,20 @@
     <Content Include="Views\Shared\_Authentication.cshtml" />
     <Content Include="Views\UI\UserDropdown.cshtml" />
     <Content Include="Views\Error\General.cshtml" />
+    <Content Include="Views\Error\HttpError404.cshtml" />
+    <Content Include="Views\Error\HttpError500.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\EditorTemplates\Login.cshtml" />
+    <Content Include="Scripts\placeholder\README.md" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Error\HttpError403.cshtml" />
+    <Content Include="Views\Account\EditorTemplates\Register.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -540,7 +575,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>53595</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:52887/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

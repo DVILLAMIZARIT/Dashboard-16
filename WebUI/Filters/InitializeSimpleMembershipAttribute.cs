@@ -119,7 +119,7 @@ namespace WebUI.Filters
                         }, false);
                         Roles.AddUserToRole(Administrator, Administrator);
 
-                        WebSecurity.Login(Administrator, "changeme", true);
+                        //WebSecurity.Login(Administrator, "changeme", true);
                     }
                 }
                 catch (Exception ex)

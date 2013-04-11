@@ -3812,13 +3812,13 @@ Login page
   margin: 0px !important;
 }
 
-.login .content .forget-form {
+/*.login .content .forget-form {
   display: none;
 }
 
 .login .content .register-form {
   display: none;
-}
+}*/
 
 .login .content .form-title {
   font-weight: 300;

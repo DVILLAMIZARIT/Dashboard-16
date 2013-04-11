@@ -6,14 +6,50 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
     <meta content="" name="author" />
     <meta content="" name="description" />
     <meta content="" name="keywords" />
+
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/metro/metro.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap-responsive.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/metro/style.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/metro/style_responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/metro/style_default.css")" rel="stylesheet" id="theme_stylesheet" />
+    <link href="@Url.Content("~/Content/favicon.ico")" rel="icon" />
+    <link href="@Url.Content("~/Scripts/uniform/css/uniform.default.css")" rel="stylesheet" />
     @RenderSection("Styles", required: false)
 </head>
 <body class="@ViewBag.BodyCssClass">
     @RenderBody()
 
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.10.2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="@Url.Content("~/Scripts/ltie9/excanvas.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ltie9/respond.js")" type="text/javascript"></script>
+    <![endif]-->
+    <script src="@Url.Content("~/Scripts/uniform/jquery.uniform.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/placeholder/jquery.placeholder.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.cookie.js")" type="text/javascript"></script>
     @RenderSection("Scripts", required: false)
+    <script type="text/javascript">
+        $(function () {
+            $.fn.uniform && $("input[type=checkbox]:not(.toggle), input[type=radio]:not(.toggle, .star)").uniform();
+            $.fn.placeholder && $('input, textarea').placeholder();
+
+            if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
+                var ieversion = new Number(RegExp.$1) // capture x.x portion and store as a number
+                if (ieversion == 8) {
+                    $('.visible-ie8').show();
+                } else if (ieversion == 10) {
+                    $('html').addClass('ie10');
+                }
+            }
+        });
+    </script>
 </body>
 </html>

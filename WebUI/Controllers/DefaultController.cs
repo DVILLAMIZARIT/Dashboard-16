@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using AttributeRouting;
 using AttributeRouting.Web.Mvc;
 
@@ -11,6 +12,12 @@ namespace WebUI.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [Route("Search", RouteName = "Search", IsAbsoluteUrl = true)]
+        public ActionResult Search(String query)
+        {
+            return Content("Hello, world!");
         }
     }
 }

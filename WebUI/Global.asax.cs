@@ -42,6 +42,9 @@ namespace WebUI
             {
                 switch (httpException.GetHttpCode())
                 {
+                    case 403:
+                        routeData.Values.Add("action", "HttpError403");
+                        break;
                     case 404:
                         routeData.Values.Add("action", "HttpError404");
                         break;

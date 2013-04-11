@@ -1,16 +1,19 @@
 ﻿@model WebUI.Models.Error.ErrorDetails
 @{
     Layout = "~/Views/Shared/_Dashboard.cshtml";
-    ViewBag.Title = "Server Error";
-    ViewBag.Subtitle = String.Format("{0} Error", Model.Code);
+    ViewBag.Title = "Webpage Error";
+    ViewBag.Subtitle = "General failure";
 }
 <div class="row-fluid">
     <div class="span12">
         <div class="row-fluid page-500">
-            <div class="span5 number">@Model.Code</div>
+            <div class="span5 number">%#$!</div>
             <div class="span7 details">
-                <h3>An internal error occured.</h3>
-                <p>The problem has bee recorded and will be fixed as soon as possible.</p>
+                <h3>Something seriously wrong just happened.</h3>
+                <p>
+                    If this was your first time seeing the error, please try again.<br />
+                    If it continues, please try visiting another page.
+                </p>
             </div>
         </div>
     </div>

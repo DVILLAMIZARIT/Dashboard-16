@@ -1,0 +1,20 @@
+﻿@model WebUI.Models.Error.ErrorDetails
+@{
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+    ViewBag.Title = this.Response.StatusCode.ToString();
+    ViewBag.Subtitle = this.Response.StatusDescription;
+}
+<div class="row-fluid">
+    <div class="span12">
+        <div class="row-fluid page-500">
+            <div class="span5 number">500</div>
+            <div class="span7 details">
+                <h3>An internal server error occured.</h3>
+                <p>
+                    The server had a problem processing your request.<br />
+                    Either go back and retry, or try something else.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

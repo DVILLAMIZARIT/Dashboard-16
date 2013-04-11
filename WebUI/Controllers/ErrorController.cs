@@ -29,22 +29,45 @@ namespace WebUI.Controllers
             //}
             ErrorDetails model = new ErrorDetails
             {
-                Code = 500,
                 Exception = exception
             };
             return View(model);
         }
 
-        [Route("HttpError404", RouteName = "Error_404")]
-        public ActionResult HttpError404(Exception exception)
+        [Route("403", RouteName = "Error_403")]
+        public ActionResult HttpError403(Exception exception)
         {
-            return Content("404: File not found" + (exception != null ? Environment.NewLine + exception.Message : String.Empty));
+            this.Response.StatusCode = 403;
+            this.Response.StatusDescription = "Forbidden";
+            ErrorDetails model = new ErrorDetails
+            {
+                Exception = exception
+            };
+            return View(model);
         }
 
-        [Route("HttpError500", RouteName = "Error_500")]
+        [Route("404", RouteName = "Error_404")]
+        public ActionResult HttpError404(Exception exception)
+        {
+            this.Response.StatusCode = 404;
+            this.Response.StatusDescription = "Not Found";
+            ErrorDetails model = new ErrorDetails
+            {
+                Exception = exception
+            };
+            return View(model);
+        }
+
+        [Route("500", RouteName = "Error_500")]
         public ActionResult HttpError500(Exception exception)
         {
-            return Content("500: Server error" + (exception != null ? Environment.NewLine + exception.Message : String.Empty));
+            this.Response.StatusCode = 500;
+            this.Response.StatusDescription = "Internal Server Error";
+            ErrorDetails model = new ErrorDetails
+            {
+                Exception = exception
+            };
+            return View(model);
         }
     }
 }

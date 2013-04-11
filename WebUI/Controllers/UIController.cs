@@ -20,12 +20,16 @@ namespace WebUI.Controllers
         [Route("UserDropdown")]
         public PartialViewResult UserDropdown()
         {
-            UserDropdown model = new UserDropdown
+            if (User.Identity.IsAuthenticated)
             {
-                Name = User.Identity.Name,
-                EmailAddress = this.userProfiles.GetByUserName(User.Identity.Name).EmailAddress
-            };
-            return PartialView(model);
+                UserDropdown model = new UserDropdown
+                {
+                    Name = User.Identity.Name,
+                    EmailAddress = this.userProfiles.GetByUserName(User.Identity.Name).EmailAddress
+                };
+                return PartialView(model);
+            }
+            return PartialView(new UserDropdown { Name = "Anonymous", EmailAddress = "anonymous@contoso.com" });
         }
     }
 }

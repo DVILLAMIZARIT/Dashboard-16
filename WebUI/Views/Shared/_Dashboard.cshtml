@@ -4,25 +4,31 @@
 }
 @section Styles
 {
-    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/themes/metro/metro.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/bootstrap-responsive.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/metro/style.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/metro/style_responsive.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/metro/style_default.css")" rel="stylesheet" id="theme_stylesheet" />
-    <link href="@Url.Content("~/Content/favicon.ico")" rel="icon" />
+    @RenderSection("Styles", required: false)
 }
 @section Scripts
 {
-    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")" type="text/javascript"></script>
-    <!--[if lt IE 9]>
-    <script src="@Url.Content("~/Scripts/ltie9/excanvas.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/ltie9/respond.js")" type="text/javascript"></script>
-    <![endif]-->
     <script src="@Url.Content("~/Scripts/breakpoints/breakpoints.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/jquery-ui-1.10.2.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/bootstrap.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            breakpoints([320, 480, 768, 900, 1024, 1280], function (before, after) {
+                var winWidth = $(window).width();
+                if (winWidth < 900) {
+                    $.fn.cookie && $.cookie('sidebar-closed', null);
+                    $('.page-container').removeClass('sidebar-closed');
+                }
+                $('.responsive').each(function () {
+                    var forTablet = $(this).data('tablet'),
+                        forDesktop = $(this).data('desktop') || this.className.match(/span\d+/)[1];
+                    if (forTablet) {
+                        $(this).removeClass(winWidth <= 1280 ? forDesktop : forTablet);
+                        $(this).addClass(winWidth <= 1280 ? forTablet : forDesktop);
+                    }
+                });
+            });
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
 }
 <!-- HEADER -->
 <div class="header navbar navbar-inverse navbar-fixed-top">
@@ -57,13 +63,14 @@
                 <div class="sidebar-toggler hidden-phone"></div>
             </li>
             <li>
-                <form class="sidebar-search">
+                @using (Html.BeginRouteForm("Search", FormMethod.Post, new { @class = "sidebar-search" }))
+                {
                     <div class="input-box">
                         <a href="javascript:;" class="remove"></a>
-                        <input type="text" placeholder="Search..." />
+                        <input type="text" id="query" placeholder="Search..." />
                         <input type="button" class="submit" value=" " />
-                    </div>
-                </form>
+                    </div> 
+                }
             </li>
             <li class="start active">
                 <a href="#">
@@ -89,7 +96,8 @@
                             <small>@ViewBag.SubTitle</small>
                         }
                     </h3>
-                    <ul class="breadcrumb">
+                    @Html.MvcSiteMap().SiteMapPath()
+                    @*<ul class="breadcrumb">
                         <li>
                             <i class="icon-home"></i>
                             <a href="#">Home</a>
@@ -98,7 +106,7 @@
                         <li>
                             <a href="#">Dashboard</a>
                         </li>
-                    </ul>
+                    </ul>*@
                 </div>
             </div>
             <!-- /PAGE TITLE -->

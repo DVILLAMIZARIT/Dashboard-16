@@ -1,0 +1,27 @@
+﻿@model WebUI.Models.Error.ErrorDetails
+@{
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+    ViewBag.Title = this.Response.StatusCode.ToString();
+    ViewBag.Subtitle = this.Response.StatusDescription;
+}
+<div class="row-fluid">
+    <div class="span12">
+        <div class="row-fluid page-404">
+            <div class="span5 number">404</div>
+            <div class="span7 details">
+                <h3>Well, that page <i>was</i> there...</h3>
+                <p>
+                    We can't find the page you're looking for.<br />
+                    Please check the link for typos, or try using the search form.
+                </p>
+                @using (Html.BeginRouteForm("Search"))
+                { 
+                    <div class="input-append">
+                        <input type="text" id="query" class="m-wrap" size="16" placeholder="Search..." />
+                        <button class="btn blue">Search</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
