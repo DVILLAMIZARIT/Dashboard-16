@@ -6,7 +6,7 @@ using WebUI.Models.Error;
 
 namespace WebUI.Controllers
 {
-    [RoutePrefix("Error")]
+    [AllowAnonymous, RoutePrefix("Error")]
     public class ErrorController : Controller
     {
         [Route("General", RouteName = "Error_General")]

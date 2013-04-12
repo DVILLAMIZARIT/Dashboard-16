@@ -252,8 +252,12 @@
     <Compile Include="Infrastructure\Installers\ControllersInstaller.cs" />
     <Compile Include="Infrastructure\Installers\ServicesInstaller.cs" />
     <Compile Include="Infrastructure\IoCControllerFactory.cs" />
+    <Compile Include="MembershipService.cs" />
+    <Compile Include="Models\Account\Index.cs" />
     <Compile Include="Models\Account\Login.cs" />
     <Compile Include="Models\Account\Register.cs" />
+    <Compile Include="Models\Default\Index.cs" />
+    <Compile Include="Models\Default\Search.cs" />
     <Compile Include="Models\UI\UserDropdown.cs" />
     <Compile Include="Models\Error\ErrorDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -473,6 +477,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\breakpoints\breakpoints.js" />
     <Content Include="Scripts\breakpoints\example.html" />
+    <Content Include="Scripts\jquery.blockui.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\ltie9\excanvas.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -533,6 +538,8 @@
     <Content Include="Views\Error\HttpError403.cshtml" />
     <Content Include="Views\Account\EditorTemplates\Register.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Default\Search.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

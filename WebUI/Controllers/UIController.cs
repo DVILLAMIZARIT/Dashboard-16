@@ -6,8 +6,7 @@ using WebUI.Models.UI;
 
 namespace WebUI.Controllers
 {
-    [ChildActionOnly]
-    [RoutePrefix("UI")]
+    [ChildActionOnly, AllowAnonymous, RoutePrefix("UI")]
     public class UIController : Controller
     {
         private readonly IUserProfileService userProfiles;
@@ -17,7 +16,7 @@ namespace WebUI.Controllers
             this.userProfiles = userProfiles;
         }
 
-        [Route("UserDropdown")]
+        [Authorize, Route("UserDropdown")]
         public PartialViewResult UserDropdown()
         {
             if (User.Identity.IsAuthenticated)

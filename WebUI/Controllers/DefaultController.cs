@@ -5,7 +5,7 @@ using AttributeRouting.Web.Mvc;
 
 namespace WebUI.Controllers
 {
-    [RoutePrefix("Home")]
+    [Authorize, RoutePrefix("Home")]
     public class DefaultController : Controller
     {
         [Route("", ActionPrecedence = 1, RouteName = "Default", IsAbsoluteUrl = true)]
@@ -17,7 +17,7 @@ namespace WebUI.Controllers
         [Route("Search", RouteName = "Search", IsAbsoluteUrl = true)]
         public ActionResult Search(String query)
         {
-            return Content("Hello, world!");
+            return Content(String.Format("Showing results for '{0}'...", query));
         }
     }
 }

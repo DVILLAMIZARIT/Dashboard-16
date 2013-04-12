@@ -11,10 +11,14 @@ namespace WebUI.Infrastructure.Installers
         public void Install(Castle.Windsor.IWindsorContainer container, Castle.MicroKernel.SubSystems.Configuration.IConfigurationStore store)
         {
             container.Register(
-                Component.For<IUserProfileRepository>().ImplementedBy<UserProfileRepository>().LifestylePerWebRequest()
+                Component.For<IMembershipService>().ImplementedBy<MembershipService>().LifestyleSingleton()
+            );
+
+            container.Register(
+                Component.For<IUserProfileRepository>().ImplementedBy<UserProfileRepository>().LifestyleSingleton()
             );
             container.Register(
-                Component.For<IUserProfileService>().ImplementedBy<UserProfileService>().LifestylePerWebRequest()
+                Component.For<IUserProfileService>().ImplementedBy<UserProfileService>().LifestyleSingleton()
             );
         }
     }

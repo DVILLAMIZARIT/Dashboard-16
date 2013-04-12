@@ -11,6 +11,7 @@
     <script src="@Url.Content("~/Scripts/breakpoints/breakpoints.min.js")" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
+            // responsive layout
             breakpoints([320, 480, 768, 900, 1024, 1280], function (before, after) {
                 var winWidth = $(window).width();
                 if (winWidth < 900) {
@@ -26,6 +27,48 @@
                     }
                 });
             });
+            // side menu
+            var $content = $('.page-content'),
+                $sidebar = $('.page-sidebar');
+            function refreshSidebarAndContentHeight() {
+                if (!$content.data('height')) {
+                    $content.data('height', $content.height());
+                }
+                if ($sidebar.height() > $content.height()) {
+                    $content.css('min-height', $sidebar.height() + 20);
+                } else {
+                    $content.css('min-height', $content.data('height'));
+                }
+            };
+            $(document).on('click', '.page-sidebar li > a', function (e) {
+                var $this = $(this);
+                if (!$this.next().hasClass('sub-menu')) return;
+                var $parent = $this.parent().parent();
+                $parent.children('li.open')
+                    .children('a')
+                        .children('.arrow').removeClass('open').end()
+                    .end().children('.sub-menu').slideUp(200).end()
+                    .removeClass('open');
+                var $sub = $this.next();
+                if ($sub.is(':visible')) {
+                    $this.find('.arrow').removeClass('open');
+                    $this.parent().removeClass('open');
+                    $sub.slideUp(200, function () {
+                        refreshSidebarAndContentHeight();
+                    });
+                } else {
+                    $this.find('.arrow').addClass('open');
+                    $this.parent().addClass('open');
+                    $sub.slideDown(200, function () {
+                        refreshSidebarAndContentHeight();
+                    });
+                }
+            });
+            $.cookie && (function () {
+                if ($.cookie('sidebar-closed') == 1) {
+                    $container.addClass('sidebar-closed');
+                }
+            })();
         });
     </script>
     @RenderSection("Scripts", required: false)
@@ -73,7 +116,7 @@
                 }
             </li>
             <li class="start active">
-                <a href="#">
+                <a href="@Url.RouteUrl("Default", null)">
                     <i class="icon-home"></i>
                     <span class="title">Dashboard</span>
                     <span class="selected"></span>

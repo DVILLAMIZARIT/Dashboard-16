@@ -1,0 +1,49 @@
+﻿@using WebUI.Helpers.Gravatar
+@model WebUI.Models.Account.Index
+@{
+    ViewBag.Title = "User Profile";
+    ViewBag.SubTitle = Model.DisplayName;
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+<div class="row-fluid profile">
+    <div class="span12">
+        <div class="tabbable tabbable-custom tabbable-full-width">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#overview">Overview</a></li>
+                <li><a href="#profile_info">Profile info</a></li>
+                <li><a href="#account">Account</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane row-fluid active" id="overview">
+                    <ul class="unstyled profile-nav span3">
+                        <li>
+                            @Html.Gravatar(Model.EmailAddress, 378).DefaultImage(GravatarDefaultImage.GeneratedPattern)
+                            <a href="http://www.gravatar.com/" target="_blank" class="profile-edit">Edit</a>
+                        </li>
+                    </ul>
+                    <div class="span9">
+                        <div class="row-fluid">
+                            <div class="span8 profile-info">
+                                <h1>@Html.DisplayFor(x => x.DisplayName)</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                                    sed diam nonummy nibh euismod tincidunt laoreet dolore
+                                    magna aliquam tincidunt erat volutpat laoreet dolore
+                                    magna aliquam tincidunt erat volutpat.</p>
+                                <ul class="unstyled inline">
+                                    <li><i class="icon-envelope"></i> @Html.DisplayFor(x => x.EmailAddress)</li>
+                                    <li><i class="icon-star"></i> Administrator</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane row-fluid" id="profile_info">
+
+                </div>
+                <div class="tab-pane row-fluid" id="account">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
