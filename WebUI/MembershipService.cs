@@ -23,9 +23,16 @@ namespace WebUI
             this.userProfileRepository = userProfileRepository;
         }
 
-        public void CreateAccount(String username, String password, String emailAddress = null, String displayName = null)
+        #region IMembershipService
+
+        public Boolean ChangePassword(String userName, String currentPassword, String newPassword)
         {
-            String token = WebSecurity.CreateUserAndAccount(username, password, new
+            return WebSecurity.ChangePassword(userName, currentPassword, newPassword);
+        }
+
+        public void CreateAccount(String userName, String password, String emailAddress = null, String displayName = null)
+        {
+            String token = WebSecurity.CreateUserAndAccount(userName, password, new
             {
                 DisplayName = displayName,
                 EmailAddress = emailAddress,
@@ -43,22 +50,24 @@ namespace WebUI
             get { return WebSecurity.CurrentUserName; }
         }
 
-        public UserProfile GetProfileById(Int32? id = null)
+        public UserProfile GetProfile()
         {
-            if (!this.IsAuthenticated)
-            {
-                return null;
-            }
-            return this.userProfileRepository.One(id ?? this.CurrentUserId);
+            return this.userProfileRepository.One(this.CurrentUserId);
         }
 
-        public UserProfile GetProfileByUserName(String username = null)
+        public UserProfile GetProfileByEmail(String emailAddress)
         {
-            if (!this.IsAuthenticated)
-            {
-                return null;
-            }
-            return this.userProfileRepository.GetByUserName(username ?? this.CurrentUserName);
+            return this.userProfileRepository.One(x => x.EmailAddress == emailAddress);
+        }
+
+        public UserProfile GetProfileById(Int32 id)
+        {
+            return this.userProfileRepository.One(id);
+        }
+
+        public UserProfile GetProfileByUserName(String userName)
+        {
+            return this.userProfileRepository.GetByUserName(userName);
         }
 
         public Boolean IsAuthenticated
@@ -76,9 +85,16 @@ namespace WebUI
             WebSecurity.Logout();
         }
 
-        public Boolean UserExists(String userName)
+        public Boolean UserNameExists(String userName)
         {
-            return WebSecurity.UserExists(userName);
+            return this.userProfileRepository.One(x => x.UserName == userName) != null;
         }
+
+        public Boolean UserEmailExists(String emailAddress)
+        {
+            return this.userProfileRepository.One(x => x.EmailAddress == emailAddress) != null;
+        }
+
+        #endregion
     }
 }

@@ -16,6 +16,7 @@ namespace WebUI.Infrastructure
 
         public BootstrapContainer()
         {
+            // Assign the container, and locate/ load the IWindsorInstaller modules
             this.container = IoC.Instance.Install(FromAssembly.This());
 
             // http://stackoverflow.com/questions/6810438/dependencyresolver-vs-controllerfactory
@@ -26,6 +27,10 @@ namespace WebUI.Infrastructure
             // level of abstraction (includes actionfilters and more) it doesn't provide a way to perform cleanup. So,
             // until this gets changed we stick with the controllerfactory.
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(this.container.Kernel));
+
+            // http://www.leniel.net/2012/06/windsor-injection-aspnet-mvc-attributes.html#sthash.m1t9aRvc.dpbs
+            IDependencyResolver resolver = new WindsorDependencyResolver(this.container);
+            DependencyResolver.SetResolver(resolver);
         }
 
         ~BootstrapContainer()

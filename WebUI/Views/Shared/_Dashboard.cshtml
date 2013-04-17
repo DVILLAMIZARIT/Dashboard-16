@@ -12,7 +12,7 @@
     <script type="text/javascript">
         $(function () {
             // responsive layout
-            breakpoints([320, 480, 768, 900, 1024, 1280], function (before, after) {
+            window.breakpoints([320, 480, 768, 900, 1024, 1280], function (before, after) {
                 var winWidth = $(window).width();
                 if (winWidth < 900) {
                     $.fn.cookie && $.cookie('sidebar-closed', null);
@@ -140,16 +140,6 @@
                         }
                     </h3>
                     @Html.MvcSiteMap().SiteMapPath()
-                    @*<ul class="breadcrumb">
-                        <li>
-                            <i class="icon-home"></i>
-                            <a href="#">Home</a>
-                            <i class="icon-angle-right"></i>
-                        </li>
-                        <li>
-                            <a href="#">Dashboard</a>
-                        </li>
-                    </ul>*@
                 </div>
             </div>
             <!-- /PAGE TITLE -->

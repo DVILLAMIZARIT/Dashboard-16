@@ -1,0 +1,19 @@
+﻿@model WebUI.Models.Account.Update
+@using (Html.BeginRouteForm("Account_Update", FormMethod.Post))
+{ 
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Id)
+                                                
+    @Html.LabelFor(x => x.Username)
+    @Html.TextBoxFor(x => x.Username, new { @class = "m-wrap span8", @readonly = true })
+
+    @Html.LabelFor(x => x.DisplayName)
+    @Html.TextBoxFor(x => x.DisplayName, new { @class = "m-wrap span8" })
+
+    @Html.LabelFor(x => x.EmailAddress)
+    @Html.TextBoxFor(x => x.EmailAddress, new { @class = "m-wrap span8" })
+
+    <div class="submit-btn">
+        <button type="submit" class="btn green">Save Changes</button>
+    </div>
+}

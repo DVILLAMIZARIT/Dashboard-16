@@ -86,13 +86,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\EnumExtenions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="IoC.cs" />
     <Compile Include="Managers\CacheItem.cs" />
     <Compile Include="Managers\MemoryCacheProvider.cs" />
     <Compile Include="Managers\ICacheProvider.cs" />
     <Compile Include="MVC\WindsorControllerFactory.cs" />
-    <Compile Include="MVC\WindsorServiceLocator.cs" />
+    <Compile Include="MVC\WindsorDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

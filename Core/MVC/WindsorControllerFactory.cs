@@ -29,7 +29,8 @@ namespace Core.MVC
             }
             try
             {
-                return (IController)this.kernel.Resolve(controllerType);
+                IController controller = (IController)this.kernel.Resolve(controllerType);
+                return this.SetTempDataProvider(controller);
             }
             catch (Exception)
             {
@@ -45,6 +46,16 @@ namespace Core.MVC
                 disposable.Dispose();
             }
             this.kernel.ReleaseComponent(controller);
+        }
+
+        private IController SetTempDataProvider(IController controller)
+        {
+            Controller concreteController = controller as Controller;
+            if (concreteController != null)
+            {
+                //concreteController.TempDataProvider = new CustomITempDataProvider();
+            }
+            return controller;
         }
     }
 }

@@ -13,5 +13,9 @@ namespace WebUI.Models.Account
 
         [Display(Name = "Username")]
         public String Username { get; set; }
+
+        public Update UpdateProfile { get; set; }
+
+        public ChangePassword ChangePassword { get; set; }
     }
 }

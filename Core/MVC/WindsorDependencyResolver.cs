@@ -6,27 +6,27 @@ using Castle.Windsor;
 
 namespace Core.MVC
 {
-    public class WindsorServiceLocator : IDependencyResolver
+    public class WindsorDependencyResolver : IDependencyResolver
     {
         private readonly IWindsorContainer container;
 
-        public WindsorServiceLocator()
+        public WindsorDependencyResolver()
             : this(IoC.Instance)
         {
         }
-        public WindsorServiceLocator(IWindsorContainer container)
+        public WindsorDependencyResolver(IWindsorContainer container)
         {
             this.container = container;
         }
 
         public Object GetService(Type serviceType)
         {
-            return this.container.Resolve(serviceType);
+            return this.container.Kernel.HasComponent(serviceType) ? this.container.Resolve(serviceType) : null;
         }
 
         public IEnumerable<Object> GetServices(Type serviceType)
         {
-            return this.container.ResolveAll(serviceType).OfType<Object>().AsEnumerable();
+            return this.container.Kernel.HasComponent(serviceType) ? this.container.ResolveAll(serviceType).Cast<Object>() : Enumerable.Empty<Object>();
         }
     }
 }

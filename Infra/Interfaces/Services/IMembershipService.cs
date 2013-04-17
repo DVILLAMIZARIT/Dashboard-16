@@ -1,19 +1,27 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using Infra.Model;
 
 namespace Infra.Interfaces.Services
 {
+    [ContractClass(typeof(MembershipServiceContract))]
     public interface IMembershipService
     {
-        void CreateAccount(String username, String password, String emailAddress = null, String displayName = null);
+        Boolean ChangePassword(String userName, String currentPassword, String newPassword);
+
+        void CreateAccount(String userName, String password, String emailAddress = null, String displayName = null);
 
         Int32 CurrentUserId { get; }
 
         String CurrentUserName { get; }
 
-        UserProfile GetProfileById(Int32? id = null);
+        UserProfile GetProfile();
 
-        UserProfile GetProfileByUserName(String username = null);
+        UserProfile GetProfileByEmail(String emailAddress);
+
+        UserProfile GetProfileById(Int32 id);
+
+        UserProfile GetProfileByUserName(String userName);
 
         Boolean IsAuthenticated { get; }
 
@@ -21,6 +29,97 @@ namespace Infra.Interfaces.Services
         
         void Logout();
         
-        Boolean UserExists(String userName);
+        Boolean UserNameExists(String userName);
+
+        Boolean UserEmailExists(String emailAddress);
+    }
+
+    [ContractClassFor(typeof(IMembershipService))]
+    internal abstract class MembershipServiceContract : IMembershipService
+    {
+        public Boolean ChangePassword(String userName, String currentPassword, String newpassword)
+        {
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(userName));
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(currentPassword));
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(newpassword));
+
+            throw new NotImplementedException();
+        }
+
+        public void CreateAccount(String username, String password, String emailAddress = null, String displayName = null)
+        {
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(username));
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(password));
+
+            throw new NotImplementedException();
+        }
+
+        public Int32 CurrentUserId
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public String CurrentUserName
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public UserProfile GetProfile()
+        {
+            throw new NotImplementedException();
+        }
+
+        public UserProfile GetProfileByEmail(String emailAddress)
+        {
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(emailAddress));
+
+            throw new NotImplementedException();
+        }
+
+        public UserProfile GetProfileById(Int32 id)
+        {
+            Contract.Requires<ArgumentOutOfRangeException>(id > 0);
+
+            throw new NotImplementedException();
+        }
+
+        public UserProfile GetProfileByUserName(String username)
+        {
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(username));
+
+            throw new NotImplementedException();
+        }
+
+        public Boolean IsAuthenticated
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public void Login(String userName, String password, Boolean persistCookie = false)
+        {
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(userName));
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(password));
+
+            throw new NotImplementedException();
+        }
+
+        public void Logout()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Boolean UserNameExists(String userName)
+        {
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(userName));
+
+            throw new NotImplementedException();
+        }
+
+        public Boolean UserEmailExists(String emailAddress)
+        {
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(emailAddress));
+
+            throw new ArgumentNullException();
+        }
     }
 }

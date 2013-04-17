@@ -134,7 +134,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -247,15 +247,19 @@
     <Compile Include="Helpers\Gravatar\GravatarExtensions.cs" />
     <Compile Include="Helpers\Gravatar\GravatarIcon.cs" />
     <Compile Include="Helpers\BundleExtensions.cs" />
+    <Compile Include="Helpers\Notifications\Notification.cs" />
+    <Compile Include="Helpers\Notifications\NotificationExtensions.cs" />
     <Compile Include="Infrastructure\BootstrapContainer.cs" />
     <Compile Include="Infrastructure\Installers\ContextInstaller.cs" />
     <Compile Include="Infrastructure\Installers\ControllersInstaller.cs" />
     <Compile Include="Infrastructure\Installers\ServicesInstaller.cs" />
     <Compile Include="Infrastructure\IoCControllerFactory.cs" />
     <Compile Include="MembershipService.cs" />
+    <Compile Include="Models\Account\ChangePassword.cs" />
     <Compile Include="Models\Account\Index.cs" />
     <Compile Include="Models\Account\Login.cs" />
     <Compile Include="Models\Account\Register.cs" />
+    <Compile Include="Models\Account\Update.cs" />
     <Compile Include="Models\Default\Index.cs" />
     <Compile Include="Models\Default\Search.cs" />
     <Compile Include="Models\UI\UserDropdown.cs" />
@@ -540,6 +544,8 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Default\Search.cshtml" />
+    <Content Include="Views\Account\EditorTemplates\Update.cshtml" />
+    <Content Include="Views\Account\EditorTemplates\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

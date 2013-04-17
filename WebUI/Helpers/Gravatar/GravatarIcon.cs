@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Core.Extensions;
 
 namespace WebUI.Helpers.Gravatar
 { // original from https://raw.github.com/AndrewFreemantle/Gravatar-HtmlHelper/master/GravatarHtmlHelper.cs but modified heavily
@@ -93,7 +93,7 @@ namespace WebUI.Helpers.Gravatar
 
         public GravatarIcon DefaultImage(GravatarDefaultImage image = GravatarDefaultImage.Default, Boolean forceDefaultImage = false)
         {
-            this.defaultImage = GetDescription(image);
+            this.defaultImage = image.GetDescription();
             this.forceDefaultImage = forceDefaultImage;
 
             return this;
@@ -135,7 +135,7 @@ namespace WebUI.Helpers.Gravatar
                     GenerateMD5Hash(this.emailAddress)
                 )
             );
-            gravatarUrl.AppendFormat("?s={0}&r={1}", this.imageSize, HttpUtility.UrlEncode(GetDescription(this.rating)));
+            gravatarUrl.AppendFormat("?s={0}&r={1}", this.imageSize, HttpUtility.UrlEncode(this.rating.GetDescription()));
             if (!String.IsNullOrEmpty(this.defaultImage))
             {
                 gravatarUrl.AppendFormat("&d={0}", HttpUtility.UrlEncode(this.defaultImage));
@@ -169,22 +169,6 @@ namespace WebUI.Helpers.Gravatar
                 result.Append(data[i].ToString("x2"));
             }
             return result.ToString();
-        }
-
-        private static String GetDescription(Enum e)
-        {
-            String enumAsString = e.ToString();
-            Type type = e.GetType();
-            MemberInfo[] members = type.GetMember(enumAsString);
-            if (members != null && members.Length > 0)
-            {
-                Object[] attributes = members[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-                if (attributes != null && attributes.Length > 0)
-                {
-                    enumAsString = ((DescriptionAttribute)attributes[0]).Description;
-                }
-            }
-            return enumAsString;
         }
 
         #endregion
