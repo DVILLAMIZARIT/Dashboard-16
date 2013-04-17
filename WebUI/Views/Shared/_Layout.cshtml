@@ -40,8 +40,24 @@
     <script src="@Url.Content("~/Scripts/jquery.blockui.js")" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
+            var isTouchDevice = function () {
+                try {
+                    document.createEvent("TouchEvent");
+                    return true;
+                } catch (e) {
+                    return false;
+                }
+            };
+
             $.fn.uniform && $("input[type=checkbox]:not(.toggle), input[type=radio]:not(.toggle, .star)").uniform();
             $.fn.placeholder && $('input, textarea').placeholder();
+            $.fn.toolip && (function () {
+                if (isTouchDevice()) {
+                    $('.tooltips:not(.no-tooltip-on-touch-device)').tooltip();
+                } else {
+                    $('.tooltips').tooltip();
+                }
+            })();
 
             if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
                 var ieversion = new Number(RegExp.$1) // capture x.x portion and store as a number

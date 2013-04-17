@@ -7,7 +7,7 @@ namespace WebUI.Helpers.Notifications
 {
     public static class NotificationExtensions
     {
-        private const String NotificationsTempDataKey = @"Dashboard.Notifications";\
+        private const String NotificationsTempDataKey = @"Dashboard.Notifications";
 
         public static void AddNotification(this Controller controller, NotificationType type, String message, String title = null, Boolean isBlock = false)
         {

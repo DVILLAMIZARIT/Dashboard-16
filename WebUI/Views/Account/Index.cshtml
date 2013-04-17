@@ -17,7 +17,7 @@
                 <div class="tab-pane row-fluid active" id="overview">
                     <ul class="unstyled profile-nav span3">
                         <li>
-                            @Html.Gravatar(Model.EmailAddress, 378).DefaultImage(GravatarDefaultImage.GeneratedPattern)
+                            @Html.Gravatar(Model.EmailAddress, 378).DefaultImage(GravatarDefaultImage.GeneratedPattern)@*.HtmlAttributes(new Dictionary<String, Object> { { "class", "tooltips" }, { "data-toggle", "tooltip" }, { "data-original-title", "Change your avatar at gravatar.com" } })*@
                             <a href="http://www.gravatar.com/" target="_blank" class="profile-edit">Edit</a>
                         </li>
                     </ul>
