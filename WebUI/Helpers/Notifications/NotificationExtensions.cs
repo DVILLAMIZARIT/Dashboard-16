@@ -29,5 +29,11 @@ namespace WebUI.Helpers.Notifications
             }
             notifications.Add(notification);
         }
+
+        public static IEnumerable<Notification> GetNotifications(this Controller controller)
+        {
+            List<Notification> notifications = controller.TempData[NotificationsTempDataKey] as List<Notification>;
+            return notifications;
+        }
     }
 }

@@ -7,7 +7,7 @@ using Infra.Model;
 namespace Infra.Interfaces
 {
     [ContractClass(typeof(IRepositoryContract<>))]
-    public interface IRepository<T>
+    public interface IRepository<T> : IDisposable
         where T : class, IEntity
     {
         IQueryable<T> All(Expression<Func<T, Boolean>> predicate = null, params Expression<Func<T, Object>>[] includes);
@@ -76,5 +76,14 @@ namespace Infra.Interfaces
 
             return default(T);
         }
+
+        #region IDisposable
+        
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

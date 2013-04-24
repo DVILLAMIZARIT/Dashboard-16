@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using Infra.Model;
 
@@ -23,11 +24,19 @@ namespace Infra.Interfaces.Services
 
         UserProfile GetProfileByUserName(String userName);
 
+        IEnumerable<String> GetRoles();
+
+        IEnumerable<String> GetRolesById(Int32 id);
+
+        IEnumerable<String> GetRolesByUserName(String userName);
+
         Boolean IsAuthenticated { get; }
 
-        void Login(String userName, String password, Boolean persistCookie = false);
+        Boolean Login(String userName, String password, Boolean persistCookie = false);
         
         void Logout();
+
+        Boolean UpdateProfile(UserProfile profile);
         
         Boolean UserNameExists(String userName);
 
@@ -90,12 +99,31 @@ namespace Infra.Interfaces.Services
             throw new NotImplementedException();
         }
 
+        public IEnumerable<String> GetRoles()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<String> GetRolesById(Int32 id)
+        {
+            Contract.Requires<ArgumentOutOfRangeException>(id > 0);
+
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<String> GetRolesByUserName(String userName)
+        {
+            Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(userName));
+
+            throw new NotImplementedException();
+        }
+
         public Boolean IsAuthenticated
         {
             get { throw new NotImplementedException(); }
         }
 
-        public void Login(String userName, String password, Boolean persistCookie = false)
+        public Boolean Login(String userName, String password, Boolean persistCookie = false)
         {
             Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(userName));
             Contract.Requires<ArgumentNullException>(!String.IsNullOrEmpty(password));
@@ -105,6 +133,13 @@ namespace Infra.Interfaces.Services
 
         public void Logout()
         {
+            throw new NotImplementedException();
+        }
+
+        public Boolean UpdateProfile(UserProfile profile)
+        {
+            Contract.Requires<ArgumentNullException>(profile != null);
+
             throw new NotImplementedException();
         }
 

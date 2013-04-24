@@ -27,9 +27,9 @@
 <body class="@ViewBag.BodyCssClass">
     @RenderBody()
 
-    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery-ui-1.10.2.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.js")" type="text/javascript"></script>
     <!--[if lt IE 9]>
     <script src="@Url.Content("~/Scripts/ltie9/excanvas.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/ltie9/respond.js")" type="text/javascript"></script>
@@ -52,11 +52,16 @@
             $.fn.uniform && $("input[type=checkbox]:not(.toggle), input[type=radio]:not(.toggle, .star)").uniform();
             $.fn.placeholder && $('input, textarea').placeholder();
             $.fn.toolip && (function () {
-                if (isTouchDevice()) {
-                    $('.tooltips:not(.no-tooltip-on-touch-device)').tooltip();
-                } else {
-                    $('.tooltips').tooltip();
-                }
+                // http://stackoverflow.com/questions/9958825/how-do-i-bind-twitter-bootstrap-tooltips-to-dynamically-created-elements
+                //$('body').tooltip({ selector: '.tooltips' + (isTouchDevice() ? ':not(.no-tooltip-on-touch-device)' : '') });
+                // But still buggy and ignores data-* attribute overrides -- https://github.com/twitter/bootstrap/issues/4990
+                $('.tooltips' + (isTouchDevice() ? ':not(.no-tooltip-on-touch-device)' : '')).tooltip();
+            })();
+            $.fn.popover && (function () {
+                // http://stackoverflow.com/questions/9958825/how-do-i-bind-twitter-bootstrap-tooltips-to-dynamically-created-elements
+                //$('body').popover({ selector: '.popovers' });
+                // But still buggy and ignores data-* attribute overrides -- https://github.com/twitter/bootstrap/issues/4990
+                $('.popovers').popover();
             })();
 
             if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;

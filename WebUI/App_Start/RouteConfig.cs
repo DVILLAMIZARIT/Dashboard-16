@@ -13,7 +13,7 @@ namespace WebUI
             routes.IgnoreRoute("{*robots}", new { favicon = @"(.*/)?robots.txt(/.*)?" });
 
             routes.MapRoute(
-                name: "DefaultFallback",
+                name: "AllElseFails",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Default", action = "Index", id = UrlParameter.Optional }
             );

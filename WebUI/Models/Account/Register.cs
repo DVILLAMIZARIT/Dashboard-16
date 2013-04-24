@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace WebUI.Models.Account
 {
+    [Bind(Prefix = "Register")]
     public class Register
     {
         [Required, Display(Name = "Username", Prompt = "Username"), StringLength(50)]

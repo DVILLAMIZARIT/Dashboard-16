@@ -247,6 +247,7 @@
     <Compile Include="Helpers\Gravatar\GravatarExtensions.cs" />
     <Compile Include="Helpers\Gravatar\GravatarIcon.cs" />
     <Compile Include="Helpers\BundleExtensions.cs" />
+    <Compile Include="Helpers\ValidationExtensions.cs" />
     <Compile Include="Helpers\Notifications\Notification.cs" />
     <Compile Include="Helpers\Notifications\NotificationExtensions.cs" />
     <Compile Include="Infrastructure\BootstrapContainer.cs" />
@@ -556,6 +557,10 @@
     <Content Include="Views\Default\Search.cshtml" />
     <Content Include="Views\Account\EditorTemplates\Update.cshtml" />
     <Content Include="Views\Account\EditorTemplates\ChangePassword.cshtml" />
+    <Content Include="Views\UI\Notifications.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Notification.cshtml" />
+    <Content Include="Views\Account\Update.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -596,7 +601,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53595</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

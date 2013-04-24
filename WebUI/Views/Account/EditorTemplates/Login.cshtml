@@ -3,6 +3,7 @@
 {
     @Html.AntiForgeryToken()
     <h3 class="form-title">Login to your account</h3>
+    @Html.ValidationSummary(true, null, new { @class = "alert alert-error" })
     <div class="control-group">
         @Html.LabelFor(x => x.Username, new { @class = "control-label visible-ie8 visible-ie9" })
         <div class="controls">

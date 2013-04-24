@@ -1,0 +1,41 @@
+﻿@using WebUI.Helpers.Notifications
+@model Notification
+@{
+    String alertClass = "alert";
+    String title = !String.IsNullOrEmpty(Model.Title) ? Model.Title : null;
+    if (Model.IsBlock)
+    {
+        alertClass += " alert-block";
+    }
+    switch (Model.Type)
+    {
+        case NotificationType.Error:
+            alertClass += " alert-error";
+            title = title ?? "Error";
+            break;
+        case NotificationType.Information:
+            alertClass += " alert-info";
+            title = title ?? "Information";
+            break;
+        case NotificationType.Success:
+            alertClass += " alert-success";
+            title = title ?? "Success";
+            break;
+        case NotificationType.Warning:
+        default:
+            title = title ?? "Warning";
+            break;
+    }
+}
+<div class="@alertClass">
+    <button type="button" class="close" data-dismiss="alert" style="margin-top: 5px;">&times;</button>
+    @if (Model.IsBlock)
+    {
+        <h4 class="alert-heading">@title</h4>
+        <p>@Model.Message</p>
+    }
+    else
+    {
+        @:<strong>@title</strong> @Model.Message
+    }
+</div>

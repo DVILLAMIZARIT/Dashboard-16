@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Web.Security;
 using Infra.Interfaces.DAL;
@@ -70,19 +71,44 @@ namespace WebUI
             return this.userProfileRepository.GetByUserName(userName);
         }
 
+        public IEnumerable<String> GetRoles()
+        {
+            return this.GetRolesById(this.CurrentUserId);
+        }
+
+        public IEnumerable<String> GetRolesById(Int32 id)
+        {
+            var profile = this.GetProfileById(id);
+            if (profile != null)
+            {
+                return this.roleProvider.GetRolesForUser(profile.UserName);
+            }
+            return new String[0];
+        }
+
+        public IEnumerable<String> GetRolesByUserName(String userName)
+        {
+            return this.roleProvider.GetRolesForUser(userName);
+        }
+
         public Boolean IsAuthenticated
         {
             get { return WebSecurity.IsAuthenticated; }
         }
 
-        public void Login(String userName, String password, Boolean persistCookie = false)
+        public Boolean Login(String userName, String password, Boolean persistCookie = false)
         {
-            WebSecurity.Login(userName, password, persistCookie);
+            return WebSecurity.Login(userName, password, persistCookie);
         }
 
         public void Logout()
         {
             WebSecurity.Logout();
+        }
+
+        public Boolean UpdateProfile(UserProfile profile)
+        {
+            return this.userProfileRepository.Save(profile) != null;
         }
 
         public Boolean UserNameExists(String userName)

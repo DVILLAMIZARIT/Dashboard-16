@@ -4,13 +4,11 @@ using System.Web.Mvc;
 
 namespace WebUI.Models.Account
 {
+    [Bind(Prefix = "ChangePassword")]
     public class ChangePassword
     {
-        [HiddenInput(DisplayValue = false)]
+        [Required, HiddenInput(DisplayValue = false)]
         public Int32 Id { get; set; }
-
-        [HiddenInput(DisplayValue = false)]
-        public String Username { get; set; }
 
         [Required, Display(Name = "Confirm Password", Prompt = "Re-type your password"), DataType(DataType.Password), Compare("NewPassword")]
         public String ConfirmNewPassword { get; set; }

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Mail;
 using System.Web.Mvc;
 using AttributeRouting;
 using AttributeRouting.Web.Mvc;
 using Infra.Interfaces.Services;
 using Infra.Model;
+using WebUI.Helpers.Notifications;
 using WebUI.Models.Account;
 
 namespace WebUI.Controllers
@@ -20,36 +22,62 @@ namespace WebUI.Controllers
         }
 
         [POST("ChangePassword", RouteName = "Account_ChangePassword"), ValidateAntiForgeryToken]
-        public ActionResult ChangePassword(ChangePassword model)
+        public ActionResult ChangePassword([Bind(Prefix = "ChangePassword")]ChangePassword model)
         {
             if (ModelState.IsValid)
             {
-                if (this.membershipService.ChangePassword(this.membershipService.CurrentUserName, model.CurrentPassword, model.NewPassword))
+                var user = this.membershipService.GetProfileById(model.Id);
+                if (user != null)
                 {
-                    return RedirectToRoute("Account_Profile");
+                    if (this.membershipService.ChangePassword(user.UserName, model.CurrentPassword, model.NewPassword))
+                    {
+                        this.AddNotification(NotificationType.Success, "Password changed successfully.");
+                        model = new ChangePassword();
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(String.Empty, "Unable to update password.");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(String.Empty, "Unable to locate user in the database.");
                 }
             }
-            return RedirectToRoute("Account_Profile");
+            else
+            {
+                ModelState.AddModelError(String.Empty, "Unable to process your request.");
+            }
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(model);
+            }
+            return Redirect(Url.RouteUrl("Account_Profile") + "#!account/account_password");
         }
 
         [GET("Profile", RouteName = "Account_Profile")]
         public ActionResult Index()
         {
             var profile = this.membershipService.GetProfile();
+            Boolean isAdmin = this.membershipService.GetRoles().Contains("Administrator");
             Index model = new Index
             {
                 Username = profile.UserName,
                 DisplayName = profile.DisplayName,
                 EmailAddress = profile.EmailAddress,
+                IsAdministrator = isAdmin,
 
+                ChangePassword = new ChangePassword
+                {
+                    Id = profile.Id
+                },
                 UpdateProfile = new Update
                 {
                     Id = profile.Id,
                     DisplayName = profile.DisplayName,
                     EmailAddress = profile.EmailAddress,
                     Username = profile.UserName,
-                },
-                ChangePassword = new ChangePassword()
+                }
             };
             return View(model);
         }
@@ -88,12 +116,18 @@ namespace WebUI.Controllers
                             username = profile.UserName;
                         }
                     }
-                    this.membershipService.Login(username, model.Password, model.RememberMe);
-                    if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    if (this.membershipService.Login(username, model.Password, model.RememberMe))
                     {
-                        return Redirect(returnUrl);
+                        if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        return RedirectToRoute("Account_Profile");
                     }
-                    return RedirectToRoute("Account_Profile");
+                    else
+                    {
+                        ModelState.AddModelError(String.Empty, "Invalid email or password");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -114,8 +148,16 @@ namespace WebUI.Controllers
         }
 
         [AllowAnonymous, GET("Register", RouteName = "Account_Register")]
-        public ActionResult Register()
+        public ActionResult Register(String returnUrl)
         {
+            if (this.membershipService.IsAuthenticated)
+            {
+                if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
+                return RedirectToRoute("Account_Profile");
+            }
             return View(new Register());
         }
 
@@ -127,12 +169,14 @@ namespace WebUI.Controllers
                 try
                 {
                     this.membershipService.CreateAccount(model.Username, model.Password, model.EmailAddress, model.Username);
-                    this.membershipService.Login(model.Username, model.Password);
-                    if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    if (this.membershipService.Login(model.Username, model.Password))
                     {
-                        return Redirect(returnUrl);
+                        if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        return RedirectToRoute("Account_Profile");
                     }
-                    return RedirectToRoute("Account_Profile");
                 }
                 catch (Exception ex)
                 {
@@ -143,9 +187,38 @@ namespace WebUI.Controllers
         }
 
         [POST("Update", RouteName = "Account_Update"), ValidateAntiForgeryToken]
-        public ActionResult Update(Update model)
+        public ActionResult Update([Bind(Prefix = "UpdateProfile")]Update model)
         {
-            return RedirectToRoute("Account_Profile");
+            if (ModelState.IsValid)
+            {
+                var user = this.membershipService.GetProfileById(model.Id);
+                if (user != null)
+                {
+                    user.DisplayName = model.DisplayName;
+                    user.EmailAddress = model.EmailAddress;
+                    if (this.membershipService.UpdateProfile(user))
+                    {
+                        this.AddNotification(NotificationType.Success, "Profile successfully updated.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(String.Empty, "Unable to update profile.");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(String.Empty, "Unable to locate user in the database.");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(String.Empty, "Unable to process your request.");
+            }
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(model);
+            }
+            return Redirect(Url.RouteUrl("Account_Profile") + "#!account/account_details");
         }
 
         #region helpers
@@ -159,7 +232,7 @@ namespace WebUI.Controllers
                     MailAddress address = new MailAddress(input);
                     return true;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }

@@ -4,9 +4,10 @@ using System.Web.Mvc;
 
 namespace WebUI.Models.Account
 {
+    [Bind(Prefix = "Update")]
     public class Update
     {
-        [HiddenInput(DisplayValue = false)]
+        [Required, HiddenInput(DisplayValue = false)]
         public Int32 Id { get; set; }
 
         [Required, Display(Name = "Display Name", Prompt = "Display Name"), StringLength(50)]

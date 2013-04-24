@@ -23,12 +23,6 @@ namespace DAL.Repositories
 
             this.Context = contextFactory.Create();
         }
-        //public Repository(DataContext context)
-        //{
-        //    Contract.Requires<ArgumentNullException>(context != null);
-
-        //    this.Context = context;
-        //}
 
         #endregion
 
@@ -94,7 +88,41 @@ namespace DAL.Repositories
                 entity = this.GetOrAttach(entity);
                 this.Context.MarkAsModified<T>(entity);
             }
+            this.Context.SaveChanges();
             return entity;
+        }
+
+        #endregion
+
+        #region IDisposable
+
+        private Boolean disposed;
+
+        void IDisposable.Dispose()
+        {
+            if (!this.disposed)
+            {
+                this.Dispose(true);
+                GC.SuppressFinalize(this);
+                this.disposed = true;
+            }
+        }
+
+        protected virtual void Dispose(Boolean disposing)
+        {
+            if (disposing)
+            {
+                if (this.Context != null)
+                {
+                    this.Context.Dispose();
+                    this.Context = null;
+                }
+            }
+        }
+
+        ~Repository()
+        {
+            this.Dispose(false);
         }
 
         #endregion
@@ -136,6 +164,20 @@ namespace DAL.Repositories
             {
                 return entity;
             }
+            //else
+            //{
+            //    IObjectContextAdapter adapter = this.Context as IObjectContextAdapter;
+            //    EntityContainer container = adapter.ObjectContext.MetadataWorkspace.GetEntityContainer(adapter.ObjectContext.DefaultContainerName, DataSpace.CSpace);
+            //    String entitySetName = container.BaseEntitySets.FirstOrDefault(x => x.ElementType.Name == typeof(T).Name).Name;
+            //    String entityName = String.Join(".", container.Name, entitySetName);
+                
+            //    Object original;
+            //    EntityKey entityKey = adapter.ObjectContext.CreateEntityKey(entityName, entity);
+            //    if (adapter.ObjectContext.TryGetObjectByKey(entityKey, out original))
+            //    {
+            //        adapter.ObjectContext.ApplyCurrentValues<T>(entityKey.EntitySetName, entity);
+            //    }
+            //}
             return this.Context.Set<T>().Attach(entity);
         }
 

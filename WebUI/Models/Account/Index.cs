@@ -11,6 +11,9 @@ namespace WebUI.Models.Account
         [Display(Name = "Email"), DataType(DataType.EmailAddress)]
         public String EmailAddress { get; set; }
 
+        [Display(Name = "Administrator?")]
+        public Boolean IsAdministrator { get; set; }
+
         [Display(Name = "Username")]
         public String Username { get; set; }
 
