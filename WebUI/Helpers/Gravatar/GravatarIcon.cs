@@ -127,7 +127,29 @@ namespace WebUI.Helpers.Gravatar
         public String ToHtmlString()
         {
             TagBuilder img = new TagBuilder("img");
+            img.Attributes.Add("src", this.GenerateUrl());
+            img.Attributes.Add("width", this.imageSize.ToString());
+            img.Attributes.Add("height", this.imageSize.ToString());
 
+            if (this.htmlAttributes != null)
+            {
+                img.MergeAttributes(this.htmlAttributes);
+            }
+
+            return img.ToString(TagRenderMode.SelfClosing);
+        }
+
+        #endregion
+
+        public override string ToString()
+        {
+            return this.GenerateUrl();
+        }
+
+        #region Helpers
+
+        private String GenerateUrl()
+        {
             StringBuilder gravatarUrl = new StringBuilder(
                 String.Format("{0}://{1}.gravatar.com/avatar/{2}",
                     sslEnabled ? "https" : "http",
@@ -144,21 +166,8 @@ namespace WebUI.Helpers.Gravatar
             {
                 gravatarUrl.Append("&f=y");
             }
-            img.Attributes.Add("src", gravatarUrl.ToString());
-            img.Attributes.Add("width", this.imageSize.ToString());
-            img.Attributes.Add("height", this.imageSize.ToString());
-
-            if (this.htmlAttributes != null)
-            {
-                img.MergeAttributes(this.htmlAttributes);
-            }
-
-            return img.ToString(TagRenderMode.SelfClosing);
+            return gravatarUrl.ToString();
         }
-
-        #endregion
-
-        #region Helpers
 
         private static String GenerateMD5Hash(String input)
         {

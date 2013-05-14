@@ -1,13 +1,36 @@
 ﻿@model MvcSiteMapProvider.Web.Html.Models.MenuHelperModel
 @using System.Web.Mvc.Html
 @using MvcSiteMapProvider.Web.Html.Models
-
-<ul id="menu">
-    @foreach (var node in Model.Nodes) { 
-        <li>@Html.DisplayFor(m => node) 
-            @if (node.Children.Any()) {
-                @Html.DisplayFor(m => node.Children)
+@{
+    // first item in the menu gets the "start" class
+    Boolean firstNode = true;
+}
+<div class="page-sidebar nav-collapse collapse">
+    <ul>
+        <li>
+            <div class="sidebar-toggler hidden-phone"></div>
+        </li>
+        <li>
+            @using (Html.BeginRouteForm("Search", FormMethod.Post, new { @class = "sidebar-search" }))
+            {
+                <div class="input-box">
+                    <a href="javascript:;" class="remove"></a>
+                    <input type="text" id="query" placeholder="Search..." />
+                    <input type="button" class="submit" value=" " />
+                </div>
             }
         </li>
-    }
-</ul>
+        @foreach (var node in Model.Nodes)
+        {
+            Boolean isActiveNode = node.IsCurrentNode || node.IsInCurrentPath;
+            <li class="@(firstNode ? "start" : String.Empty) @(isActiveNode ? "active" : String.Empty)">
+                @Html.DisplayFor(x => node)
+                @if (node.Children.Any())
+                { 
+                    @Html.DisplayFor(x => node.Children)
+                }
+            </li>
+            firstNode = false;
+        }
+    </ul>
+</div>

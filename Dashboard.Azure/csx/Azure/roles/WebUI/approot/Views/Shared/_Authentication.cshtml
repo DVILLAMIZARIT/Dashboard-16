@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BodyCssClass = "login";
+}
+@section Styles
+{
+    <link href="@Url.Content("~/Content/metro/pages/login.css")" rel="stylesheet" />
+    <style type="text/css">
+            .login .content .forget-form,
+            .login .content .register-form {
+                display: inherit !important;
+            }
+    </style>
+    @RenderSection("Styles", required: false)
+}
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.validator && $.validator.setDefaults({
+                errorElement: 'span',
+                errorClass: 'help-inline',
+                focusInvalid: false,
+                highlight: function (element) {
+                    $(element).closest('.control-group').addClass('error');
+                },
+                success: function (label) {
+                    $(label).closest('.control-group').removeClass('error');
+                }
+            });
+        });
+    </script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+    @RenderSection("Scripts", required: false)
+}
+<div class="logo">
+    <img src="@Url.Content("~/Content/img/logo-big.png")" alt="" />
+</div>
+<div class="content">
+    @RenderBody()
+</div>
+<div class="copyright">
+    @DateTime.Now.Year &copy; Metronic. Admin Dashboard Template. by keenthemes
+</div>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="Dashboard.Azure" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="2" osVersion="*" schemaVersion="2012-10.1.8">
+  <Role name="WebUI">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=bcdashboard;AccountKey=Ll/R/E9Oz4hTG1CPkzUjPryqG/EHgFojRdy/Yq9WwkwrLUoJzP2D3w1rSlAMMuATIEWvA1LabyFRehKqf2RJjQ==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

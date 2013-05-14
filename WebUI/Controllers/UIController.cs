@@ -21,11 +21,10 @@ namespace WebUI.Controllers
         [Authorize, Route("Notifications", RouteName = "UI_Notifications")]
         public PartialViewResult Notifications()
         {
-            var notifications = this.GetNotifications();
-            return PartialView(notifications ?? Enumerable.Empty<Notification>());
+            return PartialView(this.GetNotifications() ?? Enumerable.Empty<Notification>());
         }
 
-        [Authorize, Route("UserDropdown", RouteName = "UI_UserDropdown")]
+        [Route("UserDropdown", RouteName = "UI_UserDropdown")]
         public PartialViewResult UserDropdown()
         {
             var profile = this.membershipService.GetProfile();
@@ -38,7 +37,11 @@ namespace WebUI.Controllers
                 };
                 return PartialView(model);
             }
-            return PartialView(new UserDropdown());
+            return PartialView(new UserDropdown
+            {
+                EmailAddress = "anonymous@anonymous.com",
+                Name = "Anonymous"
+            });
         }
     }
 }

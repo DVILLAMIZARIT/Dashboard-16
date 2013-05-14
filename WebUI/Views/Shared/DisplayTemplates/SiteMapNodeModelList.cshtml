@@ -2,10 +2,13 @@
 @using System.Web.Mvc.Html
 @using MvcSiteMapProvider.Web.Html.Models
 
-<ul>
-    @foreach (var node in Model) { 
-        <li>@Html.DisplayFor(m => node) 
-            @if (node.Children.Any()) {
+<ul class="sub-menu">
+    @foreach (var node in Model)
+    { 
+        <li class="@(node.IsCurrentNode || node.IsInCurrentPath ? "active" : String.Empty)">
+            @Html.DisplayFor(m => node) 
+            @if (node.Children.Any())
+            {
                 @Html.DisplayFor(m => node.Children)
             }
         </li>

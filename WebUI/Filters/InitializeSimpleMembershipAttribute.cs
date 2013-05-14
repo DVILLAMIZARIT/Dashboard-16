@@ -114,7 +114,7 @@ namespace WebUI.Filters
                         WebSecurity.CreateUserAndAccount(Administrator, "changeme", new
                         {
                             DisplayName = Administrator,
-                            EmailAddress = Administrator + "@contoso.com",
+                            EmailAddress = Administrator.ToLower() + "@contoso.com",
                             IsDeleted = false
                         }, false);
                         Roles.AddUserToRole(Administrator, Administrator);

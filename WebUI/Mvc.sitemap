@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    https://github.com/maartenba/MvcSiteMapProvider/wiki/Creating-a-first-sitemap
+-->
 <mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd"
             enableLocalization="true">
-
     <mvcSiteMapNode title="Dashboard" controller="Default" action="Index" imageUrl="icon-home">
-        <mvcSiteMapNode title="Dashboard" controller="Default" action="Search" imageUrl="icon-search" />
-        <mvcSiteMapNode title="Account Profile" controller="Account" action="Index" imageUrl="icon-user" />
+        <mvcSiteMapNode title="My Account" controller="Account" action="Index" imageUrl="icon-user" clickable="false">
+            <mvcSiteMapNode title="Profile" controller="Account" action="Index" imageUrl="icon-briefcase" />
+            <mvcSiteMapNode title="Log out" controller="Account" action="Logout" imageUrl="icon-off" />
+        </mvcSiteMapNode>
+        <mvcSiteMapNode title="Search" controller="Default" action="Search" imageUrl="icon-search"  />
     </mvcSiteMapNode>
 </mvcSiteMap>

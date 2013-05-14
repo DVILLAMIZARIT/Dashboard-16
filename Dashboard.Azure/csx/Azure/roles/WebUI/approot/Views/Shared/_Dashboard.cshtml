@@ -1,0 +1,156 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BodyCssClass = "fixed-top";
+}
+@section Styles
+{
+    @RenderSection("Styles", required: false)
+}
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            // side menu
+            var $content = $('.page-content'),
+                $sidebar = $('.page-sidebar');
+            function refreshSidebarAndContentHeight() {
+                if (!$content.data('height')) {
+                    $content.data('height', $content.height());
+                }
+                if ($sidebar.height() > $content.height()) {
+                    $content.css('min-height', $sidebar.height() + 20);
+                } else {
+                    $content.css('min-height', $content.data('height'));
+                }
+            };
+            $(document).on('click', '.page-sidebar li > a', function (e) {
+                var $this = $(this);
+                if (!$this.next().hasClass('sub-menu')) return;
+                var $parent = $this.parent().parent();
+                $parent.children('li.open')
+                    .children('a')
+                        .children('.arrow').removeClass('open').end()
+                    .end().children('.sub-menu').slideUp(200).end()
+                    .removeClass('open');
+                var $sub = $this.next();
+                if ($sub.is(':visible')) {
+                    $this.find('.arrow').removeClass('open');
+                    $this.parent().removeClass('open');
+                    $sub.slideUp(200, function () {
+                        refreshSidebarAndContentHeight();
+                    });
+                } else {
+                    $this.find('.arrow').addClass('open');
+                    $this.parent().addClass('open');
+                    $sub.slideDown(200, function () {
+                        refreshSidebarAndContentHeight();
+                    });
+                }
+            });
+            $.cookie && (function () {
+                if ($.cookie('sidebar-closed') == 1) {
+                    $container.addClass('sidebar-closed');
+                }
+            })();
+            // Load tabs on URL change (use #!tab1/nested-tab/nested-nested-tab format)
+            if (window.location.hash.length > 1 && window.location.hash.match(/^#!.*/)) {
+                var tabs = window.location.hash.substr(2).split('/');
+                for (var t = 0; t < tabs.length; t++) {
+                    var $activeTab = $('a[href="#' + tabs[t] + '"]');
+                    if ($activeTab) {
+                        $activeTab.tab('show');
+                    } else {
+                        break; // stop on first missing tab
+                    }
+                }
+            }
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+}
+<!-- HEADER -->
+<div class="header navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <!-- LOGO -->
+            <a href="@Url.RouteUrl("Default")" class="brand">
+                <img alt="logo" src="@Url.Content("~/Content/img/logo.png")" />
+            </a>
+            <!-- /LOGO -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                <img src="@Url.Content("~/Content/img/menu-toggler.png")" alt="" />
+            </a>          
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- TOP NAV MENU -->
+            <ul class="nav pull-right">
+                @{ Html.RenderAction("UserDropdown", "UI", new { area = "" }); }
+            </ul>
+            <!-- /TOP NAV MENU -->
+        </div>
+    </div>
+</div>
+<!-- /HEADER -->
+    
+<!-- CONTENT -->
+<div class="page-container row-fluid">
+    <!-- LEFT MENU -->
+    <div class="page-sidebar nav-collapse collapse">
+        <ul>
+            <li>
+                <div class="sidebar-toggler hidden-phone"></div>
+            </li>
+            <li>
+                @using (Html.BeginRouteForm("Search", FormMethod.Post, new { @class = "sidebar-search" }))
+                {
+                    <div class="input-box">
+                        <a href="javascript:;" class="remove"></a>
+                        <input type="text" id="query" placeholder="Search..." />
+                        <input type="button" class="submit" value=" " />
+                    </div> 
+                }
+            </li>
+            <li class="start active">
+                <a href="@Url.RouteUrl("Default", null)">
+                    <i class="icon-home"></i>
+                    <span class="title">Dashboard</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- /LEFT MENU -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+        <div class="container-fluid">
+            <!-- PAGE TITLE -->
+            <div class="row-fluid">
+                <div class="span12">
+                    <h3 class="page-title">
+                        @ViewBag.Title
+                        @if (!String.IsNullOrEmpty((String)ViewBag.SubTitle))
+                        { 
+                            <small>@ViewBag.SubTitle</small>
+                        }
+                    </h3>
+                    @Html.MvcSiteMap().SiteMapPath()
+                </div>
+            </div>
+            <!-- /PAGE TITLE -->
+            @{ Html.RenderAction("Notifications", "UI", new { area = "" }); }
+            @RenderBody()
+        </div>
+    </div>
+    <!-- /PAGE CONTENT -->
+</div>
+<!-- /CONTENT -->
+
+<!-- FOOTER -->
+<div class="footer">
+    @DateTime.Now.Year &copy; Metronic. Admin Dashboard Template. by keenthemes
+    <div class="span pull-right">
+        <span class="go-top"><i class="icon-angle-up"></i></span>
+    </div>
+</div>
+<!-- /FOOTER -->

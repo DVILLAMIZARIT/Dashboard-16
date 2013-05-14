@@ -53,7 +53,11 @@ namespace WebUI
 
         public UserProfile GetProfile()
         {
-            return this.userProfileRepository.One(this.CurrentUserId);
+            if (this.IsAuthenticated)
+            {
+                return this.userProfileRepository.One(this.CurrentUserId);
+            }
+            return null;
         }
 
         public UserProfile GetProfileByEmail(String emailAddress)
@@ -73,7 +77,11 @@ namespace WebUI
 
         public IEnumerable<String> GetRoles()
         {
-            return this.GetRolesById(this.CurrentUserId);
+            if (this.IsAuthenticated)
+            {
+                return this.GetRolesById(this.CurrentUserId);
+            }
+            return new String[0];
         }
 
         public IEnumerable<String> GetRolesById(Int32 id)

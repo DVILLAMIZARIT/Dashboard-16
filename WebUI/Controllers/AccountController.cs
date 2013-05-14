@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net.Mail;
+using System.Web;
 using System.Web.Mvc;
 using AttributeRouting;
 using AttributeRouting.Web.Mvc;
@@ -82,6 +83,19 @@ namespace WebUI.Controllers
             return View(model);
         }
 
+        //[GET("ForgotPassword", RouteName = "Account_ForgotPassword")]
+        //public ActionResult ForgotPassword(String returnUrl)
+        //{
+        //    if (this.membershipService.IsAuthenticated)
+        //    {
+        //        if (!String.IsNullOrEmpty(return) && Url.IsLocalUrl(returnUrl))
+        //        {
+        //            return Redirect(returnUrl);
+        //        }
+        //        return RedirectToRoute("Account_Profile");
+        //    }
+        //}
+
         [AllowAnonymous, GET("Login", RouteName = "Account_Login", IsAbsoluteUrl = true)]
         public ActionResult Login(String returnUrl)
         {
@@ -93,8 +107,11 @@ namespace WebUI.Controllers
                 }
                 return RedirectToRoute("Account_Profile");
             }
+
+            HttpCookie usernameCookie = Request.Cookies["Dashboard.Username"];
             Login model = new Login
             {
+                Username = usernameCookie != null ? usernameCookie.Value : String.Empty,
                 RememberMe = true
             };
             return View(model);
@@ -118,6 +135,11 @@ namespace WebUI.Controllers
                     }
                     if (this.membershipService.Login(username, model.Password, model.RememberMe))
                     {
+                        HttpCookie usernameCookie = new HttpCookie("Dashboard.Username", username)
+                        {
+                            Expires = DateTime.Now.AddDays(30)
+                        };
+                        Response.Cookies.Add(usernameCookie);
                         if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                         {
                             return Redirect(returnUrl);
