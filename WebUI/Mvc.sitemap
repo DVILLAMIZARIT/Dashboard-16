@@ -6,11 +6,17 @@
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd"
             enableLocalization="true">
-    <mvcSiteMapNode title="Dashboard" controller="Default" action="Index" imageUrl="icon-home">
-        <mvcSiteMapNode title="My Account" controller="Account" action="Index" imageUrl="icon-user" clickable="false">
-            <mvcSiteMapNode title="Profile" controller="Account" action="Index" imageUrl="icon-briefcase" />
+    <mvcSiteMapNode title="Dashboard" controller="Default" imageUrl="icon-dashboard" clickable="false" changeFrequency="Always">
+        <mvcSiteMapNode title="Home" controller="Default" action="Index" imageUrl="icon-home" />
+        <mvcSiteMapNode title="My Account" controller="Account" action="Index" imageUrl="icon-book" clickable="false">
+            <mvcSiteMapNode title="Profile" controller="Account" action="Index" imageUrl="icon-user" />
             <mvcSiteMapNode title="Log out" controller="Account" action="Logout" imageUrl="icon-off" />
         </mvcSiteMapNode>
-        <mvcSiteMapNode title="Search" controller="Default" action="Search" imageUrl="icon-search"  />
+        <!--<mvcSiteMapNode title="Search" controller="Default" action="Search" imageUrl="icon-search"  />
+        <mvcSiteMapNode title="Error" clickable="false" imageUrl="icon-bullhorn">
+            <mvcSiteMapNode title="Forbidden" controller="Error" action="HttpError403" imageUrl="icon-lock" />
+            <mvcSiteMapNode title="Page Not Found" controller="Error" action="HttpError404" imageUrl="icon-warning-sign" />
+            <mvcSiteMapNode title="Server Error" controller="Error" action="HttpError500" imageUrl="icon-remove-sign" />
+        </mvcSiteMapNode>-->
     </mvcSiteMapNode>
 </mvcSiteMap>

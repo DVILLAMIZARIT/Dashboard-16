@@ -316,6 +316,7 @@
     <Compile Include="Infrastructure\IoCControllerFactory.cs" />
     <Compile Include="MembershipService.cs" />
     <Compile Include="Models\Account\ChangePassword.cs" />
+    <Compile Include="Models\Account\ForgotPassword.cs" />
     <Compile Include="Models\Account\Index.cs" />
     <Compile Include="Models\Account\Login.cs" />
     <Compile Include="Models\Account\Register.cs" />
@@ -976,6 +977,8 @@
     <Content Include="Views\Shared\DisplayTemplates\Notification.cshtml" />
     <Content Include="Views\Account\Update.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\EditorTemplates\ForgotPassword.cshtml" />
     <None Include="Web.Azure.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

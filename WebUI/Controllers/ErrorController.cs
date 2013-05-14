@@ -12,21 +12,6 @@ namespace WebUI.Controllers
         [Route("General", RouteName = "Error_General")]
         public ActionResult General(Exception exception)
         {
-            //StringBuilder sb = new StringBuilder();
-            //sb.AppendLine("General Error").AppendLine();
-            //String indent = String.Empty;
-            //while (exception != null)
-            //{
-            //    indent += "\t";
-            //    sb.Append(indent).AppendLine("Exception:")
-            //        .Append(indent).AppendLine(exception.Message)
-            //        .AppendLine();
-            //    sb.Append(indent).AppendLine("Stack Trace:")
-            //        .Append(indent).AppendLine(exception.StackTrace)
-            //        .AppendLine();
-
-            //    exception = exception.InnerException;
-            //}
             ErrorDetails model = new ErrorDetails
             {
                 Exception = exception

@@ -83,18 +83,20 @@ namespace WebUI.Controllers
             return View(model);
         }
 
-        //[GET("ForgotPassword", RouteName = "Account_ForgotPassword")]
-        //public ActionResult ForgotPassword(String returnUrl)
-        //{
-        //    if (this.membershipService.IsAuthenticated)
-        //    {
-        //        if (!String.IsNullOrEmpty(return) && Url.IsLocalUrl(returnUrl))
-        //        {
-        //            return Redirect(returnUrl);
-        //        }
-        //        return RedirectToRoute("Account_Profile");
-        //    }
-        //}
+        [AllowAnonymous, GET("ForgotPassword", RouteName = "Account_ForgotPassword")]
+        public ActionResult ForgotPassword(String returnUrl)
+        {
+            if (this.membershipService.IsAuthenticated)
+            {
+                if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
+                return RedirectToRoute("Account_Profile");
+            }
+            ForgotPassword model = new ForgotPassword();
+            return View(model);
+        }
 
         [AllowAnonymous, GET("Login", RouteName = "Account_Login", IsAbsoluteUrl = true)]
         public ActionResult Login(String returnUrl)

@@ -33,14 +33,15 @@
             Login <i class="m-icon-swapright m-icon-white"></i>
         </button>
     </div>
-    <div class="control-group">
-        <a href="@Url.RouteUrl("Account_Register")" class="btn red">
-            <i class="icon-key icon-white"></i>
-            Forgot Password
-        </a>
-        <a href="@Url.RouteUrl("Account_Register")" class="btn blue pull-right">
-            Register
-            <i class="m-icon-swapright m-icon-white"></i>
-        </a>
+    <div class="forget-password">
+        <h4>Forgot your password?</h4>
+        <p>
+            Don't worry, you can @Html.RouteLink("reset your password", "Account_ForgotPassword", null, new { id = "forgot-password" }).
+        </p>
+    </div>
+    <div class="create-account">
+        <p>
+            Need an account? Go @Html.RouteLink("register", "Account_Register", null, new { id = "register-btn" }) now!
+        </p>
     </div>
 }

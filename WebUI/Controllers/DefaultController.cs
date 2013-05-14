@@ -8,7 +8,7 @@ namespace WebUI.Controllers
     [Authorize, RoutePrefix("Home")]
     public class DefaultController : Controller
     {
-        [Route("", ActionPrecedence = 1, RouteName = "Default", IsAbsoluteUrl = true)]
+        [Route("Dashboard", ActionPrecedence = 1, RouteName = "Default", IsAbsoluteUrl = true)]
         public ActionResult Index()
         {
             return View();
