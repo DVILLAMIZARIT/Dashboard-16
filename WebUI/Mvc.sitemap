@@ -6,7 +6,7 @@
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd"
             enableLocalization="true">
-    <mvcSiteMapNode title="Dashboard" controller="Default" imageUrl="icon-dashboard" clickable="false" changeFrequency="Always">
+    <mvcSiteMapNode title="Dashboard" controller="Default" action="Default" imageUrl="icon-dashboard" clickable="false" changeFrequency="Always">
         <mvcSiteMapNode title="Home" controller="Default" action="Index" imageUrl="icon-home" />
         <mvcSiteMapNode title="My Account" controller="Account" action="Index" imageUrl="icon-book" clickable="false">
             <mvcSiteMapNode title="Profile" controller="Account" action="Index" imageUrl="icon-user" />

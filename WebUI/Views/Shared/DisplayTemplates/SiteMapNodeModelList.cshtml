@@ -4,8 +4,9 @@
 
 <ul class="sub-menu">
     @foreach (var node in Model)
-    { 
-        <li class="@(node.IsCurrentNode || node.IsInCurrentPath ? "active" : String.Empty)">
+    {
+        Boolean isActive = node.IsCurrentNode || node.IsInCurrentPath;
+        <li class="@(isActive ? "active" : String.Empty)">
             @Html.DisplayFor(m => node) 
             @if (node.Children.Any())
             {

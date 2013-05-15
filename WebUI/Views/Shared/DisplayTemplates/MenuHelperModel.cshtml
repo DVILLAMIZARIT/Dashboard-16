@@ -26,7 +26,7 @@
             <li class="@(firstNode ? "start" : String.Empty) @(isActiveNode ? "active" : String.Empty)">
                 @Html.DisplayFor(x => node)
                 @if (node.Children.Any())
-                { 
+                {
                     @Html.DisplayFor(x => node.Children)
                 }
             </li>

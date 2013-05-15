@@ -44,30 +44,6 @@
 <div class="page-container row-fluid">
     <!-- LEFT MENU -->
     @Html.MvcSiteMap().Menu(false)
-    @*<div class="page-sidebar nav-collapse collapse">
-        <ul>
-            <li>
-                <div class="sidebar-toggler hidden-phone"></div>
-            </li>
-            <li>
-                @using (Html.BeginRouteForm("Search", FormMethod.Post, new { @class = "sidebar-search" }))
-                {
-                    <div class="input-box">
-                        <a href="javascript:;" class="remove"></a>
-                        <input type="text" id="query" placeholder="Search..." />
-                        <input type="button" class="submit" value=" " />
-                    </div> 
-                }
-            </li>
-            <li class="start active">
-                <a href="@Url.RouteUrl("Default", null)">
-                    <i class="icon-home"></i>
-                    <span class="title">Dashboard</span>
-                    <span class="selected"></span>
-                </a>
-            </li>
-        </ul>
-    </div>*@
     <!-- /LEFT MENU -->
 
     <!-- PAGE CONTENT -->
@@ -99,7 +75,7 @@
 <div class="footer">
     @DateTime.Now.Year &copy; Metronic. Admin Dashboard Template. by keenthemes
     <div class="span pull-right">
-        <span class="go-top"><i class="icon-angle-up"></i></span>
+        <span class="go-top">@Metro.Icon("icon-angle-up")</span>
     </div>
 </div>
 <!-- /FOOTER -->

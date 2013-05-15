@@ -9,7 +9,7 @@
         @Html.LabelFor(x => x.Username, new { @class = "control-label visible-ie8 visible-ie9" })
         <div class="controls">
             <div class="input-icon left">
-                <i class="icon-user"></i>
+                @Metro.Icon("icon-user")
                 @Html.TextBoxFor(x => x.Username, new { @class = "m-wrap placeholder-no-fix", placeholder = "Username" })
             </div>
             @Html.ValidationMessageFor(x => x.Username, "", new { @class = "help-inline help-small no-left-padding" })
@@ -19,7 +19,7 @@
         @Html.LabelFor(x => x.Password, new { @class = "control-label visible-ie8 visible-ie9" })
         <div class="controls">
             <div class="input-icon left">
-                <i class="icon-lock"></i>
+                @Metro.Icon("icon-lock")
                 @Html.PasswordFor(x => x.Password, new { @class = "m-wrap placeholder-no-fix", placeholder = "Password" })
             </div>
             @Html.ValidationMessageFor(x => x.Password, "", new { @class = "help-inline help-small no-left-padding" })
@@ -29,7 +29,7 @@
         @Html.LabelFor(x => x.ConfirmPassword, new { @class = "control-label visible-ie8 visible-ie9" })
         <div class="controls">
             <div class="input-icon left">
-                <i class="icon-lock"></i>
+                @Metro.Icon("icon-lock")
                 @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "m-wrap placeholder-no-fix", placeholder = "Confirm Password" })
             </div>
             @Html.ValidationMessageFor(x => x.ConfirmPassword, "", new { @class = "help-inline help-small no-left-padding" })
@@ -39,7 +39,7 @@
         @Html.LabelFor(x => x.EmailAddress, new { @class = "control-label visible-ie8 visible-ie9" })
         <div class="controls">
             <div class="input-icon left">
-                <i class="icon-envelope"></i>
+                @Metro.Icon("icon-envelope")
                 @Html.TextBoxFor(x => x.EmailAddress, new { @class = "m-wrap placeholder-no-fix", placeholder = "Email Address" })
             </div>
             @Html.ValidationMessageFor(x => x.EmailAddress, "", new { @class = "help-inline help-small no-left-padding" })
@@ -47,11 +47,11 @@
     </div>
     <div class="form-actions">
         <a href="@Url.RouteUrl("Account_Login")" type="button" class="btn">
-            <i class="m-icon-swapleft"></i>
+            @Metro.Icon("m-icon-swapleft")
             Login
         </a>
         <button type="submit" class="btn green pull-right">
-            Sign Up <i class="m-icon-swapright m-icon-white"></i>
+            Sign Up @Metro.Icon("m-icon-swapright m-icon-white")
         </button>
     </div>
 }

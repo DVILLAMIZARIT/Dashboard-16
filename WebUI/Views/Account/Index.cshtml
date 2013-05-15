@@ -61,10 +61,10 @@
                                     magna aliquam tincidunt erat volutpat.
                                 </p>
                                 <ul class="unstyled inline">
-                                    <li><i class="icon-envelope"></i>@Html.DisplayFor(x => x.EmailAddress)</li>
+                                    <li>@Metro.Icon("icon-envelope") @Html.DisplayFor(x => x.EmailAddress)</li>
                                     @if (Model.IsAdministrator)
                                     {
-                                        <li><i class="icon-star"></i>Administrator</li>
+                                        <li>@Metro.Icon("icon-star") Administrator</li>
                                     }
                                 </ul>
                             </div>
@@ -114,14 +114,14 @@
                                 <ul class="ver-inline-menu tabbable margin-bottom-10">
                                     <li class="active">
                                         <a href="#account_details" data-toggle="tab">
-                                            <i class="icon-cog"></i>
+                                            @Metro.Icon("icon-cog")
                                             Personal Information
                                         </a>
                                         <span class="after"></span>
                                     </li>
                                     <li>
                                         <a href="#account_password" data-toggle="tab">
-                                            <i class="icon-lock"></i>
+                                            @Metro.Icon("icon-lock")
                                             Change Password
                                         </a>
                                     </li>

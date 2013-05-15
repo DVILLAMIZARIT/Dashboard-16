@@ -1,21 +1,20 @@
 ﻿@model MvcSiteMapProvider.Web.Html.Models.SiteMapNodeModel
 @using System.Web.Mvc.Html
 @using MvcSiteMapProvider.Web.Html.Models
-<!-- @Model.SourceMetadata["HtmlHelper"].ToString() -->
+
 @if (Model.SourceMetadata["HtmlHelper"].ToString() != "MvcSiteMapProvider.Web.Html.MenuHelper")
 {
     //
     // Breadcrumbs
     //
-    
-    if (Model.IsCurrentNode)
+    if (Model.IsClickable)
     {
         // breadcrumb 
-        <text>@Model.Title</text>
+        <a href="@Model.Url" title="@Model.Description">@Model.Title</a>
     }
     else
     {
-        <text>@Model.Title</text>
+        <span title="@Model.Description">@Model.Title</span>
     }
 }
 else 
@@ -23,27 +22,17 @@ else
     //
     // page-sidebar menu
     //
-    
-    if (Model.IsClickable)
-    {
-        <a href="@Model.Url">
-            <i class="@Model.ImageUrl"></i>
-            <span class="title">@Model.Title</span>
-            @if (Model.IsCurrentNode)
-            {
-                <span class="selected"></span>
-            }
-        </a>
-    }
-    else
-    {
-        <a href="javascript:;">
-            <i class="@Model.ImageUrl"></i>
-            <span class="title">@Model.Title</span>
-            @if (Model.IsCurrentNode)
-            {
-                <span class="selected"></span>
-            }
-        </a>
-    }
+    Boolean isActiveNode = Model.IsCurrentNode || Model.IsInCurrentPath;
+    <a href="@(Model.IsClickable ? Model.Url : "javascript:;")">
+        @Metro.Icon(Model.ImageUrl)
+        <span class="title">@Model.Title</span>
+        @if (isActiveNode && Model.IsRootNode)
+        {
+            <span class="selected"></span>
+        }
+        @if(Model.Children.Any())
+        {
+            <span class="arrow @(isActiveNode ? "open" : String.Empty)"></span>
+        }
+    </a>
 }

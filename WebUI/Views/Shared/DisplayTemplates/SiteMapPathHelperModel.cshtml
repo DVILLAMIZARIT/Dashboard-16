@@ -1,17 +1,16 @@
-﻿@model MvcSiteMapProvider.Web.Html.Models.SiteMapPathHelperModel
-@using System.Web.Mvc.Html
+﻿@using System.Web.Mvc.Html
 @using System.Linq
 @using MvcSiteMapProvider.Web.Html.Models
-
+@model MvcSiteMapProvider.Web.Html.Models.SiteMapPathHelperModel
 <ul class="breadcrumb">
     @foreach (var node in Model)
     { 
         <li>
-            <i class="@node.ImageUrl"></i>
+            @Metro.Icon(node.ImageUrl)
             @Html.DisplayFor(m => node)
             @if (node != Model.Last())
             {
-                <i class="icon-angle-right"></i>
+                @Metro.Icon("icon-angle-right")
             }
         </li>
     }
