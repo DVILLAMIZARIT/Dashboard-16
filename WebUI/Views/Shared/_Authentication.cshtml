@@ -4,18 +4,14 @@
 }
 @section Styles
 {
-    <link href="@Url.Content("~/Content/metro/pages/login.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/css/pages/login.css")" rel="stylesheet" type="text/css" />
     <style type="text/css">
             .login .content .forget-form,
             .login .content .register-form {
                 display: inherit !important;
             }
     </style>
-    <!-- /Authentication Scripts -->
-
-    <!-- Page-Secific Scripts -->
     @RenderSection("Styles", required: false)
-    <!-- /Page-Specific Scripts -->
 }
 @section Scripts
 {
@@ -40,7 +36,7 @@
     @RenderSection("Scripts", required: false)
 }
 <div class="logo">
-    <img src="@Url.Content("~/Content/img/logo-big.png")" alt="" />
+    <img src="@Url.Content("~/Assets/img/logo-big.png")" alt="" />
 </div>
 <div class="content">
     @RenderBody()

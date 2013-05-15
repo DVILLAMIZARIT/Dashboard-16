@@ -4,13 +4,34 @@
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         @Html.Gravatar(Model.EmailAddress, 29).DefaultImage(GravatarDefaultImage.GeneratedPattern).HtmlAttributes(new { alt = "To change visit gravatar.com" })
         <span class="username">@Model.Name</span>
-        <i class="icon-angle-down"></i>
+        @Metro.Icon("icon-angle-down")
     </a>
     <ul class="dropdown-menu">
-        <li><a href="@Url.RouteUrl("Account_Profile")"><i class="icon-user"></i> My Profile</a></li>
-        <li><a href="#"><i class="icon-calendar"></i> My Calendar</a></li>
-        <li><a href="#"><i class="icon-tasks"></i> My Tasks</a></li>
+        <li>
+            <a href="@Url.RouteUrl("Account_Profile")">
+                @Metro.Icon("icon-user") My Profile
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                @Metro.Icon("icon-calendar") My Calendar
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                @Metro.Icon("icon-envelope") My Email
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                @Metro.Icon("icon-tasks") My Tasks
+            </a>
+        </li>
         <li class="divider"></li>
-        <li><a href="@Url.RouteUrl("Account_Logout")"><i class="icon-key"></i> Log Out</a></li>
+        <li>
+            <a href="@Url.RouteUrl("Account_Logout")">
+                @Metro.Icon("icon-off") Log Out
+            </a>
+        </li>
     </ul>
 </li>
