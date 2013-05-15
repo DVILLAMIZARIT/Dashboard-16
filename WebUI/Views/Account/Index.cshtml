@@ -38,12 +38,61 @@
     <div class="span12">
         <div class="tabbable tabbable-custom tabbable-full-width">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
-                <li><a href="#profile_info" data-toggle="tab">Profile info</a></li>
-                <li><a href="#account" data-toggle="tab">Account</a></li>
+                @if (Model.IsEditable)
+                {
+                    <li class="active">
+                        <a href="#account" data-toggle="tab">My Account</a>
+                    </li> 
+                }
+                <li class="@(!Model.IsEditable ? "active" : String.Empty)">
+                    <a href="#overview" data-toggle="tab">Overview</a>
+                </li>
+                <li>
+                    <a href="#profile_info" data-toggle="tab">Profile</a>
+                </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane row-fluid active" id="overview">
+                @if (Model.IsEditable)
+                {
+                    <div class="tab-pane row-fluid profile-account active" id="account">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="span3">
+                                    <ul class="ver-inline-menu tabbable margin-bottom-10">
+                                        <li class="active">
+                                            <a href="#account_details" data-toggle="tab">
+                                                @Metro.Icon("icon-user")
+                                                Personal Information
+                                            </a>
+                                            <span class="after"></span>
+                                        </li>
+                                        <li>
+                                            <a href="#account_password" data-toggle="tab">
+                                                @Metro.Icon("icon-lock")
+                                                Change Password
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="span9">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="account_details">
+                                            <div style="height:auto;" id="accordian1-1" class="accordion collapse">
+                                                @Html.EditorFor(x => x.UpdateProfile)
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="account_password">
+                                            <div style="height: auto;" id="accordion2-2" class="accordion collapse">
+                                                @Html.EditorFor(x => x.ChangePassword)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="tab-pane row-fluid @(!Model.IsEditable ? "active" : String.Empty)" id="overview">
                     <ul class="unstyled profile-nav span3">
                         <li>
                             @Html.Gravatar(Model.EmailAddress, 825).DefaultImage(GravatarDefaultImage.GeneratedPattern)
@@ -106,43 +155,6 @@
                         <li><span>@Html.DisplayNameFor(x => x.DisplayName)</span> @Html.DisplayFor(x => x.DisplayName)</li>
                         <li><span>@Html.DisplayNameFor(x => x.EmailAddress)</span> @Html.DisplayFor(x => x.EmailAddress)</li>
                     </ul>
-                </div>
-                <div class="tab-pane row-fluid profile-account" id="account">
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="span3">
-                                <ul class="ver-inline-menu tabbable margin-bottom-10">
-                                    <li class="active">
-                                        <a href="#account_details" data-toggle="tab">
-                                            @Metro.Icon("icon-cog")
-                                            Personal Information
-                                        </a>
-                                        <span class="after"></span>
-                                    </li>
-                                    <li>
-                                        <a href="#account_password" data-toggle="tab">
-                                            @Metro.Icon("icon-lock")
-                                            Change Password
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="span9">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="account_details">
-                                        <div style="height:auto;" id="accordian1-1" class="accordion collapse">
-                                            @Html.EditorFor(x => x.UpdateProfile)
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="account_password">
-                                        <div style="height: auto;" id="accordion2-2" class="accordion collapse">
-                                            @Html.EditorFor(x => x.ChangePassword)
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

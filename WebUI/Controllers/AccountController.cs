@@ -57,9 +57,9 @@ namespace WebUI.Controllers
         }
 
         [GET("Profile", RouteName = "Account_Profile")]
-        public ActionResult Index()
+        public ActionResult Index(Int32? id = null)
         {
-            var profile = this.membershipService.GetProfile();
+            UserProfile profile = this.membershipService.GetProfileById(id ?? this.membershipService.CurrentUserId);
             Boolean isAdmin = this.membershipService.GetRoles().Contains("Administrator");
             Index model = new Index
             {
@@ -68,17 +68,17 @@ namespace WebUI.Controllers
                 EmailAddress = profile.EmailAddress,
                 IsAdministrator = isAdmin,
 
-                ChangePassword = new ChangePassword
+                ChangePassword = !id.HasValue || id.Value != this.membershipService.CurrentUserId ? new ChangePassword
                 {
                     Id = profile.Id
-                },
-                UpdateProfile = new Update
+                } : null,
+                UpdateProfile = !id.HasValue || id.Value != this.membershipService.CurrentUserId ? new Update
                 {
                     Id = profile.Id,
                     DisplayName = profile.DisplayName,
                     EmailAddress = profile.EmailAddress,
                     Username = profile.UserName,
-                }
+                } : null
             };
             return View(model);
         }

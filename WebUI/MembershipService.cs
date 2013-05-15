@@ -26,19 +26,48 @@ namespace WebUI
 
         #region IMembershipService
 
+        public void AddUserToRoles(String userName, params String[] roleNames)
+        {
+            if (!this.UserNameExists(userName))
+            {
+                throw new InvalidOperationException("userName does not exist");
+            }
+            roleProvider.AddUsersToRoles(new[] { userName }, roleNames);
+        }
+
         public Boolean ChangePassword(String userName, String currentPassword, String newPassword)
         {
+            if (!this.UserNameExists(userName))
+            {
+                throw new InvalidOperationException("userName does not exist");
+            }
             return WebSecurity.ChangePassword(userName, currentPassword, newPassword);
         }
 
         public void CreateAccount(String userName, String password, String emailAddress = null, String displayName = null)
         {
+            if (this.UserNameExists(userName))
+            {
+                throw new InvalidOperationException("userName already exists");
+            }
             String token = WebSecurity.CreateUserAndAccount(userName, password, new
             {
                 DisplayName = displayName,
                 EmailAddress = emailAddress,
                 IsDeleted = false
             }, false);
+        }
+
+        public void CreateRoles(params String[] roleNames)
+        {
+            foreach (String roleName in roleNames)
+            {
+                if (this.RoleExists(roleName))
+                {
+                    throw new InvalidOperationException(String.Format("role '{0}' already exists", roleName));
+                }
+                this.roleProvider.CreateRole(roleName);
+            }
         }
 
         public Int32 CurrentUserId
@@ -112,6 +141,11 @@ namespace WebUI
         public void Logout()
         {
             WebSecurity.Logout();
+        }
+
+        public bool RoleExists(string roleName)
+        {
+            throw new NotImplementedException();
         }
 
         public Boolean UpdateProfile(UserProfile profile)

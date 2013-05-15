@@ -8,6 +8,7 @@ using System.Web.Security;
 using Core;
 using DAL;
 using DAL.Interfaces;
+using Infra.Interfaces.Services;
 using WebMatrix.WebData;
 
 namespace WebUI.Filters
@@ -37,55 +38,20 @@ namespace WebUI.Filters
                     String providerName = String.Empty;
                     String Administrator = "Administrator";
 
-                    //using (var context = IoC.Resolve<IDataContextFactory>().Create())
-                    //{
-                    var context = IoC.Resolve<IDataContextFactory>().Create();
+                    DataContext context = IoC.Resolve<IDataContextFactory>().Create();
+                    IObjectContextAdapter contextAdapter = context as IObjectContextAdapter;
+                    if (contextAdapter != null)
+                    {
+                        context.Database.CreateIfNotExists();
 
-                        IObjectContextAdapter contextAdapter = context as IObjectContextAdapter;
-                        if (contextAdapter != null)
+                        EntityConnection entityConnection = contextAdapter.ObjectContext.Connection as EntityConnection;
+                        if (entityConnection != null)
                         {
-                            context.Database.CreateIfNotExists();
-
-                            EntityConnection entityConnection = contextAdapter.ObjectContext.Connection as EntityConnection;
-                            if (entityConnection != null)
-                            {
-                                EntityConnectionStringBuilder entityConnBuilder = new EntityConnectionStringBuilder(entityConnection.ConnectionString);
-                                connectionString = entityConnBuilder.ProviderConnectionString;
-                                providerName = entityConnBuilder.Provider;
-                            }
-
-                            #region dead
-                            //Type userTableType = typeof(UserProfile);
-                            //String userTableName = String.Empty;
-                            //String userIdColumn = String.Empty;
-                            //String userNameColumn = String.Empty;
-                            //// attempt to grab the information dynamically
-                            //// http://stackoverflow.com/a/6463557/298053
-                            //dynamic objSet = typeof(ObjectContext)
-                            //    .GetMethod("CreateObjectSet", new Type[0])
-                            //    .MakeGenericMethod(userTableType)
-                            //    .Invoke(contextAdapter.ObjectContext, null);
-                            //String tableScript = objSet.ToTraceString();
-                            //Regex reTableName = new Regex(@"FROM (?:\[[^]+\])*\[([^]+)\] AS");
-                            //Match mTableName = reTableName.Match(tableScript);
-                            //if (!mTableName.Success)
-                            //{
-                            //    throw new ApplicationException("Unable to retrieve userTable name for WebSecurity.");
-                            //}
-                            //userTableName = mTableName.Value;
-
-                            ////TODO: Work on getting column names as well
-                            //userIdColumn = "Id";
-                            //userNameColumn = "UserName";
-
-
-                            //if (String.IsNullOrEmpty(userTableName) || String.IsNullOrEmpty(userIdColumn) || String.IsNullOrEmpty(userNameColumn))
-                            //{
-                            //    throw new ApplicationException("Unable to retrieve userTable details for WebSecurity.");
-                            //}
-                            #endregion
+                            EntityConnectionStringBuilder entityConnBuilder = new EntityConnectionStringBuilder(entityConnection.ConnectionString);
+                            connectionString = entityConnBuilder.ProviderConnectionString;
+                            providerName = entityConnBuilder.Provider;
                         }
-                    //}
+                    }
 
                     // make things easy and share the connection instead of duplicating efforts by specifying it
                     // here and in the WebUI.Infrastructure.Installers.ContextInstaller
@@ -108,18 +74,23 @@ namespace WebUI.Filters
                         Roles.CreateRole(Administrator);
                     }
 
-                    // Add a default admin account
-                    if (!WebSecurity.UserExists(Administrator))
-                    {
-                        WebSecurity.CreateUserAndAccount(Administrator, "changeme", new
-                        {
-                            DisplayName = Administrator,
-                            EmailAddress = Administrator.ToLower() + "@contoso.com",
-                            IsDeleted = false
-                        }, false);
-                        Roles.AddUserToRole(Administrator, Administrator);
+                    IMembershipService membershipService = IoC.Resolve<IMembershipService>();
 
-                        //WebSecurity.Login(Administrator, "changeme", true);
+                    // Add a default admin account
+                    if (!membershipService.UserNameExists(Administrator))// if (!WebSecurity.UserExists(Administrator))
+                    {
+                        membershipService.CreateAccount(Administrator, "changeme", Administrator.ToLower() + "@contoso.com", Administrator);
+                        membershipService.AddUserToRoles(Administrator, Administrator);
+                    }
+                    
+                    // add a couple of other accounts just for playing
+                    String[] demoAccounts = new[]{ "Guest1", "Guest2" };
+                    foreach (String demoAccount in demoAccounts)
+                    {
+                        if (!membershipService.UserNameExists(demoAccount))
+                        {
+                            membershipService.CreateAccount(demoAccount, "changeme", demoAccount.ToLower() + "@contoso.com", demoAccount);
+                        }
                     }
                 }
                 catch (Exception ex)

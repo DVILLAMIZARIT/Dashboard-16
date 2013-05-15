@@ -152,6 +152,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContractExtensions.cs" />
     <Compile Include="Interfaces\DAL\IUserProfileRepository.cs" />
     <Compile Include="Interfaces\IDeletableRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />

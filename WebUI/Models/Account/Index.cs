@@ -14,6 +14,11 @@ namespace WebUI.Models.Account
         [Display(Name = "Administrator?")]
         public Boolean IsAdministrator { get; set; }
 
+        public Boolean IsEditable
+        {
+            get { return this.UpdateProfile != null && this.ChangePassword != null; }
+        }
+
         [Display(Name = "Username")]
         public String Username { get; set; }
 
