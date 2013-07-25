@@ -1,14 +1,14 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.BodyCssClass = "fixed-top";
+    ViewBag.BodyCssClass = "page-header-fixed";
 }
 @section Styles
 {
-    <link href="@Url.Content("~/Assets/plugins/gritter/css/jquery.gritter.css")" rel="stylesheet" type="text/css"/>
     @RenderSection("Styles", required: false)
 }
 @section Scripts
 {
+    @{ Html.RenderAction("KOProfile", "UI"); }
     @RenderSection("Scripts", required: false)
 }
 <!-- HEADER -->

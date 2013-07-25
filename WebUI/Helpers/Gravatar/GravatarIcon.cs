@@ -53,7 +53,7 @@ namespace WebUI.Helpers.Gravatar
     public class GravatarIcon : IHtmlString
     {
         private IDictionary<String, Object> htmlAttributes = null;
-        private String defaultImage = String.Empty;
+        private String defaultImage = GravatarDefaultImage.MysteryMan.GetDescription();
         private String emailAddress = String.Empty;
         private Boolean forceDefaultImage = false;
         private Int32 imageSize = 80;
@@ -62,11 +62,15 @@ namespace WebUI.Helpers.Gravatar
 
         public GravatarIcon(String emailAddress, Int32 imageSize = 80)
         {
-            Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(emailAddress));
+            // Don't know if I need this contract; an empty value will still generate an MD5 value...
+            //Contract.Requires<ArgumentNullException>(!String.IsNullOrWhiteSpace(emailAddress));
             Contract.Requires<ArgumentOutOfRangeException>(1 <= imageSize && imageSize <= 2048);
 
             this.emailAddress = emailAddress.Trim().ToLower();
             this.imageSize = imageSize;
+            this.htmlAttributes = new Dictionary<String, Object> {
+                { "alt", "Change your avatar at gravatar.com" }
+            };
         }
 
         public GravatarIcon HtmlAttributes(Object additionalAttributes)
@@ -75,7 +79,7 @@ namespace WebUI.Helpers.Gravatar
         }
         public GravatarIcon HtmlAttributes(IDictionary<String, Object> additionalAttributes)
         {
-            this.htmlAttributes = additionalAttributes;
+            this.htmlAttributes = this.MergeDictionaries(this.htmlAttributes, additionalAttributes);
 
             return this;
         }
@@ -178,6 +182,29 @@ namespace WebUI.Helpers.Gravatar
                 result.Append(data[i].ToString("x2"));
             }
             return result.ToString();
+        }
+
+        private IDictionary<String, Object> MergeDictionaries(IDictionary<String, Object> original, params IDictionary<String, Object>[] extensions)
+        {
+            IDictionary<String, Object> result = original ?? new Dictionary<String, Object>();
+            if (extensions != null)
+            {
+                foreach (IDictionary<String, Object> extension in extensions)
+                {
+                    foreach (KeyValuePair<String, Object> item in extension)
+                    {
+                        if (result.ContainsKey(item.Key))
+                        {
+                            result[item.Key] = item.Value;
+                        }
+                        else
+                        {
+                            result.Add(item);
+                        }
+                    }
+                }
+            }
+            return result;
         }
 
         #endregion

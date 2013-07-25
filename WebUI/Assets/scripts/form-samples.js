@@ -17,6 +17,7 @@ var FormSamples = function () {
             });
 
             $(".select2_sample2").select2({
+                placeholder: "Type to select an option",
                 allowClear: true,
                 minimumInputLength: 1,
                 query: function (query) {

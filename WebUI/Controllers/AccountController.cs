@@ -15,6 +15,8 @@ namespace WebUI.Controllers
     [Authorize, RoutePrefix("Account")]
     public class AccountController : Controller
     {
+        private const String UsernameCookie = "Dashboard.Username";
+
         private readonly IMembershipService membershipService;
 
         public AccountController(IMembershipService membershipService)
@@ -98,6 +100,20 @@ namespace WebUI.Controllers
             return View(model);
         }
 
+        [GET("Lock", RouteName = "Account_Lock")]
+        public ActionResult Lock(String returnUrl)
+        {
+            if (this.membershipService.IsAuthenticated)
+            {
+                HttpCookie lockCookie = new HttpCookie(UsernameCookie, this.membershipService.CurrentUserName);
+                lockCookie.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Add(lockCookie);
+
+                this.membershipService.Logout();
+            }
+            return RedirectToRoute("Account_Unlock", new { returnUrl = returnUrl });
+        }
+
         [AllowAnonymous, GET("Login", RouteName = "Account_Login", IsAbsoluteUrl = true)]
         public ActionResult Login(String returnUrl)
         {
@@ -111,6 +127,11 @@ namespace WebUI.Controllers
             }
 
             HttpCookie usernameCookie = Request.Cookies["Dashboard.Username"];
+            if (usernameCookie != null)
+            {
+                return RedirectToRoute("Account_Unlock");
+            }
+
             Login model = new Login
             {
                 Username = usernameCookie != null ? usernameCookie.Value : String.Empty,
@@ -167,6 +188,13 @@ namespace WebUI.Controllers
             if (this.membershipService.IsAuthenticated)
             {
                 this.membershipService.Logout();
+
+                HttpCookie usernameCookie = Request.Cookies["Dashboard.Username"];
+                if (usernameCookie != null)
+                {
+                    usernameCookie.Expires = DateTime.Now.AddDays(-1);
+                    Response.Cookies.Add(usernameCookie);
+                }
             }
             return RedirectToRoute("Account_Login");
         }
@@ -182,7 +210,8 @@ namespace WebUI.Controllers
                 }
                 return RedirectToRoute("Account_Profile");
             }
-            return View(new Register());
+            Register model = new Register();
+            return View(model);
         }
 
         [AllowAnonymous, POST("Register", RouteName = "Account_Register_POST"), ValidateAntiForgeryToken]
@@ -200,6 +229,77 @@ namespace WebUI.Controllers
                             return Redirect(returnUrl);
                         }
                         return RedirectToRoute("Account_Profile");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(String.Empty, ex.Message);
+                }
+            }
+            return View(model);
+        }
+
+        [AllowAnonymous, GET("Unlock", RouteName = "Account_Unlock")]
+        public ActionResult Unlock()
+        {
+            if (this.membershipService.IsAuthenticated)
+            {
+                return RedirectToRoute("Default");
+            }
+
+            HttpCookie lockCookie = Request.Cookies[UsernameCookie];
+            if (lockCookie == null)
+            {
+                return RedirectToAction("Account_Login");
+            }
+
+            var profile = this.membershipService.GetProfileByUserName(lockCookie.Value);
+            if (profile == null)
+            {
+                return RedirectToAction("Account_Login");
+            }
+
+            Unlock model = new Unlock
+            {
+                DisplayName = profile.DisplayName,
+                EmailAddress = profile.EmailAddress,
+                Username = profile.UserName
+            };
+            return View(model);
+        }
+
+        [AllowAnonymous, POST("Unlock", RouteName = "Account_Unlock_POST")]
+        public ActionResult Unlock(Unlock model, String returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    String username = model.Username;
+                    if (this.IsValidEmail(model.Username))
+                    {
+                        UserProfile profile = this.membershipService.GetProfileByEmail(model.Username);
+                        if (profile != null)
+                        {
+                            username = profile.UserName;
+                        }
+                    }
+                    if (this.membershipService.Login(username, model.Password))
+                    {
+                        HttpCookie usernameCookie = new HttpCookie(UsernameCookie, username)
+                        {
+                            Expires = DateTime.Now.AddDays(30)
+                        };
+                        Response.Cookies.Add(usernameCookie);
+                        if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        return RedirectToRoute("Account_Profile");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(String.Empty, "Invalid email or password");
                     }
                 }
                 catch (Exception ex)

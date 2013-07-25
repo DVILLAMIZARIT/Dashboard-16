@@ -23,6 +23,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -111,9 +112,9 @@
     <CodeContractsEmitXMLDocs>True</CodeContractsEmitXMLDocs>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="AttributeRouting">
       <HintPath>..\packages\AttributeRouting.Core.3.5.6\lib\net40\AttributeRouting.dll</HintPath>
@@ -124,53 +125,75 @@
     <Reference Include="AttributeRouting.Web.Mvc">
       <HintPath>..\packages\AttributeRouting.3.5.6\lib\net40\AttributeRouting.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="BundleTransformer.Core, Version=1.7.18.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\BundleTransformer.Core.1.7.18\lib\net40\BundleTransformer.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.JsMin, Version=1.7.16.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\BundleTransformer.JsMin.1.7.16\lib\net40\BundleTransformer.JsMin.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.UglifyJs, Version=1.7.17.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\BundleTransformer.UglifyJs.1.7.17\lib\net40\BundleTransformer.UglifyJs.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Core.3.2.0\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Windsor, Version=3.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Castle.Windsor.3.2.0\lib\net40\Castle.Windsor.dll</HintPath>
+      <HintPath>..\packages\Castle.Windsor.3.2.1\lib\net40\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.AspNet, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.2.2.13055\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.3.1.13153\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.Core, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+    <Reference Include="DotNetOpenAuth.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.Core.4.2.2.13055\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.1.13153\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.2.2.13055\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.3.1.13153\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.2.2.13055\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.3.1.13153\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OpenId, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.2.2.13055\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.3.1.13153\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.2.2.13055\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.1.13153\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
     </Reference>
     <Reference Include="Elmah">
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
     </Reference>
-    <Reference Include="Elmah.Mvc">
-      <HintPath>..\packages\Elmah.MVC.2.0.2\lib\net40\Elmah.Mvc.dll</HintPath>
+    <Reference Include="Elmah.Mvc, Version=2.0.0.29988, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Elmah.MVC.2.1.1\lib\net40\Elmah.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.5.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.5.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Helpers">
       <HintPath>..\packages\microsoft-web-helpers.2.1.20710.2\lib\net40\Microsoft.Web.Helpers.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.30506.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <Private>True</Private>
@@ -178,15 +201,19 @@
     <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAzure.Storage.1.7.0.0\lib\net35-full\Microsoft.WindowsAzure.StorageClient.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.2.0.6.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="MvcSiteMapProvider">
-      <HintPath>..\packages\MvcSiteMapProvider.3.3.4.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
+    <Reference Include="MsieJavaScriptEngine">
+      <HintPath>..\packages\MsieJavaScriptEngine.1.1.2\lib\net40\MsieJavaScriptEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider, Version=3.3.6.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvcSiteMapProvider.3.3.6.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.5.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -196,6 +223,38 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.3\lib\net40\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=2.2.13.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.13.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\net40\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=2.2.13.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\net40\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.2.13.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.13\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.3\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.5.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.3\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -204,6 +263,21 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.0\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -211,7 +285,19 @@
     </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -230,51 +316,16 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.WebRequest">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
     <Reference Include="WebActivator">
       <HintPath>..\packages\WebActivator.1.0.0.0\lib\WebActivator.dll</HintPath>
     </Reference>
-    <Reference Include="WebActivatorEx">
-      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
-    </Reference>
-    <Reference Include="WebGrease, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+      <HintPath>..\packages\WebActivatorEx.2.0.2\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
     <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -282,7 +333,7 @@
     </Reference>
     <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.30506.0\lib\net40\WebMatrix.WebData.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -306,7 +357,6 @@
     <Compile Include="Helpers\Gravatar\GravatarIcon.cs" />
     <Compile Include="Helpers\BundleExtensions.cs" />
     <Compile Include="Helpers\ObjectExtensions.cs" />
-    <Compile Include="Helpers\ValidationExtensions.cs" />
     <Compile Include="Helpers\Notifications\Notification.cs" />
     <Compile Include="Helpers\Notifications\NotificationExtensions.cs" />
     <Compile Include="Infrastructure\BootstrapContainer.cs" />
@@ -318,20 +368,18 @@
     <Compile Include="Models\Account\ChangePassword.cs" />
     <Compile Include="Models\Account\ForgotPassword.cs" />
     <Compile Include="Models\Account\Index.cs" />
+    <Compile Include="Models\Account\Unlock.cs" />
     <Compile Include="Models\Account\Login.cs" />
     <Compile Include="Models\Account\Register.cs" />
     <Compile Include="Models\Account\Update.cs" />
     <Compile Include="Models\Default\Index.cs" />
     <Compile Include="Models\Default\Search.cs" />
+    <Compile Include="Models\UI\KOProfile.cs" />
     <Compile Include="Models\UI\UserDropdown.cs" />
     <Compile Include="Models\Error\ErrorDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Dashboard.mdf" />
-    <Content Include="App_Data\Dashboard_log.ldf">
-      <DependentUpon>Dashboard.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\DataContext.sdf" />
     <Content Include="Assets\css\animate.css" />
     <Content Include="Assets\css\pages\about-us.css" />
@@ -342,23 +390,29 @@
     <Content Include="Assets\css\pages\inbox.css" />
     <Content Include="Assets\css\pages\invoice.css" />
     <Content Include="Assets\css\pages\lock.css" />
+    <Content Include="Assets\css\pages\login-soft.css" />
     <Content Include="Assets\css\pages\login.css" />
     <Content Include="Assets\css\pages\news.css" />
     <Content Include="Assets\css\pages\pricing-tables.css" />
     <Content Include="Assets\css\pages\profile.css" />
     <Content Include="Assets\css\pages\promo.css" />
     <Content Include="Assets\css\pages\search.css" />
+    <Content Include="Assets\css\pages\timeline.css" />
     <Content Include="Assets\css\print.css" />
     <Content Include="Assets\css\style-metro.css" />
+    <Content Include="Assets\css\style-non-responsive.css" />
     <Content Include="Assets\css\style-responsive.css" />
     <Content Include="Assets\css\style.css" />
     <Content Include="Assets\css\themes\blue.css" />
     <Content Include="Assets\css\themes\brown.css" />
     <Content Include="Assets\css\themes\default.css" />
+    <Content Include="Assets\css\themes\grey.css" />
     <Content Include="Assets\css\themes\light.css" />
     <Content Include="Assets\css\themes\purple.css" />
+    <Content Include="Assets\favicon.ico" />
     <Content Include="Assets\fonts\font.css" />
     <Content Include="Assets\img\ajax-loading.gif" />
+    <Content Include="Assets\img\ajax-modal-loading.gif" />
     <Content Include="Assets\img\arrow-down.png" />
     <Content Include="Assets\img\avatar.png" />
     <Content Include="Assets\img\avatar1.jpg" />
@@ -393,6 +447,7 @@
     <Content Include="Assets\img\blog\7.jpg" />
     <Content Include="Assets\img\blog\8.jpg" />
     <Content Include="Assets\img\blog\9.jpg" />
+    <Content Include="Assets\img\datatable-row-openclose.png" />
     <Content Include="Assets\img\flags\ad.png" />
     <Content Include="Assets\img\flags\ae.png" />
     <Content Include="Assets\img\flags\af.png" />
@@ -683,6 +738,7 @@
     <Content Include="Assets\img\overlay-icon.png" />
     <Content Include="Assets\img\pages\2.jpg" />
     <Content Include="Assets\img\pages\3.jpg" />
+    <Content Include="Assets\img\pages\earth.jpg" />
     <Content Include="Assets\img\pages\img.png" />
     <Content Include="Assets\img\pages\img1.png" />
     <Content Include="Assets\img\pages\img1_2.png" />
@@ -721,7 +777,9 @@
     <Content Include="Assets\img\search\img2.jpg" />
     <Content Include="Assets\img\search\img3.jpg" />
     <Content Include="Assets\img\select-caret.png" />
+    <Content Include="Assets\img\sidebar-menu-arrow-green-right.png" />
     <Content Include="Assets\img\sidebar-menu-arrow-green.png" />
+    <Content Include="Assets\img\sidebar-menu-arrow-right.png" />
     <Content Include="Assets\img\sidebar-menu-arrow-rtl.png" />
     <Content Include="Assets\img\sidebar-menu-arrow.png" />
     <Content Include="Assets\img\sidebar-search-close-blue.png" />
@@ -746,6 +804,7 @@
     <Content Include="Assets\img\social\forrst.png" />
     <Content Include="Assets\img\social\github.png" />
     <Content Include="Assets\img\social\googleplus.png" />
+    <Content Include="Assets\img\social\instagram.png" />
     <Content Include="Assets\img\social\jolicloud.png" />
     <Content Include="Assets\img\social\last-fm.png" />
     <Content Include="Assets\img\social\linkedin.png" />
@@ -758,6 +817,7 @@
     <Content Include="Assets\img\social\tumblr.png" />
     <Content Include="Assets\img\social\twitter.png" />
     <Content Include="Assets\img\social\vimeo.png" />
+    <Content Include="Assets\img\social\vk.png" />
     <Content Include="Assets\img\social\wordpress.png" />
     <Content Include="Assets\img\social\xing.png" />
     <Content Include="Assets\img\social\yahoo.png" />
@@ -780,6 +840,7 @@
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.de.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.el.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.es.js" />
+    <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.et.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.fi.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.fr.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.he.js" />
@@ -792,6 +853,7 @@
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.kr.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.lt.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.lv.js" />
+    <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.mk.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.ms.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.nb.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.nl.js" />
@@ -804,6 +866,7 @@
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.ru.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.sk.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.sl.js" />
+    <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.sq.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.sv.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.sw.js" />
     <Content Include="Assets\plugins\bootstrap-datepicker\js\locales\bootstrap-datepicker.th.js" />
@@ -917,22 +980,6 @@
     <Content Include="Assets\plugins\bootstrap-datetimepicker\tests\tests.html" />
     <Content Include="Assets\plugins\bootstrap-datetimepicker\tests\tests.min.html" />
     <Content Include="Assets\plugins\bootstrap-datetimepicker\tests\_coverage.html" />
-    <Content Include="Assets\plugins\bootstrap-editable\bootstrap-editable\css\bootstrap-editable.css" />
-    <Content Include="Assets\plugins\bootstrap-editable\bootstrap-editable\img\clear.png" />
-    <Content Include="Assets\plugins\bootstrap-editable\bootstrap-editable\img\loading.gif" />
-    <Content Include="Assets\plugins\bootstrap-editable\bootstrap-editable\js\bootstrap-editable.js" />
-    <Content Include="Assets\plugins\bootstrap-editable\bootstrap-editable\js\bootstrap-editable.min.js" />
-    <Content Include="Assets\plugins\bootstrap-editable\bootstrap-editable\js\moment.min.js" />
-    <Content Include="Assets\plugins\bootstrap-editable\CHANGELOG.txt" />
-    <Content Include="Assets\plugins\bootstrap-editable\inputs-ext\address\address.css" />
-    <Content Include="Assets\plugins\bootstrap-editable\inputs-ext\address\address.js" />
-    <Content Include="Assets\plugins\bootstrap-editable\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.css" />
-    <Content Include="Assets\plugins\bootstrap-editable\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.js" />
-    <Content Include="Assets\plugins\bootstrap-editable\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.min.js" />
-    <Content Include="Assets\plugins\bootstrap-editable\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysihtml5-0.3.0.js" />
-    <Content Include="Assets\plugins\bootstrap-editable\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysihtml5-0.3.0.min.js" />
-    <Content Include="Assets\plugins\bootstrap-editable\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysiwyg-color.css" />
-    <Content Include="Assets\plugins\bootstrap-editable\inputs-ext\wysihtml5\wysihtml5.js" />
     <Content Include="Assets\plugins\bootstrap-fileupload\bootstrap-editable-1.4.4\bootstrap-editable\css\bootstrap-editable.css" />
     <Content Include="Assets\plugins\bootstrap-fileupload\bootstrap-editable-1.4.4\bootstrap-editable\img\clear.png" />
     <Content Include="Assets\plugins\bootstrap-fileupload\bootstrap-editable-1.4.4\bootstrap-editable\img\loading.gif" />
@@ -941,6 +988,12 @@
     <Content Include="Assets\plugins\bootstrap-fileupload\bootstrap-editable-1.4.4\CHANGELOG.txt" />
     <Content Include="Assets\plugins\bootstrap-fileupload\bootstrap-editable-1.4.4\inputs-ext\address\address.css" />
     <Content Include="Assets\plugins\bootstrap-fileupload\bootstrap-editable-1.4.4\inputs-ext\address\address.js" />
+    <Content Include="Assets\plugins\bootstrap-modal\css\bootstrap-modal.css" />
+    <Content Include="Assets\plugins\bootstrap-modal\img\ajax-loader.gif" />
+    <Content Include="Assets\plugins\bootstrap-modal\index.html" />
+    <Content Include="Assets\plugins\bootstrap-modal\js\bootstrap-modal.js" />
+    <Content Include="Assets\plugins\bootstrap-modal\js\bootstrap-modalmanager.js" />
+    <Content Include="Assets\plugins\bootstrap-modal\modal_ajax_test.html" />
     <Content Include="Assets\plugins\bootstrap-tag\css\bootstrap-tag.css" />
     <Content Include="Assets\plugins\bootstrap-tag\docs\assets\css\bootstrap-tag.css" />
     <Content Include="Assets\plugins\bootstrap-tag\docs\index.html" />
@@ -951,10 +1004,11 @@
     <Content Include="Assets\plugins\bootstrap-toggle-buttons\static\js\jquery.min.js" />
     <Content Include="Assets\plugins\bootstrap-toggle-buttons\static\js\jquery.toggle.buttons.js" />
     <Content Include="Assets\plugins\bootstrap-toggle-buttons\static\stylesheets\bootstrap-toggle-buttons.css" />
+    <Content Include="Assets\plugins\bootstrap-tree\bootstrap-tree\css\bootstrap-tree-rtl.css" />
     <Content Include="Assets\plugins\bootstrap-tree\bootstrap-tree\css\bootstrap-tree.css" />
     <Content Include="Assets\plugins\bootstrap-tree\bootstrap-tree\img\ajax-loader.gif" />
+    <Content Include="Assets\plugins\bootstrap-tree\bootstrap-tree\img\bstree-halflings-rtl.png" />
     <Content Include="Assets\plugins\bootstrap-tree\bootstrap-tree\img\bstree-halflings.png" />
-    <Content Include="Assets\plugins\bootstrap-tree\bootstrap-tree\img\bstree-halflings_.png" />
     <Content Include="Assets\plugins\bootstrap-tree\bootstrap-tree\js\bootstrap-tree.js" />
     <Content Include="Assets\plugins\bootstrap-tree\bootstrap\css\bootstrap-responsive.css" />
     <Content Include="Assets\plugins\bootstrap-tree\bootstrap\css\bootstrap-responsive.min.css" />
@@ -994,6 +1048,33 @@
     <Content Include="Assets\plugins\bootstrap-wizard\prettify.js" />
     <Content Include="Assets\plugins\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
     <Content Include="Assets\plugins\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ar-AR.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.bg-BG.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ca-CT.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.cs-CZ.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.da-DK.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.de-DE.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.el-GR.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.es-AR.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.es-ES.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.fr-FR.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.hr-HR.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.it-IT.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ja-JP.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ko-KR.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.lt-LT.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.mo-MD.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.nb-NB.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.nl-NL.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.pl-PL.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.pt-BR.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ru-RU.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.sk-SK.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.sv-SE.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.tr-TR.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.ua-UA.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.zh-CN.js" />
+    <Content Include="Assets\plugins\bootstrap-wysihtml5\locales\bootstrap-wysihtml5.zh-TW.js" />
     <Content Include="Assets\plugins\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
     <Content Include="Assets\plugins\bootstrap-wysihtml5\wysiwyg-color.css" />
     <Content Include="Assets\plugins\bootstrap\css\bootstrap-responsive.css" />
@@ -1005,6 +1086,7 @@
     <Content Include="Assets\plugins\bootstrap\js\bootstrap.js" />
     <Content Include="Assets\plugins\bootstrap\js\bootstrap.min.js" />
     <Content Include="Assets\plugins\breakpoints\breakpoints.js" />
+    <Content Include="Assets\plugins\breakpoints\breakpoints.min.js" />
     <Content Include="Assets\plugins\breakpoints\example.html" />
     <Content Include="Assets\plugins\chosen-bootstrap\chosen\chosen-sprite.png" />
     <Content Include="Assets\plugins\chosen-bootstrap\chosen\chosen.css" />
@@ -1289,14 +1371,15 @@
     <Content Include="Assets\plugins\data-tables\images\sort_both.png" />
     <Content Include="Assets\plugins\data-tables\images\sort_desc.png" />
     <Content Include="Assets\plugins\data-tables\jquery.dataTables.js" />
+    <Content Include="Assets\plugins\data-tables\jquery.dataTables.min.js" />
     <Content Include="Assets\plugins\dropzone\css\basic.css" />
     <Content Include="Assets\plugins\dropzone\css\dropzone.css" />
-    <Content Include="Assets\plugins\dropzone\dropzone-amd-module.js" />
     <Content Include="Assets\plugins\dropzone\dropzone.js" />
+    <Content Include="Assets\plugins\dropzone\dropzone.min.js" />
     <Content Include="Assets\plugins\dropzone\images\spritemap%402x.png" />
     <Content Include="Assets\plugins\dropzone\images\spritemap.png" />
     <Content Include="Assets\plugins\dropzone\upload.php" />
-    <Content Include="Assets\plugins\excanvas.js" />
+    <Content Include="Assets\plugins\excanvas.min.js" />
     <Content Include="Assets\plugins\fancybox\demo\1_b.jpg" />
     <Content Include="Assets\plugins\fancybox\demo\1_s.jpg" />
     <Content Include="Assets\plugins\fancybox\demo\2_b.jpg" />
@@ -1325,87 +1408,86 @@
     <Content Include="Assets\plugins\fancybox\source\jquery.fancybox.css" />
     <Content Include="Assets\plugins\fancybox\source\jquery.fancybox.js" />
     <Content Include="Assets\plugins\fancybox\source\jquery.fancybox.pack.js" />
-    <Content Include="Assets\plugins\flot\API.txt" />
-    <Content Include="Assets\plugins\flot\examples\ajax.html" />
-    <Content Include="Assets\plugins\flot\examples\annotating.html" />
-    <Content Include="Assets\plugins\flot\examples\arrow-down.gif" />
-    <Content Include="Assets\plugins\flot\examples\arrow-left.gif" />
-    <Content Include="Assets\plugins\flot\examples\arrow-right.gif" />
-    <Content Include="Assets\plugins\flot\examples\arrow-up.gif" />
-    <Content Include="Assets\plugins\flot\examples\basic.html" />
-    <Content Include="Assets\plugins\flot\examples\graph-types.html" />
-    <Content Include="Assets\plugins\flot\examples\hs-2004-27-a-large_web.jpg" />
-    <Content Include="Assets\plugins\flot\examples\image.html" />
+    <Content Include="Assets\plugins\flot\examples\ajax\index.html" />
+    <Content Include="Assets\plugins\flot\examples\annotating\index.html" />
+    <Content Include="Assets\plugins\flot\examples\axes-interacting\index.html" />
+    <Content Include="Assets\plugins\flot\examples\axes-multiple\index.html" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\date.js" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\index.html" />
+    <Content Include="Assets\plugins\flot\examples\axes-time\index.html" />
+    <Content Include="Assets\plugins\flot\examples\background.png" />
+    <Content Include="Assets\plugins\flot\examples\basic-options\index.html" />
+    <Content Include="Assets\plugins\flot\examples\basic-usage\index.html" />
+    <Content Include="Assets\plugins\flot\examples\canvas\index.html" />
+    <Content Include="Assets\plugins\flot\examples\categories\index.html" />
+    <Content Include="Assets\plugins\flot\examples\examples.css" />
+    <Content Include="Assets\plugins\flot\examples\image\hs-2004-27-a-large-web.jpg" />
+    <Content Include="Assets\plugins\flot\examples\image\index.html" />
     <Content Include="Assets\plugins\flot\examples\index.html" />
-    <Content Include="Assets\plugins\flot\examples\interacting-axes.html" />
-    <Content Include="Assets\plugins\flot\examples\interacting.html" />
-    <Content Include="Assets\plugins\flot\examples\layout.css" />
-    <Content Include="Assets\plugins\flot\examples\multiple-axes.html" />
-    <Content Include="Assets\plugins\flot\examples\navigate.html" />
-    <Content Include="Assets\plugins\flot\examples\percentiles.html" />
-    <Content Include="Assets\plugins\flot\examples\pie.html" />
-    <Content Include="Assets\plugins\flot\examples\realtime.html" />
-    <Content Include="Assets\plugins\flot\examples\resize.html" />
-    <Content Include="Assets\plugins\flot\examples\selection.html" />
-    <Content Include="Assets\plugins\flot\examples\setting-options.html" />
-    <Content Include="Assets\plugins\flot\examples\stacking.html" />
-    <Content Include="Assets\plugins\flot\examples\symbols.html" />
-    <Content Include="Assets\plugins\flot\examples\thresholding.html" />
-    <Content Include="Assets\plugins\flot\examples\time.html" />
-    <Content Include="Assets\plugins\flot\examples\tracking.html" />
-    <Content Include="Assets\plugins\flot\examples\turning-series.html" />
-    <Content Include="Assets\plugins\flot\examples\visitors.html" />
-    <Content Include="Assets\plugins\flot\examples\zooming.html" />
+    <Content Include="Assets\plugins\flot\examples\interacting\index.html" />
+    <Content Include="Assets\plugins\flot\examples\navigate\arrow-down.gif" />
+    <Content Include="Assets\plugins\flot\examples\navigate\arrow-left.gif" />
+    <Content Include="Assets\plugins\flot\examples\navigate\arrow-right.gif" />
+    <Content Include="Assets\plugins\flot\examples\navigate\arrow-up.gif" />
+    <Content Include="Assets\plugins\flot\examples\navigate\index.html" />
+    <Content Include="Assets\plugins\flot\examples\percentiles\index.html" />
+    <Content Include="Assets\plugins\flot\examples\realtime\index.html" />
+    <Content Include="Assets\plugins\flot\examples\resize\index.html" />
+    <Content Include="Assets\plugins\flot\examples\selection\index.html" />
+    <Content Include="Assets\plugins\flot\examples\series-errorbars\index.html" />
+    <Content Include="Assets\plugins\flot\examples\series-pie\index.html" />
+    <Content Include="Assets\plugins\flot\examples\series-toggle\index.html" />
+    <Content Include="Assets\plugins\flot\examples\series-types\index.html" />
+    <Content Include="Assets\plugins\flot\examples\shared\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Assets\plugins\flot\examples\shared\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Assets\plugins\flot\examples\stacking\index.html" />
+    <Content Include="Assets\plugins\flot\examples\symbols\index.html" />
+    <Content Include="Assets\plugins\flot\examples\threshold\index.html" />
+    <Content Include="Assets\plugins\flot\examples\tracking\index.html" />
+    <Content Include="Assets\plugins\flot\examples\visitors\index.html" />
+    <Content Include="Assets\plugins\flot\examples\zooming\index.html" />
     <Content Include="Assets\plugins\flot\excanvas.js" />
     <Content Include="Assets\plugins\flot\excanvas.min.js" />
-    <Content Include="Assets\plugins\flot\FAQ.txt" />
     <Content Include="Assets\plugins\flot\jquery.colorhelpers.js" />
+    <Content Include="Assets\plugins\flot\jquery.colorhelpers.min.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.canvas.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.canvas.min.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.categories.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.categories.min.js" />
     <Content Include="Assets\plugins\flot\jquery.flot.crosshair.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.crosshair.min.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.errorbars.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.errorbars.min.js" />
     <Content Include="Assets\plugins\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.fillbetween.min.js" />
     <Content Include="Assets\plugins\flot\jquery.flot.image.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.image.min.js" />
     <Content Include="Assets\plugins\flot\jquery.flot.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.min.js" />
     <Content Include="Assets\plugins\flot\jquery.flot.navigate.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.navigate.min.js" />
     <Content Include="Assets\plugins\flot\jquery.flot.pie.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.pie.min.js" />
     <Content Include="Assets\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.resize.min.js" />
     <Content Include="Assets\plugins\flot\jquery.flot.selection.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.selection.min.js" />
     <Content Include="Assets\plugins\flot\jquery.flot.stack.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.stack.min.js" />
     <Content Include="Assets\plugins\flot\jquery.flot.symbol.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.symbol.min.js" />
     <Content Include="Assets\plugins\flot\jquery.flot.threshold.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.threshold.min.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.time.js" />
+    <Content Include="Assets\plugins\flot\jquery.flot.time.min.js" />
     <Content Include="Assets\plugins\flot\jquery.js" />
+    <Content Include="Assets\plugins\flot\jquery.min.js" />
     <Content Include="Assets\plugins\flot\LICENSE.txt" />
-    <Content Include="Assets\plugins\flot\NEWS.txt" />
-    <Content Include="Assets\plugins\flot\PLUGINS.txt" />
-    <Content Include="Assets\plugins\flot\README.txt" />
+    <Content Include="Assets\plugins\font-awesome\css\font-awesome-ie7.css" />
     <Content Include="Assets\plugins\font-awesome\css\font-awesome-ie7.min.css" />
     <Content Include="Assets\plugins\font-awesome\css\font-awesome.css" />
     <Content Include="Assets\plugins\font-awesome\css\font-awesome.min.css" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\css\font-awesome-ie7.min.css" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\css\font-awesome.css" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\css\font-awesome.min.css" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\css\prettify.css" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\css\site.css" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\ico\favicon.ico" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\img\contribution-sample.png" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\img\fort_awesome.jpg" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\img\glyphicons-halflings-white.png" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\img\glyphicons-halflings.png" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\js\backbone.min.js" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\js\bootstrap-222.min.js" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\js\index\index.js" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\js\jquery-1.7.1.min.js" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\js\prettify.min.js" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\js\underscore.min.js" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\tests\buttons.html" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\tests\css-tests.css" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\tests\css-tests.html" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\tests\forms-responsive.html" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\tests\forms.html" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\tests\navbar-fixed-top.html" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\tests\navbar-static-top.html" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\tests\navbar.html" />
-    <Content Include="Assets\plugins\font-awesome\docs\design.html" />
-    <Content Include="Assets\plugins\font-awesome\docs\index.html" />
-    <Content Include="Assets\plugins\font-awesome\docs\test.html" />
+    <Content Include="Assets\plugins\font-awesome\font\fontawesome-webfont.svg" />
     <Content Include="Assets\plugins\fullcalendar\changelog.txt" />
     <Content Include="Assets\plugins\fullcalendar\demos\agenda-views.html" />
     <Content Include="Assets\plugins\fullcalendar\demos\basic-views.html" />
@@ -1460,7 +1542,64 @@
     <Content Include="Assets\plugins\glyphicons_halflings\index.html" />
     <Content Include="Assets\plugins\glyphicons_halflings\scripts\modernizr.js" />
     <Content Include="Assets\plugins\glyphicons_halflings\scripts\modernizr_license.txt" />
-    <Content Include="Assets\plugins\gmaps.js" />
+    <Content Include="Assets\plugins\gmaps\examples\basic.html" />
+    <Content Include="Assets\plugins\gmaps\examples\context_menu.html" />
+    <Content Include="Assets\plugins\gmaps\examples\custom_controls.html" />
+    <Content Include="Assets\plugins\gmaps\examples\elevation_locations.html" />
+    <Content Include="Assets\plugins\gmaps\examples\elevation_routes.html" />
+    <Content Include="Assets\plugins\gmaps\examples\examples.css" />
+    <Content Include="Assets\plugins\gmaps\examples\fusion_tables.html" />
+    <Content Include="Assets\plugins\gmaps\examples\geocoding.html" />
+    <Content Include="Assets\plugins\gmaps\examples\geofences.html" />
+    <Content Include="Assets\plugins\gmaps\examples\geolocation.html" />
+    <Content Include="Assets\plugins\gmaps\examples\geometry.html" />
+    <Content Include="Assets\plugins\gmaps\examples\kml.html" />
+    <Content Include="Assets\plugins\gmaps\examples\layers.html" />
+    <Content Include="Assets\plugins\gmaps\examples\layers_places.html" />
+    <Content Include="Assets\plugins\gmaps\examples\map_events.html" />
+    <Content Include="Assets\plugins\gmaps\examples\map_types.html" />
+    <Content Include="Assets\plugins\gmaps\examples\markers.html" />
+    <Content Include="Assets\plugins\gmaps\examples\marker_clusterer.html" />
+    <Content Include="Assets\plugins\gmaps\examples\overlays.html" />
+    <Content Include="Assets\plugins\gmaps\examples\overlay_map_types.html" />
+    <Content Include="Assets\plugins\gmaps\examples\polygons.html" />
+    <Content Include="Assets\plugins\gmaps\examples\polylines.html" />
+    <Content Include="Assets\plugins\gmaps\examples\routes.html" />
+    <Content Include="Assets\plugins\gmaps\examples\routes_advanced.html" />
+    <Content Include="Assets\plugins\gmaps\examples\static.html" />
+    <Content Include="Assets\plugins\gmaps\examples\static_markers.html" />
+    <Content Include="Assets\plugins\gmaps\examples\static_polylines.html" />
+    <Content Include="Assets\plugins\gmaps\examples\styled_maps.html" />
+    <Content Include="Assets\plugins\gmaps\examples\travel_route.html" />
+    <Content Include="Assets\plugins\gmaps\gmaps.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.controls.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.core.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.events.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.geofences.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.geometry.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.layers.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.map_types.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.markers.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.native_extensions.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.overlays.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.routes.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.static.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.streetview.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.styles.js" />
+    <Content Include="Assets\plugins\gmaps\lib\gmaps.utils.js" />
+    <Content Include="Assets\plugins\gmaps\test\index.html" />
+    <Content Include="Assets\plugins\gmaps\test\lib\jasmine-html.js" />
+    <Content Include="Assets\plugins\gmaps\test\lib\jasmine.css" />
+    <Content Include="Assets\plugins\gmaps\test\lib\jasmine.js" />
+    <Content Include="Assets\plugins\gmaps\test\spec\EventSpec.js" />
+    <Content Include="Assets\plugins\gmaps\test\spec\GeometrySpec.js" />
+    <Content Include="Assets\plugins\gmaps\test\spec\LayerSpec.js" />
+    <Content Include="Assets\plugins\gmaps\test\spec\MapSpec.js" />
+    <Content Include="Assets\plugins\gmaps\test\spec\MarkerSpec.js" />
+    <Content Include="Assets\plugins\gmaps\test\spec\OverlaySpec.js" />
+    <Content Include="Assets\plugins\gmaps\test\spec\RouteSpec.js" />
+    <Content Include="Assets\plugins\gmaps\test\spec\StreetViewSpec.js" />
+    <Content Include="Assets\plugins\gmaps\test\spec\StyleSpec.js" />
     <Content Include="Assets\plugins\gritter\css\jquery.gritter.css" />
     <Content Include="Assets\plugins\gritter\images\gritter-blue.png" />
     <Content Include="Assets\plugins\gritter\images\gritter-brown.png" />
@@ -1477,7 +1616,7 @@
     <Content Include="Assets\plugins\gritter\index.html" />
     <Content Include="Assets\plugins\gritter\js\jquery.gritter.js" />
     <Content Include="Assets\plugins\gritter\js\jquery.gritter.min.js" />
-    <Content Include="Assets\plugins\jquery-1.8.3.min.js" />
+    <Content Include="Assets\plugins\jquery-1.10.1.min.js" />
     <Content Include="Assets\plugins\jquery-easy-pie-chart\examples\excanvas.js" />
     <Content Include="Assets\plugins\jquery-easy-pie-chart\examples\index.html" />
     <Content Include="Assets\plugins\jquery-easy-pie-chart\examples\style.css" />
@@ -1508,7 +1647,6 @@
     <Content Include="Assets\plugins\jquery-file-upload\server\gae-python\static\favicon.ico" />
     <Content Include="Assets\plugins\jquery-file-upload\server\gae-python\static\robots.txt" />
     <Content Include="Assets\plugins\jquery-file-upload\server\node\server.js" />
-    <Content Include="Assets\plugins\jquery-file-upload\server\php\files\style-responsive.css" />
     <Content Include="Assets\plugins\jquery-file-upload\server\php\index.php" />
     <Content Include="Assets\plugins\jquery-file-upload\server\php\UploadHandler.php" />
     <Content Include="Assets\plugins\jquery-file-upload\test\index.html" />
@@ -1517,24 +1655,41 @@
     <Content Include="Assets\plugins\jquery-inputmask\jquery.inputmask.bundle.min.js" />
     <Content Include="Assets\plugins\jquery-knob\index.html" />
     <Content Include="Assets\plugins\jquery-knob\js\jquery.knob.js" />
+    <Content Include="Assets\plugins\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Assets\plugins\jquery-multi-select\css\multi-select-metro.css" />
+    <Content Include="Assets\plugins\jquery-multi-select\css\multi-select.css" />
+    <Content Include="Assets\plugins\jquery-multi-select\img\switch.png" />
+    <Content Include="Assets\plugins\jquery-multi-select\js\jquery.multi-select.js" />
+    <Content Include="Assets\plugins\jquery-multi-select\LICENSE.txt" />
+    <Content Include="Assets\plugins\jquery-multi-select\test\lib\jasmine-1.2.0\jasmine-html.js" />
+    <Content Include="Assets\plugins\jquery-multi-select\test\lib\jasmine-1.2.0\jasmine.css" />
+    <Content Include="Assets\plugins\jquery-multi-select\test\lib\jasmine-1.2.0\jasmine.js" />
+    <Content Include="Assets\plugins\jquery-multi-select\test\lib\jasmine-jquery.js" />
+    <Content Include="Assets\plugins\jquery-multi-select\test\SpecRunner.html" />
+    <Content Include="Assets\plugins\jquery-multi-select\test\spec\multiSelectSpec.js" />
+    <Content Include="Assets\plugins\jquery-multi-select\test\spec\SpecHelper.js" />
+    <Content Include="Assets\plugins\jquery-multi-select\test\src\jquery.js" />
     <Content Include="Assets\plugins\jquery-nestable\index.html" />
     <Content Include="Assets\plugins\jquery-nestable\jquery.nestable.css" />
     <Content Include="Assets\plugins\jquery-nestable\jquery.nestable.js" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\allow-page-scroll.html" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\chaining.html" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\disable-fade-out.html" />
+    <Content Include="Assets\plugins\jquery-slimscroll\examples\dynamic-content.html" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\height-width.html" />
+    <Content Include="Assets\plugins\jquery-slimscroll\examples\index.html" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\libs\prettify\prettify.css" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\libs\prettify\prettify.js" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\mouse-wheel.html" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\multiple-elements.html" />
+    <Content Include="Assets\plugins\jquery-slimscroll\examples\navigation.html" />
+    <Content Include="Assets\plugins\jquery-slimscroll\examples\nested.html" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\programmatic-scrolling.html" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\rail.html" />
+    <Content Include="Assets\plugins\jquery-slimscroll\examples\scroll-events.html" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\scrollbar.html" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\start-position.html" />
     <Content Include="Assets\plugins\jquery-slimscroll\examples\style.css" />
-    <Content Include="Assets\plugins\jquery-slimscroll\examples\top-bottom-events.html" />
-    <Content Include="Assets\plugins\jquery-slimscroll\jquery-ui-1.9.2.custom.min.js" />
     <Content Include="Assets\plugins\jquery-slimscroll\jquery.slimscroll.js" />
     <Content Include="Assets\plugins\jquery-slimscroll\jquery.slimscroll.min.js" />
     <Content Include="Assets\plugins\jquery-tags-input\example.html" />
@@ -1577,7 +1732,7 @@
     <Content Include="Assets\plugins\jquery-ui\jquery-ui-1.10.2.custom.min.js" />
     <Content Include="Assets\plugins\jquery-ui\jquery-ui-1.9.2.custom.min.js" />
     <Content Include="Assets\plugins\jquery-validation\changelog.txt" />
-    <Content Include="Assets\plugins\jquery-validation\demo\ajaxSubmit-intergration-demo.html" />
+    <Content Include="Assets\plugins\jquery-validation\demo\ajaxSubmit-integration-demo.html" />
     <Content Include="Assets\plugins\jquery-validation\demo\captcha\captcha.js" />
     <Content Include="Assets\plugins\jquery-validation\demo\captcha\images\button.png" />
     <Content Include="Assets\plugins\jquery-validation\demo\captcha\images\image.php" />
@@ -1587,7 +1742,6 @@
     <Content Include="Assets\plugins\jquery-validation\demo\captcha\process.php" />
     <Content Include="Assets\plugins\jquery-validation\demo\captcha\rand.php" />
     <Content Include="Assets\plugins\jquery-validation\demo\captcha\style.css" />
-    <Content Include="Assets\plugins\jquery-validation\demo\css\chili.css" />
     <Content Include="Assets\plugins\jquery-validation\demo\css\cmxform.css" />
     <Content Include="Assets\plugins\jquery-validation\demo\css\cmxformTemplate.css" />
     <Content Include="Assets\plugins\jquery-validation\demo\css\core.css" />
@@ -1598,7 +1752,6 @@
     <Content Include="Assets\plugins\jquery-validation\demo\dynamic-totals.html" />
     <Content Include="Assets\plugins\jquery-validation\demo\errorcontainer-demo.html" />
     <Content Include="Assets\plugins\jquery-validation\demo\file_input.html" />
-    <Content Include="Assets\plugins\jquery-validation\demo\form.php" />
     <Content Include="Assets\plugins\jquery-validation\demo\images\bg.gif" />
     <Content Include="Assets\plugins\jquery-validation\demo\images\checked.gif" />
     <Content Include="Assets\plugins\jquery-validation\demo\images\cmxform-divider.gif" />
@@ -1607,15 +1760,12 @@
     <Content Include="Assets\plugins\jquery-validation\demo\images\unchecked.gif" />
     <Content Include="Assets\plugins\jquery-validation\demo\index.html" />
     <Content Include="Assets\plugins\jquery-validation\demo\jquerymobile.html" />
-    <Content Include="Assets\plugins\jquery-validation\demo\js\chili-1.7.pack.js" />
     <Content Include="Assets\plugins\jquery-validation\demo\login\images\bg.gif" />
     <Content Include="Assets\plugins\jquery-validation\demo\login\images\header1.jpg" />
     <Content Include="Assets\plugins\jquery-validation\demo\login\images\page.gif" />
     <Content Include="Assets\plugins\jquery-validation\demo\login\images\required_star.gif" />
     <Content Include="Assets\plugins\jquery-validation\demo\login\index.html" />
     <Content Include="Assets\plugins\jquery-validation\demo\login\screen.css" />
-    <Content Include="Assets\plugins\jquery-validation\demo\marketo\emails.php" />
-    <Content Include="Assets\plugins\jquery-validation\demo\marketo\ie6.css" />
     <Content Include="Assets\plugins\jquery-validation\demo\marketo\images\backRequiredGray.gif" />
     <Content Include="Assets\plugins\jquery-validation\demo\marketo\images\back_green-fade.gif" />
     <Content Include="Assets\plugins\jquery-validation\demo\marketo\images\back_nav_blue.gif" />
@@ -1641,13 +1791,11 @@
     <Content Include="Assets\plugins\jquery-validation\demo\marketo\step2.htm" />
     <Content Include="Assets\plugins\jquery-validation\demo\marketo\stylesheet.css" />
     <Content Include="Assets\plugins\jquery-validation\demo\milk\bg.gif" />
-    <Content Include="Assets\plugins\jquery-validation\demo\milk\emails.php" />
     <Content Include="Assets\plugins\jquery-validation\demo\milk\index.html" />
     <Content Include="Assets\plugins\jquery-validation\demo\milk\left_white.png" />
     <Content Include="Assets\plugins\jquery-validation\demo\milk\milk.css" />
     <Content Include="Assets\plugins\jquery-validation\demo\milk\milk.png" />
     <Content Include="Assets\plugins\jquery-validation\demo\milk\right_white.png" />
-    <Content Include="Assets\plugins\jquery-validation\demo\milk\users.php" />
     <Content Include="Assets\plugins\jquery-validation\demo\multipart\index.html" />
     <Content Include="Assets\plugins\jquery-validation\demo\multipart\js\jquery.maskedinput-1.0.js" />
     <Content Include="Assets\plugins\jquery-validation\demo\multipart\js\ui.accordion.js" />
@@ -1666,7 +1814,7 @@
     <Content Include="Assets\plugins\jquery-validation\dist\additional-methods.min.js" />
     <Content Include="Assets\plugins\jquery-validation\dist\jquery.validate.js" />
     <Content Include="Assets\plugins\jquery-validation\dist\jquery.validate.min.js" />
-    <Content Include="Assets\plugins\jquery-validation\grunt.js" />
+    <Content Include="Assets\plugins\jquery-validation\Gruntfile.js" />
     <Content Include="Assets\plugins\jquery-validation\lib\jquery-1.6.4.js" />
     <Content Include="Assets\plugins\jquery-validation\lib\jquery-1.7.2.js" />
     <Content Include="Assets\plugins\jquery-validation\lib\jquery-1.8.3.js" />
@@ -1694,6 +1842,7 @@
     <Content Include="Assets\plugins\jquery-validation\localization\messages_ja.js" />
     <Content Include="Assets\plugins\jquery-validation\localization\messages_ka.js" />
     <Content Include="Assets\plugins\jquery-validation\localization\messages_kk.js" />
+    <Content Include="Assets\plugins\jquery-validation\localization\messages_ko.js" />
     <Content Include="Assets\plugins\jquery-validation\localization\messages_lt.js" />
     <Content Include="Assets\plugins\jquery-validation\localization\messages_lv.js" />
     <Content Include="Assets\plugins\jquery-validation\localization\messages_my.js" />
@@ -1737,9 +1886,9 @@
     <Content Include="Assets\plugins\jquery-validation\test\selects\index.html" />
     <Content Include="Assets\plugins\jquery-validation\test\tabs.html" />
     <Content Include="Assets\plugins\jquery-validation\test\test.js" />
-    <Content Include="Assets\plugins\jquery.blockui.js" />
+    <Content Include="Assets\plugins\jquery.blockui.min.js" />
     <Content Include="Assets\plugins\jquery.bootpag.min.js" />
-    <Content Include="Assets\plugins\jquery.cookie.js" />
+    <Content Include="Assets\plugins\jquery.cookie.min.js" />
     <Content Include="Assets\plugins\jquery.input-ip-address-control-1.0.min.js" />
     <Content Include="Assets\plugins\jquery.pulsate.min.js" />
     <Content Include="Assets\plugins\jquery.sparkline.min.js" />
@@ -1759,7 +1908,7 @@
     <Content Include="Assets\plugins\jqvmap\samples\russia.html" />
     <Content Include="Assets\plugins\jqvmap\samples\usa.html" />
     <Content Include="Assets\plugins\jqvmap\samples\world.html" />
-    <Content Include="Assets\plugins\respond.js" />
+    <Content Include="Assets\plugins\respond.min.js" />
     <Content Include="Assets\plugins\select2\select2-spinner.gif" />
     <Content Include="Assets\plugins\select2\select2.css" />
     <Content Include="Assets\plugins\select2\select2.js" />
@@ -1784,14 +1933,14 @@
     <Content Include="Assets\plugins\select2\select2_locale_ua.js" />
     <Content Include="Assets\plugins\select2\select2_locale_zh-CN.js" />
     <Content Include="Assets\plugins\select2\select2_metro.css" />
-    <Content Include="Assets\plugins\uniform-1.7.5\css\uniform.default.css" />
-    <Content Include="Assets\plugins\uniform-1.7.5\demo\demo.html" />
-    <Content Include="Assets\plugins\uniform-1.7.5\images\bg-input-focus.png" />
-    <Content Include="Assets\plugins\uniform-1.7.5\images\bg-input.png" />
-    <Content Include="Assets\plugins\uniform-1.7.5\images\sprite.png" />
-    <Content Include="Assets\plugins\uniform-1.7.5\images\sprite_original.png" />
-    <Content Include="Assets\plugins\uniform-1.7.5\jquery.uniform.js" />
-    <Content Include="Assets\plugins\uniform-1.7.5\jquery.uniform.min.js" />
+    <Content Include="Assets\plugins\uniform\css\uniform.default.css" />
+    <Content Include="Assets\plugins\uniform\css\uniform.default.min.css" />
+    <Content Include="Assets\plugins\uniform\images\bg-input-focus.png" />
+    <Content Include="Assets\plugins\uniform\images\bg-input.png" />
+    <Content Include="Assets\plugins\uniform\images\sprite.png" />
+    <Content Include="Assets\plugins\uniform\images\sprite_original.png" />
+    <Content Include="Assets\plugins\uniform\jquery.uniform.js" />
+    <Content Include="Assets\plugins\uniform\jquery.uniform.min.js" />
     <Content Include="Assets\scripts\app.js" />
     <Content Include="Assets\scripts\calendar.js" />
     <Content Include="Assets\scripts\charts.js" />
@@ -1807,35 +1956,188 @@
     <Content Include="Assets\scripts\inbox.js" />
     <Content Include="Assets\scripts\index.js" />
     <Content Include="Assets\scripts\lock.js" />
+    <Content Include="Assets\scripts\login-soft.js" />
     <Content Include="Assets\scripts\login.js" />
     <Content Include="Assets\scripts\maps-google.js" />
     <Content Include="Assets\scripts\maps-vector.js" />
     <Content Include="Assets\scripts\portlet-draggable.js" />
     <Content Include="Assets\scripts\search.js" />
+    <Content Include="Assets\scripts\table-advanced.js" />
     <Content Include="Assets\scripts\table-editable.js" />
     <Content Include="Assets\scripts\table-managed.js" />
     <Content Include="Assets\scripts\ui-general.js" />
     <Content Include="Assets\scripts\ui-jqueryui.js" />
+    <Content Include="Assets\scripts\ui-modals.js" />
     <Content Include="Assets\scripts\ui-nestable.js" />
     <Content Include="Assets\scripts\ui-sliders.js" />
     <Content Include="Assets\scripts\ui-tree.js" />
-    <Content Include="Assets\favicon.ico" />
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.css" />
+    <Content Include="Content\fancybox\blank.gif" />
+    <Content Include="Content\fancybox\fancybox_buttons.png" />
+    <Content Include="Content\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Content\fancybox\fancybox_loading.gif" />
+    <Content Include="Content\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Content\fancybox\fancybox_sprite.png" />
+    <Content Include="Content\font-awesome-ie7.css" />
+    <Content Include="Content\font-awesome-ie7.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\font\fontawesome-webfont.svg" />
+    <Content Include="Content\fullcalendar.css" />
+    <Content Include="Content\fullcalendar.print.css" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\img\gritter-light.png" />
+    <Content Include="Content\img\gritter-long.png" />
+    <Content Include="Content\img\gritter.png" />
+    <Content Include="Content\img\ie-spacer.gif" />
+    <Content Include="Content\jquery.fancybox-buttons.css" />
+    <Content Include="Content\jquery.fancybox-thumbs.css" />
+    <Content Include="Content\jquery.fancybox.css" />
+    <Content Include="Content\jquery.gritter.css" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\themes\metronic\css\animate.css" />
+    <Content Include="Content\themes\metronic\css\pages\about-us.css" />
+    <Content Include="Content\themes\metronic\css\pages\blog.css" />
+    <Content Include="Content\themes\metronic\css\pages\coming-soon.css" />
+    <Content Include="Content\themes\metronic\css\pages\email.css" />
+    <Content Include="Content\themes\metronic\css\pages\error.css" />
+    <Content Include="Content\themes\metronic\css\pages\inbox.css" />
+    <Content Include="Content\themes\metronic\css\pages\invoice.css" />
+    <Content Include="Content\themes\metronic\css\pages\lock.css" />
+    <Content Include="Content\themes\metronic\css\pages\login-soft.css" />
+    <Content Include="Content\themes\metronic\css\pages\login.css" />
+    <Content Include="Content\themes\metronic\css\pages\news.css" />
+    <Content Include="Content\themes\metronic\css\pages\pricing-tables.css" />
+    <Content Include="Content\themes\metronic\css\pages\profile.css" />
+    <Content Include="Content\themes\metronic\css\pages\promo.css" />
+    <Content Include="Content\themes\metronic\css\pages\search.css" />
+    <Content Include="Content\themes\metronic\css\pages\timeline.css" />
+    <Content Include="Content\themes\metronic\css\print.css" />
+    <Content Include="Content\themes\metronic\css\style-metro.css" />
+    <Content Include="Content\themes\metronic\css\style-non-responsive.css" />
+    <Content Include="Content\themes\metronic\css\style-responsive.css" />
+    <Content Include="Content\themes\metronic\css\style.css" />
+    <Content Include="Content\themes\metronic\css\themes\blue.css" />
+    <Content Include="Content\themes\metronic\css\themes\brown.css" />
+    <Content Include="Content\themes\metronic\css\themes\default.css" />
+    <Content Include="Content\themes\metronic\css\themes\grey.css" />
+    <Content Include="Content\themes\metronic\css\themes\light.css" />
+    <Content Include="Content\themes\metronic\css\themes\purple.css" />
+    <Content Include="Content\themes\metronic\img\bg\1.jpg" />
+    <Content Include="Content\themes\metronic\img\bg\2.jpg" />
+    <Content Include="Content\themes\metronic\img\bg\3.jpg" />
+    <Content Include="Content\themes\metronic\img\bg\4.jpg" />
+    <Content Include="Content\themes\metronic\img\bg\5.jpg" />
+    <Content Include="Content\themes\metronic\img\bg\6.jpg" />
+    <Content Include="Content\themes\metronic\img\bg\7.jpg" />
+    <Content Include="Content\themes\metronic\img\bg\8.jpg" />
+    <Content Include="Content\themes\metronic\img\bg\9.jpg" />
+    <Content Include="Content\themes\uniformjs\agent\css\uniform.agent.css" />
+    <Content Include="Content\themes\uniformjs\agent\css\uniform.agent.min.css" />
+    <Content Include="Content\themes\uniformjs\agent\images\bg-input-agent.png" />
+    <Content Include="Content\themes\uniformjs\agent\images\bg-input-focus-agent.png" />
+    <Content Include="Content\themes\uniformjs\agent\images\sprite-agent.png" />
+    <Content Include="Content\themes\uniformjs\aristo\css\uniform.aristo.css" />
+    <Content Include="Content\themes\uniformjs\aristo\css\uniform.aristo.min.css" />
+    <Content Include="Content\themes\uniformjs\aristo\images\bg-input-aristo.png" />
+    <Content Include="Content\themes\uniformjs\aristo\images\bg-input-focus-aristo.png" />
+    <Content Include="Content\themes\uniformjs\aristo\images\sprite-aristo.png" />
+    <Content Include="Content\themes\uniformjs\default\css\uniform.default.css" />
+    <Content Include="Content\themes\uniformjs\default\css\uniform.default.min.css" />
+    <Content Include="Content\themes\uniformjs\default\images\bg-input-focus.png" />
+    <Content Include="Content\themes\uniformjs\default\images\bg-input.png" />
+    <Content Include="Content\themes\uniformjs\default\images\sprite.png" />
+    <Content Include="Content\themes\uniformjs\jeans\css\uniform.jeans.css" />
+    <Content Include="Content\themes\uniformjs\jeans\css\uniform.jeans.min.css" />
+    <Content Include="Content\themes\uniformjs\jeans\images\bg-input-focus-jeans.png" />
+    <Content Include="Content\themes\uniformjs\jeans\images\bg-input-focus-retina-jeans.png" />
+    <Content Include="Content\themes\uniformjs\jeans\images\bg-input-jeans.png" />
+    <Content Include="Content\themes\uniformjs\jeans\images\bg-input-retina-jeans.png" />
+    <Content Include="Content\themes\uniformjs\jeans\images\sprite-jeans.png" />
+    <Content Include="Content\themes\uniformjs\jeans\images\sprite-retina-jeans.png" />
+    <Content Include="Content\themes\uniformjs\_base\css\uniform._base.css" />
+    <Content Include="Content\themes\uniformjs\_base\css\uniform._base.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="Mvc.sitemap" />
+    <Content Include="Mvc.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Code\Metro.cshtml" />
-    <Content Include="Assets\img\bg\Thumbs.db" />
-    <Content Include="Assets\img\blog\Thumbs.db" />
-    <Content Include="Assets\img\flags\Thumbs.db" />
-    <Content Include="Assets\img\gallery\Thumbs.db" />
-    <Content Include="Assets\img\invoice\Thumbs.db" />
-    <Content Include="Assets\img\pages\Thumbs.db" />
-    <Content Include="Assets\img\profile\portfolio\Thumbs.db" />
-    <Content Include="Assets\img\profile\Thumbs.db" />
-    <Content Include="Assets\img\search\Thumbs.db" />
-    <Content Include="Assets\img\social\Thumbs.db" />
+    <Content Include="Assets\fonts\cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff" />
+    <Content Include="Assets\fonts\DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff" />
+    <Content Include="Assets\fonts\k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff" />
+    <Content Include="Assets\fonts\MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff" />
     <Content Include="Assets\plugins\bootstrap-colorpicker\less\colorpicker.less" />
     <Content Include="Assets\plugins\bootstrap-datepicker\.gitignore" />
     <Content Include="Assets\plugins\bootstrap-datepicker\.hgignore" />
+    <Content Include="Assets\plugins\bootstrap-datepicker\.hgtags" />
     <Content Include="Assets\plugins\bootstrap-datepicker\.travis.yml" />
     <Content Include="Assets\plugins\bootstrap-datepicker\build\build.less" />
     <Content Include="Assets\plugins\bootstrap-datepicker\build\build_standalone.less" />
@@ -1854,12 +2156,13 @@
     <Content Include="Assets\plugins\bootstrap-datetimepicker\LICENSE" />
     <Content Include="Assets\plugins\bootstrap-datetimepicker\README.md" />
     <Content Include="Assets\plugins\bootstrap-datetimepicker\tests\README.md" />
-    <Content Include="Assets\plugins\bootstrap-editable\LICENSE-MIT" />
-    <Content Include="Assets\plugins\bootstrap-editable\README.md" />
-    <Content Include="Assets\fonts\cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff" />
-    <Content Include="Assets\fonts\DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff" />
-    <Content Include="Assets\fonts\k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff" />
-    <Content Include="Assets\fonts\MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff" />
+    <Content Include="Assets\plugins\bootstrap-modal\.gitattributes" />
+    <Content Include="Assets\plugins\bootstrap-modal\.gitignore" />
+    <Content Include="Assets\plugins\bootstrap-modal\component.json" />
+    <Content Include="Assets\plugins\bootstrap-modal\composer.json" />
+    <Content Include="Assets\plugins\bootstrap-modal\LICENSE" />
+    <Content Include="Assets\plugins\bootstrap-modal\params.json" />
+    <Content Include="Assets\plugins\bootstrap-modal\README.md" />
     <Content Include="Assets\plugins\bootstrap-tag\less\bootstrap-tag.less" />
     <Content Include="Assets\plugins\bootstrap-tag\README.md" />
     <Content Include="Assets\plugins\bootstrap-timepicker\.gitignore" />
@@ -1902,85 +2205,63 @@
     <Content Include="Assets\plugins\fancybox\.gitattributes" />
     <Content Include="Assets\plugins\fancybox\CHANGELOG.md" />
     <Content Include="Assets\plugins\fancybox\README.md" />
-    <Content Include="Assets\plugins\flot\examples\data-eu-gdp-growth-1.json" />
-    <Content Include="Assets\plugins\flot\examples\data-eu-gdp-growth-2.json" />
-    <Content Include="Assets\plugins\flot\examples\data-eu-gdp-growth-3.json" />
-    <Content Include="Assets\plugins\flot\examples\data-eu-gdp-growth-4.json" />
-    <Content Include="Assets\plugins\flot\examples\data-eu-gdp-growth-5.json" />
-    <Content Include="Assets\plugins\flot\examples\data-eu-gdp-growth.json" />
-    <Content Include="Assets\plugins\flot\examples\data-japan-gdp-growth.json" />
-    <Content Include="Assets\plugins\flot\examples\data-usa-gdp-growth.json" />
+    <Content Include="Assets\plugins\flot\API.md" />
+    <Content Include="Assets\plugins\flot\build.log" />
+    <Content Include="Assets\plugins\flot\CONTRIBUTING.md" />
+    <Content Include="Assets\plugins\flot\examples\ajax\data-eu-gdp-growth-1.json" />
+    <Content Include="Assets\plugins\flot\examples\ajax\data-eu-gdp-growth-2.json" />
+    <Content Include="Assets\plugins\flot\examples\ajax\data-eu-gdp-growth-3.json" />
+    <Content Include="Assets\plugins\flot\examples\ajax\data-eu-gdp-growth-4.json" />
+    <Content Include="Assets\plugins\flot\examples\ajax\data-eu-gdp-growth-5.json" />
+    <Content Include="Assets\plugins\flot\examples\ajax\data-eu-gdp-growth.json" />
+    <Content Include="Assets\plugins\flot\examples\ajax\data-japan-gdp-growth.json" />
+    <Content Include="Assets\plugins\flot\examples\ajax\data-usa-gdp-growth.json" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\africa" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\antarctica" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\asia" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\australasia" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\backward" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\etcetera" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\europe" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\factory" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\iso3166.tab" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\leapseconds" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\northamerica" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\pacificnew" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\solar87" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\solar88" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\solar89" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\southamerica" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\systemv" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\yearistype.sh" />
+    <Content Include="Assets\plugins\flot\examples\axes-time-zones\tz\zone.tab" />
+    <Content Include="Assets\plugins\flot\FAQ.md" />
     <Content Include="Assets\plugins\flot\Makefile" />
-    <Content Include="Assets\plugins\font-awesome\.gitignore" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\font\fontawesome-webfont.eot" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\font\fontawesome-webfont.ttf" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\font\fontawesome-webfont.woff" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\font\FontAwesome.otf" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\font\museo_slab_300-webfont.eot" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\font\museo_slab_300-webfont.ttf" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\font\museo_slab_500-webfont.eot" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\font\museo_slab_500-webfont.ttf" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\font\proximanova-sbold-webfont.eot" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\font\proximanova-sbold-webfont.ttf" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\font\proximanova-webfont.eot" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\font\proximanova-webfont.ttf" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\img\icon-flag.pdf" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\font-awesome-ie7.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\font-awesome.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\font-site.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\mixins.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\site.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\accordion.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\alerts.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\bootstrap.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\breadcrumbs.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\button-groups.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\buttons.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\carousel.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\close.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\code.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\component-animations.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\dropdowns.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\forms.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\grid.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\hero-unit.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\labels-badges.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\layouts.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\media.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\mixins.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\modals.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\navbar.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\navs.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\pager.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\pagination.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\popovers.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\progress-bars.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\reset.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\responsive-1200px-min.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\responsive-767px-max.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\responsive-768px-979px.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\responsive-navbar.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\responsive-utilities.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\responsive.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\scaffolding.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\sprites.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\tables.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\thumbnails.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\tooltip.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\type.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\utilities.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\variables.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\twbs-222\wells.less" />
-    <Content Include="Assets\plugins\font-awesome\docs\assets\less\variables.less" />
+    <Content Include="Assets\plugins\flot\NEWS.md" />
+    <Content Include="Assets\plugins\flot\PLUGINS.md" />
+    <Content Include="Assets\plugins\flot\README.md" />
     <Content Include="Assets\plugins\font-awesome\font\fontawesome-webfont.eot" />
     <Content Include="Assets\plugins\font-awesome\font\fontawesome-webfont.ttf" />
     <Content Include="Assets\plugins\font-awesome\font\fontawesome-webfont.woff" />
     <Content Include="Assets\plugins\font-awesome\font\FontAwesome.otf" />
+    <Content Include="Assets\plugins\font-awesome\less\bootstrap.less" />
+    <Content Include="Assets\plugins\font-awesome\less\core.less" />
+    <Content Include="Assets\plugins\font-awesome\less\extras.less" />
     <Content Include="Assets\plugins\font-awesome\less\font-awesome-ie7.less" />
     <Content Include="Assets\plugins\font-awesome\less\font-awesome.less" />
-    <Content Include="Assets\plugins\font-awesome\README.md" />
-    <Content Include="Assets\plugins\font-awesome\sass\font-awesome.sass" />
-    <Content Include="Assets\plugins\font-awesome\sass\font-awesome.scss" />
+    <Content Include="Assets\plugins\font-awesome\less\icons.less" />
+    <Content Include="Assets\plugins\font-awesome\less\mixins.less" />
+    <Content Include="Assets\plugins\font-awesome\less\path.less" />
+    <Content Include="Assets\plugins\font-awesome\less\variables.less" />
+    <Content Include="Assets\plugins\font-awesome\scss\font-awesome-ie7.scss" />
+    <Content Include="Assets\plugins\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Assets\plugins\font-awesome\scss\_bootstrap.scss" />
+    <Content Include="Assets\plugins\font-awesome\scss\_core.scss" />
+    <Content Include="Assets\plugins\font-awesome\scss\_extras.scss" />
+    <Content Include="Assets\plugins\font-awesome\scss\_icons.scss" />
+    <Content Include="Assets\plugins\font-awesome\scss\_mixins.scss" />
+    <Content Include="Assets\plugins\font-awesome\scss\_path.scss" />
+    <Content Include="Assets\plugins\font-awesome\scss\_variables.scss" />
     <Content Include="Assets\plugins\glyphicons\fonts\glyphicons-regular.eot" />
     <Content Include="Assets\plugins\glyphicons\fonts\glyphicons-regular.otf" />
     <Content Include="Assets\plugins\glyphicons\fonts\glyphicons-regular.ttf" />
@@ -1997,6 +2278,8 @@
     <Content Include="Assets\plugins\glyphicons_halflings\less\reset.less" />
     <Content Include="Assets\plugins\glyphicons_halflings\less\site.less" />
     <Content Include="Assets\plugins\glyphicons_halflings\less\style.less" />
+    <Content Include="Assets\plugins\gmaps\CONTRIBUTING.md" />
+    <Content Include="Assets\plugins\gmaps\README.md" />
     <Content Include="Assets\plugins\gritter\README.markdown" />
     <Content Include="Assets\plugins\jquery-easy-pie-chart\jquery.easy-pie-chart.coffee" />
     <Content Include="Assets\plugins\jquery-easy-pie-chart\Makefile" />
@@ -2017,18 +2300,22 @@
     <Content Include="Assets\plugins\jquery-file-upload\server\php\files\.htaccess" />
     <Content Include="Assets\plugins\jquery-inputmask\README.md" />
     <Content Include="Assets\plugins\jquery-knob\README.md" />
+    <Content Include="Assets\plugins\jquery-multi-select\jquery.multi-select.jquery.json" />
+    <Content Include="Assets\plugins\jquery-multi-select\README.markdown" />
+    <Content Include="Assets\plugins\jquery-multi-select\test\lib\jasmine-1.2.0\MIT.LICENSE" />
     <Content Include="Assets\plugins\jquery-nestable\README.md" />
     <Content Include="Assets\plugins\jquery-slimscroll\README.md" />
     <Content Include="Assets\plugins\jquery-slimscroll\slimScroll.jquery.json" />
     <Content Include="Assets\plugins\jquery-tags-input\README.md" />
     <Content Include="Assets\plugins\jquery-ui-touch-punch\README.md" />
+    <Content Include="Assets\plugins\jquery-validation\.travis.yml" />
+    <Content Include="Assets\plugins\jquery-validation\CONTRIBUTING.md" />
     <Content Include="Assets\plugins\jquery-validation\demo\captcha\fonts\Anorexia.ttf" />
-    <Content Include="Assets\plugins\jquery-validation\demo\form.phps" />
-    <Content Include="Assets\plugins\jquery-validation\demo\marketo\emails.phps" />
-    <Content Include="Assets\plugins\jquery-validation\demo\milk\emails.phps" />
-    <Content Include="Assets\plugins\jquery-validation\demo\milk\users.phps" />
+    <Content Include="Assets\plugins\jquery-validation\demo\captcha\images\.htaccess" />
     <Content Include="Assets\plugins\jquery-validation\package.json" />
     <Content Include="Assets\plugins\jquery-validation\README.md" />
+    <Content Include="Assets\plugins\jquery-validation\todo" />
+    <Content Include="Assets\plugins\jquery-validation\validation.jquery.json" />
     <Content Include="Assets\plugins\jqvmap\.gitignore" />
     <Content Include="Assets\plugins\jqvmap\README.md" />
     <Content Include="Assets\plugins\select2\component.json" />
@@ -2037,43 +2324,79 @@
     <Content Include="Assets\plugins\select2\release.sh" />
     <Content Include="Assets\plugins\select2\select2.jquery.json" />
     <Content Include="Assets\plugins\select2\select2_locale_en.js.template" />
-    <Content Include="Assets\plugins\uniform-1.7.5\README.textile" />
+    <Content Include="Assets\plugins\uniform\css\uniform.default.scss" />
+    <Content Include="Assets\plugins\uniform\README.textile" />
+    <Content Include="Content\themes\uniformjs\jeans\css\uniform.jeans.scss" />
+    <Content Include="Content\themes\uniformjs\default\css\uniform.default.scss" />
+    <Content Include="Content\themes\uniformjs\aristo\css\uniform.aristo.scss" />
+    <Content Include="Content\themes\uniformjs\agent\css\uniform.agent.scss" />
+    <Content Include="Content\themes\uniformjs\_base\css\uniform._base.scss" />
+    <Content Include="Content\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font\FontAwesome.otf" />
+    <None Include="BundleTransformer.Configuration.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\PublishProfiles\bc-dashboard - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\bc-dashboard - Web Deploy.pubxml" />
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery.blockui.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\excanvas.min.js" />
+    <Content Include="Scripts\excanvas.js" />
+    <Content Include="Scripts\fullcalendar.js" />
+    <Content Include="Scripts\fullcalendar.min.js" />
+    <Content Include="Scripts\gcal.js" />
+    <Content Include="Scripts\gravatar\README.md" />
+    <Content Include="Scripts\gravatar\jquery.gravatar.js" />
+    <Content Include="Scripts\html5shiv.js" />
+    <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.0.3.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\jquery-migrate-1.1.1.js" />
+    <Content Include="Scripts\jquery-migrate-1.1.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
+    <Content Include="Scripts\jquery.blockUI.min.js" />
     <Content Include="Scripts\jquery.cookie.js" />
-    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
-    <Content Include="Scripts\knockout.mapping-latest.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Scripts\jquery-ui-1.10.2.js" />
-    <Content Include="Scripts\jquery-ui-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.cookie.min.js" />
+    <Content Include="Scripts\jquery.fancybox-buttons.js" />
+    <Content Include="Scripts\jquery.fancybox-media.js" />
+    <Content Include="Scripts\jquery.fancybox-thumbs.js" />
+    <Content Include="Scripts\jquery.fancybox.js" />
+    <Content Include="Scripts\jquery.fancybox.pack.js" />
+    <Content Include="Scripts\jquery.gritter.js" />
+    <Content Include="Scripts\jquery.gritter.min.js" />
+    <Content Include="Scripts\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="Scripts\jquery.slimscroll.js" />
+    <Content Include="Scripts\jquery.slimscroll.min.js" />
+    <Content Include="Scripts\jquery.uniform.js" />
+    <Content Include="Scripts\jquery.uniform.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\json2.js" />
+    <Content Include="Scripts\knockout-2.3.0.debug.js" />
+    <Content Include="Scripts\knockout-2.3.0.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.2.1.debug.js" />
-    <Content Include="Scripts\knockout-2.2.1.js" />
+    <Content Include="Scripts\gravatar\md5.js" />
+    <Content Include="Scripts\md5.js" />
+    <Content Include="Scripts\metronic\metronic.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Assets\plugins\placeholder-2.0.7\jquery.placeholder.js" />
-    <Content Include="Assets\plugins\placeholder-2.0.7\jquery.placeholder.min.js" />
-    <Content Include="Assets\plugins\uniform-2.1.0\css\uniform.default.css" />
-    <Content Include="Assets\plugins\uniform-2.1.0\images\bg-input-focus.png" />
-    <Content Include="Assets\plugins\uniform-2.1.0\images\bg-input.png" />
-    <Content Include="Assets\plugins\uniform-2.1.0\images\sprite.png" />
-    <Content Include="Assets\plugins\uniform-2.1.0\images\sprite_original.png" />
-    <Content Include="Assets\plugins\uniform-2.1.0\jquery.uniform.js" />
-    <Content Include="Assets\plugins\uniform-2.1.0\jquery.uniform.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -2097,8 +2420,6 @@
     <Content Include="Views\Error\HttpError500.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\EditorTemplates\Login.cshtml" />
-    <Content Include="Assets\plugins\placeholder-2.0.7\README.md" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
@@ -2117,6 +2438,12 @@
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\EditorTemplates\ForgotPassword.cshtml" />
+    <Content Include="Views\UI\KOProfile.cshtml" />
+    <Content Include="Views\Account\Unlock.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\_html5shiv.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Profile_DisplayName.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Profile_EmailAddress.cshtml" />
     <None Include="Web.Azure.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2141,6 +2468,10 @@
     <ProjectReference Include="..\Infra\Infra.csproj">
       <Project>{3EB26B05-24F7-4360-A78B-CB72AA33992F}</Project>
       <Name>Infra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resources\Resources.csproj">
+      <Project>{1522D41F-13FF-4C02-BB30-353A05117AAE}</Project>
+      <Name>Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{0827660F-0A54-47D2-9278-9E636E8D655F}</Project>
@@ -2222,6 +2553,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.7\tools\Microsoft.Bcl.Build.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

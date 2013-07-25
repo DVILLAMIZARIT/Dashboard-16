@@ -4,15 +4,11 @@ var Charts = function () {
         //main function to initiate the module
 
         init: function () {
-            App.addResponsiveHandler(function () {
-                Charts.initPieCharts(); // need to subscribe to reponsive handler in order to fix the pie charts while window resized.
-            });
 
-            $('.page-sidebar .sidebar-toggler').click(function () {
-                setTimeout(function () {
-                    Charts.initPieCharts(); // need to reinitialize pie charts when page layout changed(on sidebar close/hide).
-                }, 100);
+            App.addResponsiveHandler(function () {
+                 Charts.initPieCharts(); 
             });
+            
         },
 
         initCharts: function () {
@@ -58,42 +54,42 @@ var Charts = function () {
                     d3.push([i, Math.tan(i)]);
 
                 $.plot($("#chart_1"), [{
-                        label: "sin(x)",
-                        data: d1
-                    }, {
-                        label: "cos(x)",
-                        data: d2
-                    }, {
-                        label: "tan(x)",
-                        data: d3
-                    }
-                ], {
-                    series: {
-                        lines: {
-                            show: true
+                            label: "sin(x)",
+                            data: d1
+                        }, {
+                            label: "cos(x)",
+                            data: d2
+                        }, {
+                            label: "tan(x)",
+                            data: d3
+                        }
+                    ], {
+                        series: {
+                            lines: {
+                                show: true
+                            },
+                            points: {
+                                show: true
+                            }
                         },
-                        points: {
-                            show: true
+                        xaxis: {
+                            ticks: [0, [Math.PI / 2, "\u03c0/2"],
+                                [Math.PI, "\u03c0"],
+                                [Math.PI * 3 / 2, "3\u03c0/2"],
+                                [Math.PI * 2, "2\u03c0"]
+                            ]
+                        },
+                        yaxis: {
+                            ticks: 10,
+                            min: -2,
+                            max: 2
+                        },
+                        grid: {
+                            backgroundColor: {
+                                colors: ["#fff", "#eee"]
+                            }
                         }
-                    },
-                    xaxis: {
-                        ticks: [0, [Math.PI / 2, "\u03c0/2"],
-                            [Math.PI, "\u03c0"],
-                            [Math.PI * 3 / 2, "3\u03c0/2"],
-                            [Math.PI * 2, "2\u03c0"]
-                        ]
-                    },
-                    yaxis: {
-                        ticks: 10,
-                        min: -2,
-                        max: 2
-                    },
-                    grid: {
-                        backgroundColor: {
-                            colors: ["#fff", "#eee"]
-                        }
-                    }
-                });
+                    });
 
             }
 
@@ -169,63 +165,63 @@ var Charts = function () {
                 ];
 
                 var plot = $.plot($("#chart_2"), [{
-                        data: pageviews,
-                        label: "Unique Visits"
-                    }, {
-                        data: visitors,
-                        label: "Page Views"
-                    }
-                ], {
-                    series: {
-                        lines: {
-                            show: true,
-                            lineWidth: 2,
-                            fill: true,
-                            fillColor: {
-                                colors: [{
-                                        opacity: 0.05
-                                    }, {
-                                        opacity: 0.01
-                                    }
-                                ]
-                            }
+                            data: pageviews,
+                            label: "Unique Visits"
+                        }, {
+                            data: visitors,
+                            label: "Page Views"
+                        }
+                    ], {
+                        series: {
+                            lines: {
+                                show: true,
+                                lineWidth: 2,
+                                fill: true,
+                                fillColor: {
+                                    colors: [{
+                                            opacity: 0.05
+                                        }, {
+                                            opacity: 0.01
+                                        }
+                                    ]
+                                }
+                            },
+                            points: {
+                                show: true
+                            },
+                            shadowSize: 2
                         },
-                        points: {
-                            show: true
+                        grid: {
+                            hoverable: true,
+                            clickable: true,
+                            tickColor: "#eee",
+                            borderWidth: 0
                         },
-                        shadowSize: 2
-                    },
-                    grid: {
-                        hoverable: true,
-                        clickable: true,
-                        tickColor: "#eee",
-                        borderWidth: 0
-                    },
-                    colors: ["#d12610", "#37b7f3", "#52e136"],
-                    xaxis: {
-                        ticks: 11,
-                        tickDecimals: 0
-                    },
-                    yaxis: {
-                        ticks: 11,
-                        tickDecimals: 0
-                    }
-                });
+                        colors: ["#d12610", "#37b7f3", "#52e136"],
+                        xaxis: {
+                            ticks: 11,
+                            tickDecimals: 0
+                        },
+                        yaxis: {
+                            ticks: 11,
+                            tickDecimals: 0
+                        }
+                    });
 
 
                 function showTooltip(x, y, contents) {
                     $('<div id="tooltip">' + contents + '</div>').css({
-                        position: 'absolute',
-                        display: 'none',
-                        top: y + 5,
-                        left: x + 15,
-                        border: '1px solid #333',
-                        padding: '4px',
-                        color: '#fff',
-                        'border-radius': '3px',
-                        'background-color': '#333',
-                        opacity: 0.80
-                    }).appendTo("body").fadeIn(200);
+                            position: 'absolute',
+                            display: 'none',
+                            top: y + 5,
+                            left: x + 15,
+                            border: '1px solid #333',
+                            padding: '4px',
+                            color: '#fff',
+                            'border-radius': '3px',
+                            'background-color': '#333',
+                            opacity: 0.80
+                        }).appendTo("body").fadeIn(200);
                 }
 
                 var previousPoint = null;
@@ -263,30 +259,30 @@ var Charts = function () {
                 }
 
                 plot = $.plot($("#chart_3"), [{
-                        data: sin,
-                        label: "sin(x) = -0.00"
-                    }, {
-                        data: cos,
-                        label: "cos(x) = -0.00"
-                    }
-                ], {
-                    series: {
-                        lines: {
-                            show: true
+                            data: sin,
+                            label: "sin(x) = -0.00"
+                        }, {
+                            data: cos,
+                            label: "cos(x) = -0.00"
                         }
-                    },
-                    crosshair: {
-                        mode: "x"
-                    },
-                    grid: {
-                        hoverable: true,
-                        autoHighlight: false
-                    },
-                    yaxis: {
-                        min: -1.2,
-                        max: 1.2
-                    }
-                });
+                    ], {
+                        series: {
+                            lines: {
+                                show: true
+                            }
+                        },
+                        crosshair: {
+                            mode: "x"
+                        },
+                        grid: {
+                            hoverable: true,
+                            autoHighlight: false
+                        },
+                        yaxis: {
+                            min: -1.2,
+                            max: 1.2
+                        }
+                    });
 
                 var legends = $("#chart_3 .legendLabel");
                 legends.each(function () {
@@ -401,19 +397,19 @@ var Charts = function () {
 
                 function plotWithOptions() {
                     $.plot($("#chart_5"), [d1, d2, d3], {
-                        series: {
-                            stack: stack,
-                            lines: {
-                                show: lines,
-                                fill: true,
-                                steps: steps
-                            },
-                            bars: {
-                                show: bars,
-                                barWidth: 0.6
+                            series: {
+                                stack: stack,
+                                lines: {
+                                    show: lines,
+                                    fill: true,
+                                    steps: steps
+                                },
+                                bars: {
+                                    show: bars,
+                                    barWidth: 0.6
+                                }
                             }
-                        }
-                    });
+                        });
                 }
 
                 $(".stackControls input").click(function (e) {
@@ -442,95 +438,259 @@ var Charts = function () {
         },
 
         initPieCharts: function () {
-            var graphData = [];
-            var series = Math.floor(Math.random() * 10) + 2;
+
+            var data = [];
+            var series = Math.floor(Math.random() * 10) + 1;
+            series = series < 5 ? 5 : series;
+            
             for (var i = 0; i < series; i++) {
-                graphData[i] = {
+                data[i] = {
                     label: "Series" + (i + 1),
-                    data: Math.floor((Math.random() - 1) * 100) + 1
+                    data: Math.floor(Math.random() * 100) + 1
                 }
             }
 
-            $.plot($("#graph_1"), graphData, {
-                series: {
-                    pie: {
-                        show: true,
-                        radius: 1,
-                        label: {
+            // DEFAULT
+            $.plot($("#pie_chart"), data, {
+                    series: {
+                        pie: {
+                            show: true
+                        }
+                    }
+                });
+
+            // GRAPH 1
+            $.plot($("#pie_chart_1"), data, {
+                    series: {
+                        pie: {
+                            show: true
+                        }
+                    },
+                    legend: {
+                        show: false
+                    }
+                });
+
+            // GRAPH 2
+            $.plot($("#pie_chart_2"), data, {
+                    series: {
+                        pie: {
                             show: true,
                             radius: 1,
-                            formatter: function (label, series) {
-                                return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
-                            },
-                            background: {
-                                opacity: 0.8
+                            label: {
+                                show: true,
+                                radius: 1,
+                                formatter: function (label, series) {
+                                    return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                                },
+                                background: {
+                                    opacity: 0.8
+                                }
                             }
                         }
+                    },
+                    legend: {
+                        show: false
                     }
-                },
-                legend: {
-                    show: false
-                }
-            });
+                });
 
-            $.plot($("#graph_2"), graphData, {
-                series: {
-                    pie: {
-                        show: true,
-                        radius: 1,
-                        label: {
+            // GRAPH 3
+            $.plot($("#pie_chart_3"), data, {
+                    series: {
+                        pie: {
+                            show: true,
+                            radius: 1,
+                            label: {
+                                show: true,
+                                radius: 3 / 4,
+                                formatter: function (label, series) {
+                                    return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                                },
+                                background: {
+                                    opacity: 0.5
+                                }
+                            }
+                        }
+                    },
+                    legend: {
+                        show: false
+                    }
+                });
+
+            // GRAPH 4
+            $.plot($("#pie_chart_4"), data, {
+                    series: {
+                        pie: {
+                            show: true,
+                            radius: 1,
+                            label: {
+                                show: true,
+                                radius: 3 / 4,
+                                formatter: function (label, series) {
+                                    return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                                },
+                                background: {
+                                    opacity: 0.5,
+                                    color: '#000'
+                                }
+                            }
+                        }
+                    },
+                    legend: {
+                        show: false
+                    }
+                });
+
+            // GRAPH 5
+            $.plot($("#pie_chart_5"), data, {
+                    series: {
+                        pie: {
                             show: true,
                             radius: 3 / 4,
-                            formatter: function (label, series) {
-                                return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
-                            },
-                            background: {
-                                opacity: 0.5
+                            label: {
+                                show: true,
+                                radius: 3 / 4,
+                                formatter: function (label, series) {
+                                    return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                                },
+                                background: {
+                                    opacity: 0.5,
+                                    color: '#000'
+                                }
                             }
                         }
+                    },
+                    legend: {
+                        show: false
                     }
-                },
-                legend: {
-                    show: false
-                }
-            });
+                });
 
-            $.plot($("#graph_3"), graphData, {
-                series: {
-                    pie: {
-                        show: true
+            // GRAPH 6
+            $.plot($("#pie_chart_6"), data, {
+                    series: {
+                        pie: {
+                            show: true,
+                            radius: 1,
+                            label: {
+                                show: true,
+                                radius: 2 / 3,
+                                formatter: function (label, series) {
+                                    return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                                },
+                                threshold: 0.1
+                            }
+                        }
+                    },
+                    legend: {
+                        show: false
                     }
-                },
-                grid: {
-                    hoverable: true,
-                    clickable: true
-                }
-            });
-            $("#graph_3").bind("plothover", pieHover);
-            $("#graph_3").bind("plotclick", pieClick);
+                });
+
+            // GRAPH 7
+            $.plot($("#pie_chart_7"), data, {
+                    series: {
+                        pie: {
+                            show: true,
+                            combine: {
+                                color: '#999',
+                                threshold: 0.1
+                            }
+                        }
+                    },
+                    legend: {
+                        show: false
+                    }
+                });
+
+            // GRAPH 8
+            $.plot($("#pie_chart_8"), data, {
+                    series: {
+                        pie: {
+                            show: true,
+                            radius: 300,
+                            label: {
+                                show: true,
+                                formatter: function (label, series) {
+                                    return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                                },
+                                threshold: 0.1
+                            }
+                        }
+                    },
+                    legend: {
+                        show: false
+                    }
+                });
+
+            // GRAPH 9
+            $.plot($("#pie_chart_9"), data, {
+                    series: {
+                        pie: {
+                            show: true,
+                            radius: 1,
+                            tilt: 0.5,
+                            label: {
+                                show: true,
+                                radius: 1,
+                                formatter: function (label, series) {
+                                    return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                                },
+                                background: {
+                                    opacity: 0.8
+                                }
+                            },
+                            combine: {
+                                color: '#999',
+                                threshold: 0.1
+                            }
+                        }
+                    },
+                    legend: {
+                        show: false
+                    }
+                });
+
+            // DONUT
+            $.plot($("#donut"), data, {
+                    series: {
+                        pie: {
+                            innerRadius: 0.5,
+                            show: true
+                        }
+                    }
+                });
+
+            // INTERACTIVE
+            $.plot($("#interactive"), data, {
+                    series: {
+                        pie: {
+                            show: true
+                        }
+                    },
+                    grid: {
+                        hoverable: true,
+                        clickable: true
+                    }
+                });
+            $("#interactive").bind("plothover", pieHover);
+            $("#interactive").bind("plotclick", pieClick);
 
             function pieHover(event, pos, obj) {
-                if (!obj) return;
+            if (!obj)
+                    return;
                 percent = parseFloat(obj.series.percent).toFixed(2);
                 $("#hover").html('<span style="font-weight: bold; color: ' + obj.series.color + '">' + obj.series.label + ' (' + percent + '%)</span>');
             }
 
             function pieClick(event, pos, obj) {
-                if (!obj) return;
+                if (!obj)
+                    return;
                 percent = parseFloat(obj.series.percent).toFixed(2);
                 alert('' + obj.series.label + ': ' + percent + '%');
             }
 
-            $.plot($("#graph_4"), graphData, {
-                series: {
-                    pie: {
-                        innerRadius: 0.5,
-                        show: true
-                    }
-                }
-            });
         }
-
+        
     };
 
 }();

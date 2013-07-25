@@ -1,0 +1,78 @@
+﻿@using WebUI.Helpers.Gravatar
+@model WebUI.Models.Account.Unlock
+@{
+    ViewBag.Title = "Locked Out";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BodyCssClass = String.Empty;
+}
+@section Styles
+{
+    @Styles.Render("~/css/metronic/lock")
+}
+@section Scripts
+{
+    @Scripts.Render(WebUI.BundleNames.jQuery_Backstretch_ScriptBundle)
+    @Scripts.Render(WebUI.BundleNames.jQuery_Validate_ScriptBundle)
+    @Scripts.Render(WebUI.BundleNames.jQuery_Unobtrusive_ScriptBundle)
+    <script type="text/javascript">
+        $(function () {
+            $.backstretch && $.backstretch([
+                '@Url.Content("~/Assets/img/bg/1.jpg")',
+                '@Url.Content("~/Assets/img/bg/2.jpg")',
+                '@Url.Content("~/Assets/img/bg/3.jpg")',
+                '@Url.Content("~/Assets/img/bg/4.jpg")'
+            ], {
+                fade: 1e3,
+                duration: 8e3
+            });
+            $.validator && $.validator.setDefaults({
+                errorElement: 'span',
+                errorClass: 'help-inline',
+                focusInvalid: false,
+                highlight: function (element) {
+                    $(element).closest('.help-inline').removeClass('ok');
+                    $(element).closest('.control-group').removeClass('success').addClass('error');
+                },
+                unhighlight: function (element) {
+                    $(element).closest('.control-group').removeClass('error');
+                },
+                success: function (label) {
+                    $(label).addClass('valid help-inline ok')
+                        .closest('control-group').removeClass('error').addClass('success');
+                }
+            });
+        });
+    </script>
+}
+<div class="page-lock">
+    <div class="page-logo">
+        <a href="@Url.RouteUrl("Default")" class="brand">
+            <img src="@Url.Content("~/Assets/img/logo-big.png")" alt="logo" />
+        </a>
+    </div>
+    <div class="page-body">
+        @Html.Gravatar(Model.EmailAddress, 200).HtmlAttributes(new { @class = "page-lock-img" })
+        <div class="page-lock-info">
+            <h1>@Model.DisplayName</h1>
+            <span>@Model.EmailAddress</span>
+            <span><em>Locked</em></span>
+            @using (Html.BeginRouteForm("Account_Unlock_POST", FormMethod.Post, new { @class = "form-search" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(x => x.Username)
+                @Html.HiddenFor(x => x.DisplayName)
+                @Html.HiddenFor(x => x.EmailAddress)
+                <div class="input-append">
+                    @Html.PasswordFor(x => x.Password, new { @class = "m-wrap", placeholder = "Password" })
+                    <button class="btn blue icn-only">@Metro.Icon("m-icon-swapright m-icon-white")</button>
+                </div>
+                <div class="relogin">
+                    @Html.RouteLink(String.Format("Not {0}?", Model.DisplayName), "Account_Login")
+                </div>
+            }
+        </div>
+    </div>
+    <div class="page-footer">
+        2013 &copy; Metronic. admin Dashboard Template.
+    </div>
+</div>

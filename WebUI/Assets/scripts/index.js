@@ -105,7 +105,7 @@ var Index = function () {
 
             var h = {};
 
-            if ($('#calendar').width() <= 500) {
+            if ($('#calendar').width() <= 400) {
                 $('#calendar').addClass("mobile");
                 h = {
                     left: 'title, prev, next',
@@ -142,7 +142,7 @@ var Index = function () {
                         title: 'Long Event',
                         start: new Date(y, m, d - 5),
                         end: new Date(y, m, d - 2),
-                        backgroundColor: App.getLayoutColorCode('light-grey')
+                        backgroundColor: App.getLayoutColorCode('green')
                     }, {
                         title: 'Repeating Event',
                         start: new Date(y, m, d - 3, 16, 0),
@@ -599,7 +599,9 @@ var Index = function () {
             var input = $('input', form);
             var btn = $('.btn', form);
 
-            var handleClick = function () {
+            var handleClick = function (e) {
+                e.preventDefault();
+                
                 var text = input.val();
                 if (text.length == 0) {
                     return;
@@ -627,9 +629,11 @@ var Index = function () {
                 });
             }
 
+            /*
             $('.scroller', cont).slimScroll({
                 scrollTo: list.height()
             });
+            */
 
             btn.click(handleClick);
             input.keypress(function (e) {

@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace WebUI.Models.Account
 {
-    [Bind(Prefix = "forgotPassword")]
+    [Bind(Prefix = "ForgotPassword")]
     public class ForgotPassword
     {
         [Required, Display(Name = "Email", Prompt = "Email"), DataType(DataType.EmailAddress), StringLength(255)]

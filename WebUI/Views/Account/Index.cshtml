@@ -7,11 +7,11 @@
 }
 @section Styles
 {
-    <link href="@Url.Content("~/assets/css/pages/profile.css")" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/css/metronic/profile")
 }
 @section Scripts
 {
-    @Scripts.Render("~/Scripts/jqueryval")
+    @Scripts.Render(WebUI.BundleNames.jQuery_Validate_ScriptBundle)
     <script type="text/javascript">
         $(function () {
             $.validator && $.validator.setDefaults({
@@ -32,7 +32,7 @@
             });
         });
     </script>
-    @Scripts.Render("~/Scripts/jqueryval-unobtrusive")
+    @Scripts.Render(WebUI.BundleNames.jQuery_Unobtrusive_ScriptBundle)
 }
 <div class="row-fluid profile">
     <div class="span12">
@@ -151,7 +151,7 @@
                         <a href="http://www.gravatar.com/" target="_blank" class="profile-edit">edit</a>
                     </div>
                     <ul class="unstyled span10">
-                        <li><span>@Html.DisplayNameFor(x => x.Username)</span> @Html.DisplayFor(x => x.Username)</li>
+                        @*<li><span>@Html.DisplayNameFor(x => x.Username)</span> @Html.DisplayFor(x => x.Username)</li>*@
                         <li><span>@Html.DisplayNameFor(x => x.DisplayName)</span> @Html.DisplayFor(x => x.DisplayName)</li>
                         <li><span>@Html.DisplayNameFor(x => x.EmailAddress)</span> @Html.DisplayFor(x => x.EmailAddress)</li>
                     </ul>

@@ -154,8 +154,8 @@
   <ItemGroup>
     <Compile Include="ContractExtensions.cs" />
     <Compile Include="Interfaces\DAL\IUserProfileRepository.cs" />
-    <Compile Include="Interfaces\IDeletableRepository.cs" />
-    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IDeletableRepository[T].cs" />
+    <Compile Include="Interfaces\IRepository[T].cs" />
     <Compile Include="Interfaces\Services\IMembershipService.cs" />
     <Compile Include="Interfaces\Services\IUserProfileService.cs" />
     <Compile Include="Model\DeletableEntity.cs" />
@@ -164,6 +164,7 @@
     <Compile Include="Model\IEntity.cs" />
     <Compile Include="Model\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringInjectExtension.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -18,13 +18,30 @@ namespace WebUI.Controllers
             this.membershipService = membershipService;
         }
 
+        [Route("KOProfile", RouteName = "UI_KOProfile")]
+        public PartialViewResult KOProfile() // KnockoutJS
+        {
+            KOProfile model = null;
+            var profile = this.membershipService.GetProfile();
+            if (profile != null)
+            {
+                model = new KOProfile
+                {
+                    DisplayName = profile.DisplayName,
+                    EmailAddress = profile.EmailAddress,
+                    UserName = profile.UserName
+                };
+            }
+            return PartialView(model);
+        }
+
         [Authorize, Route("Notifications", RouteName = "UI_Notifications")]
         public PartialViewResult Notifications()
         {
             return PartialView(this.GetNotifications() ?? Enumerable.Empty<Notification>());
         }
 
-        [Route("UserDropdown", RouteName = "UI_UserDropdown")]
+        [Authorize, Route("UserDropdown", RouteName = "UI_UserDropdown")]
         public PartialViewResult UserDropdown()
         {
             var profile = this.membershipService.GetProfile();
@@ -32,16 +49,13 @@ namespace WebUI.Controllers
             {
                 UserDropdown model = new UserDropdown
                 {
-                    Name = profile.DisplayName,
+                    IsAuthenticated = true,
+                    UserName = profile.UserName,
                     EmailAddress = profile.EmailAddress
                 };
                 return PartialView(model);
             }
-            return PartialView(new UserDropdown
-            {
-                EmailAddress = "anonymous@anonymous.com",
-                Name = "Anonymous"
-            });
+            return PartialView(new UserDropdown());
         }
     }
 }

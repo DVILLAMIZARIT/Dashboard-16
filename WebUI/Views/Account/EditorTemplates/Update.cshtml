@@ -1,24 +1,24 @@
 ﻿@model WebUI.Models.Account.Update
 <div id="account_update_ajax">
     @using (Ajax.BeginRouteForm("Account_Update", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "account_update_ajax" }))
-    { 
+    {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(x => x.Id)
         @Html.ValidationSummary(true, "Update your profile information below.", new { @class = "alert alert-block" })
     
         <div class="control-group">
             @Html.LabelFor(x => x.Username, new { @class = "control-label" })
-            @Html.TextBoxFor(x => x.Username, new { @class = "m-wrap span8", @readonly = true })
+            @Html.TextBoxFor(x => x.Username, new { @class = "m-wrap span8", @readonly = true, data_bind = "value: UserName" })
             @Html.ValidationMessageFor(x => x.Username, "", new { @class = "help-inline" })
         </div>
         <div class="control-group">
             @Html.LabelFor(x => x.DisplayName, new { @class = "control-label" })
-            @Html.TextBoxFor(x => x.DisplayName, new { @class = "m-wrap span8" })
+            @Html.TextBoxFor(x => x.DisplayName, new { @class = "m-wrap span8", data_bind = "value: DisplayName" })
             @Html.ValidationMessageFor(x => x.DisplayName, "", new { @class = "help-inline" })
         </div>
         <div class="control-group">
             @Html.LabelFor(x => x.EmailAddress, new { @class = "control-label" })
-            @Html.TextBoxFor(x => x.EmailAddress, new { @class = "m-wrap span8" })
+            @Html.TextBoxFor(x => x.EmailAddress, new { @class = "m-wrap span8", data_bind = "value: EmailAddress" })
             @Html.ValidationMessageFor(x => x.EmailAddress, "", new { @class = "help-inline" })
         </div>
         <div class="form-actions">

@@ -10,10 +10,10 @@ namespace WebUI.Models.Account
         [Required, HiddenInput(DisplayValue = false)]
         public Int32 Id { get; set; }
 
-        [Required, Display(Name = "Display Name", Prompt = "Display Name"), StringLength(50)]
+        [Required, Display(Name = "Display Name", Prompt = "Display Name"), StringLength(50), UIHint("Profile_DisplayName")]
         public String DisplayName { get; set; }
 
-        [Required, Display(Name = "Email", Prompt = "Email"), DataType(DataType.EmailAddress), StringLength(255)]
+        [Required, Display(Name = "Email", Prompt = "Email"), DataType(DataType.EmailAddress), StringLength(255), UIHint("Profile_EmailAddress")]
         public String EmailAddress { get; set; }
 
         [HiddenInput(DisplayValue = true)]

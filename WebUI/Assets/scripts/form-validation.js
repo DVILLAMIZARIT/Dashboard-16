@@ -81,6 +81,11 @@ var FormValidation = function () {
             });
 
             //Sample 2
+            $('#form_2_select2').select2({
+                placeholder: "Select an Option",
+                allowClear: true
+            });
+
             var form2 = $('#form_sample_2');
             var error2 = $('.alert-error', form2);
             var success2 = $('.alert-success', form2);
@@ -102,7 +107,10 @@ var FormValidation = function () {
                     category: {
                         required: true
                     },
-                    education: {
+                    options1: {
+                        required: true
+                    },
+                    options2: {
                         required: true
                     },
                     occupation: {
@@ -178,6 +186,11 @@ var FormValidation = function () {
 
             //apply validation on chosen dropdown value change, this only needed for chosen dropdown integration.
             $('.chosen, .chosen-with-diselect', form2).change(function () {
+                form2.validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
+            });
+
+             //apply validation on select2 dropdown value change, this only needed for chosen dropdown integration.
+            $('.select2', form2).change(function () {
                 form2.validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
             });
 

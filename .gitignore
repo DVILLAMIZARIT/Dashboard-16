@@ -165,3 +165,12 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+#########
+# Hacks
+#########
+
+# Include the Microsoft.Bcl.Build package target
+# http://blogs.msdn.com/b/dotnet/archive/2013/06/12/nuget-package-restore-issues.aspx
+# https://connect.microsoft.com/VisualStudio/feedback/details/788981/microsoft-bcl-build-targets-causes-project-loading-to-fail
+!packages/Microsoft.Bcl.Build*/tools/Microsoft.Bcl.Build.targets

@@ -13,6 +13,7 @@ var Calendar = function () {
                 Calendar.initCalendar();
             });
 
+            Calendar.initCalendar();
         },
 
         initCalendar: function () {
@@ -27,21 +28,41 @@ var Calendar = function () {
             var y = date.getFullYear();
 
             var h = {};
-            if ($('#calendar').parents(".portlet").width() <= 720) {
-                $('#calendar').addClass("mobile");
-                h = {
-                    left: 'title, prev, next',
-                    center: '',
-                    right: 'today,month,agendaWeek,agendaDay'
-                };
+
+            if (App.isRTL()) {
+                 if ($('#calendar').parents(".portlet").width() <= 720) {
+                    $('#calendar').addClass("mobile");
+                    h = {
+                        right: 'title, prev, next',
+                        center: '',
+                        right: 'agendaDay, agendaWeek, month, today'
+                    };
+                } else {
+                    $('#calendar').removeClass("mobile");
+                    h = {
+                        right: 'title',
+                        center: '',
+                        left: 'agendaDay, agendaWeek, month, today, prev,next'
+                    };
+                }                
             } else {
-                $('#calendar').removeClass("mobile");
-                h = {
-                    left: 'title',
-                    center: '',
-                    right: 'prev,next,today,month,agendaWeek,agendaDay'
-                };
+                 if ($('#calendar').parents(".portlet").width() <= 720) {
+                    $('#calendar').addClass("mobile");
+                    h = {
+                        left: 'title, prev, next',
+                        center: '',
+                        right: 'today,month,agendaWeek,agendaDay'
+                    };
+                } else {
+                    $('#calendar').removeClass("mobile");
+                    h = {
+                        left: 'title',
+                        center: '',
+                        right: 'prev,next,today,month,agendaWeek,agendaDay'
+                    };
+                }
             }
+           
 
             var initDrag = function (el) {
                 // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
@@ -120,7 +141,7 @@ var Calendar = function () {
                         title: 'Long Event',
                         start: new Date(y, m, d - 5),
                         end: new Date(y, m, d - 2),
-                        backgroundColor: App.getLayoutColorCode('light-grey')
+                        backgroundColor: App.getLayoutColorCode('green')
                     }, {
                         title: 'Repeating Event',
                         start: new Date(y, m, d - 3, 16, 0),

@@ -48,6 +48,15 @@ var MapsVector = function () {
             setMap("europe");
             setMap("russia");
             setMap("germany");
+
+            // redraw maps on window or content resized 
+            App.addResponsiveHandler(function(){
+                setMap("world");
+                setMap("usa");
+                setMap("europe");
+                setMap("russia");
+                setMap("germany");
+            });
         }
 
     };

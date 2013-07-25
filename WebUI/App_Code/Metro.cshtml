@@ -2,3 +2,36 @@
 {
     <i class="@iconName"></i>
 }
+
+@helper ErrorAlert(String message, String title = null)
+{
+    <div class="alert alert-error">
+        <button class="close" data-dismiss="alert"></button>
+        <strong>@(title ?? "Error!")</strong>
+        @message
+    </div>
+}
+@helper InfoAlert(String message, String title = null)
+{
+    <div class="alert alert-info">
+        <button class="close" data-dismiss="alert"></button>
+        <strong>@(title ?? "Info!")</strong>
+        @message
+    </div>
+}
+@helper SuccessAlert(String message, String title = null)
+{
+    <div class="alert alert-success">
+        <button class="close" data-dismiss="alert"></button>
+        <strong>@(title ?? "Success!")</strong>
+        @message
+    </div>
+}
+@helper WarningAlert(String message, String title = null)
+{
+    <div class="alert">
+        <button class="close" data-dismiss="alert"></button>
+        <strong>@(title ?? "Warning!")</strong>
+        @message
+    </div>
+}

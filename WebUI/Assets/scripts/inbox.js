@@ -58,7 +58,9 @@ var Inbox = function () {
     }
 
     var initWysihtml5 = function () {
-        $('.inbox-wysihtml5').wysihtml5();
+        $('.inbox-wysihtml5').wysihtml5({
+            "stylesheets": ["assets/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
+        });
     }
 
     var initFileupload = function () {

@@ -159,25 +159,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configurations\DeletableEntityConfiguration.cs" />
-    <Compile Include="Configurations\EntityConfiguration.cs" />
+    <Compile Include="Configurations\DeletableEntityConfiguration[TEntity].cs" />
+    <Compile Include="Configurations\EntityConfiguration[TEntity].cs" />
     <Compile Include="Configurations\UserProfileConfiguration.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="DataContextFactory.cs" />
     <Compile Include="Interfaces\IDataContext.cs" />
     <Compile Include="Interfaces\IDataContextFactory.cs" />
-    <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Interfaces\IUnitOfWork[TContext].cs" />
     <Compile Include="Migrations\201303221323291_Init.cs" />
     <Compile Include="Migrations\201303221323291_Init.Designer.cs">
       <DependentUpon>201303221323291_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="NullDatabaseInitializer.cs" />
+    <Compile Include="NullDatabaseInitializer[TContext].cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\Repository[T].cs" />
     <Compile Include="Repositories\UserProfileRepository.cs" />
-    <Compile Include="SchemaSynchonizer.cs" />
-    <Compile Include="UnitOfWork.cs" />
+    <Compile Include="SchemaSynchonizer[TContext].cs" />
+    <Compile Include="UnitOfWork[TContext].cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">

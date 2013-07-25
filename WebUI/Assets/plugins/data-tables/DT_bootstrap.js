@@ -43,8 +43,8 @@ $.extend( $.fn.dataTableExt.oPagination, {
 
 			$(nPaging).addClass('pagination').append(
 				'<ul>'+
-					'<li class="prev disabled"><a href="#">&larr; '+oLang.sPrevious+'</a></li>'+
-					'<li class="next disabled"><a href="#">'+oLang.sNext+' &rarr; </a></li>'+
+					'<li class="prev disabled"><a href="#">&larr; <span class="hidden-480">'+oLang.sPrevious+'</span></a></li>'+
+					'<li class="next disabled"><a href="#"><span class="hidden-480">'+oLang.sNext+'</span> &rarr; </a></li>'+
 				'</ul>'
 			);
 			var els = $('a', nPaging);

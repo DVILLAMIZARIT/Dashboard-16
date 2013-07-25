@@ -10,7 +10,6 @@
         <mvcSiteMapNode title="Home" controller="Default" action="Index" imageUrl="icon-home" />
         <mvcSiteMapNode title="My Account" controller="Account" action="Index" imageUrl="icon-book" clickable="false">
             <mvcSiteMapNode title="Profile" controller="Account" action="Index" imageUrl="icon-user" />
-            <mvcSiteMapNode title="Log out" controller="Account" action="Logout" imageUrl="icon-off" />
         </mvcSiteMapNode>
         <!--<mvcSiteMapNode title="Search" controller="Default" action="Search" imageUrl="icon-search"  />
         <mvcSiteMapNode title="Error" clickable="false" imageUrl="icon-bullhorn">

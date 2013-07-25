@@ -16,7 +16,7 @@ namespace DAL
         #region Ctor
         
         public DataContext()
-            : base("name=DataContext")
+            : this("name=DataContext")
         {
         }
         public DataContext(String nameOrConnectionString)

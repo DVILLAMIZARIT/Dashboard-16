@@ -2,8 +2,8 @@
 @model WebUI.Models.UI.UserDropdown
 <li class="dropdown user">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        @Html.Gravatar(Model.EmailAddress, 29).DefaultImage(GravatarDefaultImage.GeneratedPattern).HtmlAttributes(new { alt = "To change visit gravatar.com" })
-        <span class="username">@Model.Name</span>
+        @Html.Gravatar(Model.EmailAddress, 29).DefaultImage(GravatarDefaultImage.GeneratedPattern)
+        <span class="username">@Model</span>
         @Metro.Icon("icon-angle-down")
     </a>
     <ul class="dropdown-menu">
@@ -28,6 +28,11 @@
             </a>
         </li>
         <li class="divider"></li>
+        <li>
+            <a href="@Url.RouteUrl("Account_Lock", new { returnUrl = Request.RawUrl })">
+                @Metro.Icon("icon-lock") Lock
+            </a>
+        </li>
         <li>
             <a href="@Url.RouteUrl("Account_Logout")">
                 @Metro.Icon("icon-off") Log Out
