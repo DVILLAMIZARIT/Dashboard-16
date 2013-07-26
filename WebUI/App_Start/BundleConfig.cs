@@ -279,6 +279,7 @@ namespace WebUI
                 "~/Scripts/jquery.slimscroll.js", // jQuery_SlimScroll_ScriptBundle,
                 "~/Scripts/jquery.uniform.js", // jQuery_Uniform_ScriptBundle
                 "~/Scripts/md5js",
+                "~/Scripts/moment.js", // http://momentjs.com/
 
                 "~/Scripts/metronic/metronic.js"
             );
