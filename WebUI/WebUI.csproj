@@ -380,7 +380,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\DataContext.sdf" />
     <Content Include="Assets\css\animate.css" />
     <Content Include="Assets\css\pages\about-us.css" />
     <Content Include="Assets\css\pages\blog.css" />
@@ -2452,6 +2451,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Assets\plugins\bootstrap-fileupload\bootstrap-editable-1.4.4\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\" />
     <Folder Include="Assets\plugins\jquery-file-upload\server\php\files\thumbnail\" />
   </ItemGroup>
