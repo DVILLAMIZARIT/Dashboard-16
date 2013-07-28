@@ -5,7 +5,7 @@ namespace WebUI
 {
     public static class StyleBundleExtension
     {
-        public static StyleBundle Include2(this StyleBundle styleBudle, params String[] virtualPaths)
+        public static StyleBundle IncludeWithCssRewriteTransform(this StyleBundle styleBudle, params String[] virtualPaths)
         {
             if (virtualPaths != null)
             {
@@ -81,17 +81,17 @@ namespace WebUI
             //
             // Font Awesome
             //
-            bundles.Add(new StyleBundle(BundleNames.FontAwesome_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.FontAwesome_StyleBundle).IncludeWithCssRewriteTransform(
                 "~/Content/font-awesome.css"
             ));
-            bundles.Add(new StyleBundle(BundleNames.FontAwesomeIE7_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.FontAwesomeIE7_StyleBundle).IncludeWithCssRewriteTransform(
                 "~/Content/font-awesome-ie7.css"
             ));
 
             //
             // IE 7
             //
-            bundles.Add(new StyleBundle(BundleNames.IE7_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.IE7_StyleBundle).IncludeWithCssRewriteTransform(
                 "~/Content/font-awesome-ie7.css"
             ));
             bundles.Add(new ScriptBundle(BundleNames.IE7_ScriptBundle).Include(
@@ -131,7 +131,7 @@ namespace WebUI
             //
             // jQuery Fullcalendar
             //
-            bundles.Add(new StyleBundle(BundleNames.jQuery_FullCalendar_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.jQuery_FullCalendar_StyleBundle).IncludeWithCssRewriteTransform(
                 "~/Content/fullcalendar.css"
             ));
             bundles.Add(new ScriptBundle(BundleNames.jQuery_FullCalendar_ScriptBundle).Include(
@@ -141,7 +141,7 @@ namespace WebUI
             //
             // jQuery Gritter
             //
-            bundles.Add(new StyleBundle(BundleNames.jQuery_Gritter_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.jQuery_Gritter_StyleBundle).IncludeWithCssRewriteTransform(
                 "~/Content/jquery.gritter.css"
             ));
             bundles.Add(new ScriptBundle(BundleNames.jQuery_Gritter_ScriptBundle).Include(
@@ -165,7 +165,7 @@ namespace WebUI
             //
             // jQuery UI
             //
-            bundles.Add(new StyleBundle(BundleNames.jQueryUI_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.jQueryUI_StyleBundle).IncludeWithCssRewriteTransform(
                 "~/Content/themes/base/jquery.ui.core.css",
                 "~/Content/themes/base/jquery.ui.resizable.css",
                 "~/Content/themes/base/jquery.ui.selectabke.css",
@@ -186,7 +186,7 @@ namespace WebUI
             //
             // jQuery Uniform
             //
-            bundles.Add(new StyleBundle(BundleNames.jQuery_Uniform_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.jQuery_Uniform_StyleBundle).IncludeWithCssRewriteTransform(
                 "~/Content/themes/uniformjs/default/css/uniform.default.css"
             ));
             bundles.Add(new ScriptBundle(BundleNames.jQuery_Uniform_ScriptBundle).Include(
@@ -233,7 +233,7 @@ namespace WebUI
             //
             // Twitter Bootstrap
             //
-            bundles.Add(new StyleBundle(BundleNames.Bootstrap_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.Bootstrap_StyleBundle).IncludeWithCssRewriteTransform(
                 "~/Content/bootstrap.css",
                 "~/Content/bootstrap-responsive.css"
             ));
@@ -249,19 +249,19 @@ namespace WebUI
             //
             // Metronic Themes
             //
-            bundles.Add(new StyleBundle(BundleNames.Metronic_DefaultTheme_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.Metronic_DefaultTheme_StyleBundle).IncludeWithCssRewriteTransform(
                 themeBase + "css/themes/default.css"
             ));
-            bundles.Add(new StyleBundle(BundleNames.Metronic_BlueTheme_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.Metronic_BlueTheme_StyleBundle).IncludeWithCssRewriteTransform(
                 themeBase + "css/themes/blue.css"
             ));
-            bundles.Add(new StyleBundle(BundleNames.Metronic_BrownTheme_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.Metronic_BrownTheme_StyleBundle).IncludeWithCssRewriteTransform(
                 themeBase + "css/themes/brown.css"
             ));
-            bundles.Add(new StyleBundle(BundleNames.Metronic_LightTheme_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.Metronic_LightTheme_StyleBundle).IncludeWithCssRewriteTransform(
                 themeBase + "css/themes/light.css"
             ));
-            bundles.Add(new StyleBundle(BundleNames.Metronic_PurpleTheme_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.Metronic_PurpleTheme_StyleBundle).IncludeWithCssRewriteTransform(
                 themeBase + "css/themes/purple.css"
             ));
 
@@ -286,7 +286,7 @@ namespace WebUI
             metronicScriptBundle.Transforms.Clear();
             metronicScriptBundle.Transforms.Add(new BundleTransformer.Core.Transformers.JsTransformer());
             bundles.Add(metronicScriptBundle);
-            bundles.Add(new StyleBundle(BundleNames.Metronic_StyleBundle).Include2(
+            bundles.Add(new StyleBundle(BundleNames.Metronic_StyleBundle).IncludeWithCssRewriteTransform(
                 "~/Content/bootstrap.css", "~/Content/bootstrap-responsive.css", // Bootstrap_StyleBundle,
                 "~/Content/font-awesome.css",
                 "~/Content/themes/base/jquery.ui.core.css", "~/Content/themes/base/jquery.ui.resizable.css", "~/Content/themes/base/jquery.ui.selectable.css", "~/Content/themes/base/jquery.ui.accordian.css", "~/Content/themes/base/jquery.ui.autocomplete.css", "~/Content/themes/base/jquery.ui.button.css", "~/Content/themes/base/jquery.ui.dialog.css", "~/Content/themes/base/jquery.ui.slider.css", "~/Content/themes/base/jquery.ui.tabs.css", "~/Content/themes/base/jquery.ui.datepicker.css", "~/Content/themes/base/jquery.ui.progressbar.css", "~/Content/themes/base/jquery.ui.theme.css", // jQueryUI_StyleBundle,
@@ -319,7 +319,7 @@ namespace WebUI
             //
             foreach (String page in new[] { "about-us", "blog", "coming-soon", "email", "error", "inbox", "invoice", "lock", "login-soft", "login", "news", "pricing-tables", "profile", "promo", "search", "timeline" })
             {
-                bundles.Add(new StyleBundle(String.Format("~/css/metronic/{0}", page)).Include2(
+                bundles.Add(new StyleBundle(String.Format("~/css/metronic/{0}", page)).IncludeWithCssRewriteTransform(
                     themeBase + String.Format("css/pages/{0}.css", page)
                 ));
             }
