@@ -2,18 +2,7 @@
 @Scripts.Render(WebUI.BundleNames.KockoutJS_ScriptBundle)
 <script type="text/javascript">
     (function(){
-        var profile = @Html.Raw(Json.Encode(Model));
-        /*
-            var ProfileVM = {
-                DisplayName: ko.observable(),
-                EmailAddress: ko.observable(),
-                UserName: ko.observable(),
-                GravatarURL: ko.computed(function () {
-                    var url = '
-                })
-            };
-            ko.mapping.fromJSON(profile, {}, ProfileVM);
-        */
+        @Html.Raw("var profile = " + Json.Encode(Model) + ";")
         var ProfileVM = ko.mapping.fromJS(profile);
         ko.applyBindings(ProfileVM);
     })();
