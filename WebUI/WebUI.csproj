@@ -2041,8 +2041,6 @@
     <Content Include="Assets\plugins\jquery-file-upload\server\gae-python\main.py" />
     <Content Include="Assets\plugins\jquery-file-upload\server\node\.gitignore" />
     <Content Include="Assets\plugins\jquery-file-upload\server\node\package.json" />
-    <Content Include="Assets\plugins\jquery-file-upload\server\node\public\files\thumbnail\.gitignore" />
-    <Content Include="Assets\plugins\jquery-file-upload\server\node\tmp\.gitignore" />
     <Content Include="Assets\plugins\jquery-file-upload\server\php\files\.htaccess" />
     <Content Include="Assets\plugins\jquery-inputmask\README.md" />
     <Content Include="Assets\plugins\jquery-knob\README.md" />
@@ -2189,6 +2187,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\plugins\bootstrap-fileupload\bootstrap-editable-1.4.4\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\" />
+    <Folder Include="Assets\plugins\jquery-file-upload\server\node\public\files\thumbnail\" />
+    <Folder Include="Assets\plugins\jquery-file-upload\server\node\tmp\" />
     <Folder Include="Assets\plugins\jquery-file-upload\server\php\files\thumbnail\" />
   </ItemGroup>
   <ItemGroup>
