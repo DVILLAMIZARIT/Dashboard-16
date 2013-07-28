@@ -1892,8 +1892,6 @@
     <Content Include="Assets\fonts\k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff" />
     <Content Include="Assets\fonts\MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff" />
     <Content Include="Assets\plugins\bootstrap-colorpicker\less\colorpicker.less" />
-    <Content Include="Assets\plugins\bootstrap-datepicker\.gitignore" />
-    <Content Include="Assets\plugins\bootstrap-datepicker\.hgignore" />
     <Content Include="Assets\plugins\bootstrap-datepicker\.hgtags" />
     <Content Include="Assets\plugins\bootstrap-datepicker\.travis.yml" />
     <Content Include="Assets\plugins\bootstrap-datepicker\build\build.less" />
@@ -1913,8 +1911,6 @@
     <Content Include="Assets\plugins\bootstrap-datetimepicker\LICENSE" />
     <Content Include="Assets\plugins\bootstrap-datetimepicker\README.md" />
     <Content Include="Assets\plugins\bootstrap-datetimepicker\tests\README.md" />
-    <Content Include="Assets\plugins\bootstrap-modal\.gitattributes" />
-    <Content Include="Assets\plugins\bootstrap-modal\.gitignore" />
     <Content Include="Assets\plugins\bootstrap-modal\component.json" />
     <Content Include="Assets\plugins\bootstrap-modal\composer.json" />
     <Content Include="Assets\plugins\bootstrap-modal\LICENSE" />
@@ -1922,20 +1918,16 @@
     <Content Include="Assets\plugins\bootstrap-modal\README.md" />
     <Content Include="Assets\plugins\bootstrap-tag\less\bootstrap-tag.less" />
     <Content Include="Assets\plugins\bootstrap-tag\README.md" />
-    <Content Include="Assets\plugins\bootstrap-timepicker\.gitignore" />
     <Content Include="Assets\plugins\bootstrap-timepicker\less\timepicker.less" />
     <Content Include="Assets\plugins\bootstrap-timepicker\README.md" />
-    <Content Include="Assets\plugins\bootstrap-toggle-buttons\.gitignore" />
     <Content Include="Assets\plugins\bootstrap-toggle-buttons\LICENSE" />
     <Content Include="Assets\plugins\bootstrap-toggle-buttons\README.md" />
     <Content Include="Assets\plugins\bootstrap-toggle-buttons\static\config.rb" />
     <Content Include="Assets\plugins\bootstrap-toggle-buttons\static\sass\bootstrap-toggle-buttons.scss" />
-    <Content Include="Assets\plugins\bootstrap-tree\.gitignore" />
     <Content Include="Assets\plugins\bootstrap-tree\jsonexample.json" />
     <Content Include="Assets\plugins\bootstrap-tree\README.md" />
     <Content Include="Assets\plugins\bootstrap-wizard\README.md" />
     <Content Include="Assets\plugins\breakpoints\README.md" />
-    <Content Include="Assets\plugins\chosen-bootstrap\.gitignore" />
     <Content Include="Assets\plugins\chosen-bootstrap\Cakefile" />
     <Content Include="Assets\plugins\chosen-bootstrap\chosen\lib\chosen.less" />
     <Content Include="Assets\plugins\chosen-bootstrap\coffee\chosen.jquery.coffee" />
@@ -1959,7 +1951,6 @@
     <Content Include="Assets\plugins\clockface\README.md" />
     <Content Include="Assets\plugins\dropzone\css\stylus\basic.styl" />
     <Content Include="Assets\plugins\dropzone\css\stylus\dropzone.styl" />
-    <Content Include="Assets\plugins\fancybox\.gitattributes" />
     <Content Include="Assets\plugins\fancybox\CHANGELOG.md" />
     <Content Include="Assets\plugins\fancybox\README.md" />
     <Content Include="Assets\plugins\flot\API.md" />
@@ -2040,7 +2031,6 @@
     <Content Include="Assets\plugins\jquery-easy-pie-chart\jquery.easy-pie-chart.coffee" />
     <Content Include="Assets\plugins\jquery-easy-pie-chart\Makefile" />
     <Content Include="Assets\plugins\jquery-easy-pie-chart\Readme.md" />
-    <Content Include="Assets\plugins\jquery-file-upload\.gitignore" />
     <Content Include="Assets\plugins\jquery-file-upload\blueimp-file-upload.jquery.json" />
     <Content Include="Assets\plugins\jquery-file-upload\CONTRIBUTING.md" />
     <Content Include="Assets\plugins\jquery-file-upload\package.json" />
@@ -2064,7 +2054,6 @@
     <Content Include="Assets\plugins\jquery-slimscroll\slimScroll.jquery.json" />
     <Content Include="Assets\plugins\jquery-tags-input\README.md" />
     <Content Include="Assets\plugins\jquery-ui-touch-punch\README.md" />
-    <Content Include="Assets\plugins\jqvmap\.gitignore" />
     <Content Include="Assets\plugins\jqvmap\README.md" />
     <Content Include="Assets\plugins\select2\component.json" />
     <Content Include="Assets\plugins\select2\LICENSE" />
