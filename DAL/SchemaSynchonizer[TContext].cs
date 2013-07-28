@@ -8,12 +8,14 @@ namespace DAL
         where TContext : DbContext
     {
         private readonly Func<Boolean> debugMode;
+        private readonly IDatabaseInitializer<TContext> productionInitializer;
 
-        public SchemaSynchonizer(Func<Boolean> debugMode)
+        public SchemaSynchonizer(Func<Boolean> debugMode, IDatabaseInitializer<TContext> productionInitializer = null)
         {
             Contract.Requires<ArgumentNullException>(debugMode != null);
 
             this.debugMode = debugMode;
+            this.productionInitializer = productionInitializer;
         }
 
         public void Execute()
@@ -24,7 +26,7 @@ namespace DAL
             }
             else
             {
-                Database.SetInitializer<TContext>(null);//new NullDatabaseInitializer<TContext>());
+                Database.SetInitializer<TContext>(productionInitializer);//new NullDatabaseInitializer<TContext>());
             }
         }
     }
