@@ -29,6 +29,8 @@ namespace Infra.Interfaces
     abstract class IRepositoryContract<T> : IRepository<T>
         where T : class, IEntity
     {
+        #region IRepository<T>
+        
         IQueryable<T> IRepository<T>.All(Expression<Func<T, Boolean>> predicate, params Expression<Func<T, Object>>[] includes)
         {
             Contract.Ensures(Contract.Result<IQueryable<T>>() != null);
@@ -77,8 +79,10 @@ namespace Infra.Interfaces
             return default(T);
         }
 
+        #endregion
+
         #region IDisposable
-        
+
         public void Dispose()
         {
             throw new NotImplementedException();
